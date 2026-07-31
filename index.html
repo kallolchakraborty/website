@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Kallol Chakraborty | Principal Consultant - AI Strategy & SAP BTP Solutions</title>
+  <meta name="description" content="Portfolio of Kallol Chakraborty - Principal Consultant, AI Strategy & SAP BTP Solutions Architect, Product Builder (STO360), SAP Americas Hack2Build Winner, and 7x SAP Certified."/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="theme.js"></script>
+  <script>
+    (function() {
+      function applyToggle() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        var dark = document.documentElement.classList.contains('dark');
+        var icon = toggle.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = dark ? 'light_mode' : 'dark_mode';
+        toggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+      document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function() {
+          var dark = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+          applyToggle();
+        });
+        applyToggle();
+      });
+    })();
+  </script>
+  <link href="styles.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased relative min-h-screen flex flex-col justify-between">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="fixed top-0 w-full z-50 header-glass">
+  <div class="h-16 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-[20px]">terminal</span>
+      </div>
+      <a href="index.html" class="font-code-sm text-sm font-bold text-on-surface hover:text-primary transition-colors">
+        Kallol Chakraborty
+      </a>
+    </div>
+    <nav id="site-nav" class="hidden md:flex items-center gap-8 font-code-sm text-sm font-medium" aria-label="Primary">
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="home" href="index.html">/home</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="experience" href="experience.html">/experience</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="projects" href="projects.html">/projects</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="contact" href="contact.html">/contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button data-trigger="command-palette" title="Open Command Palette (Cmd+K)" class="cursor-pointer flex items-center gap-2 px-3 py-1.5 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-all font-code-sm text-xs rounded-lg">
+        <span class="material-symbols-outlined text-[16px]">search</span>
+        <span class="hidden sm:inline font-bold">Cmd+K</span>
+      </button>
+      <button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode" class="cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+      </button>
+      <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[20px]">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-menu" class="md:hidden hidden fixed inset-0 z-40 bg-surface/95 backdrop-blur-md">
+  <nav aria-label="Mobile" class="h-full flex flex-col items-center justify-center gap-8 font-code-sm text-lg font-medium">
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="home" href="index.html">/home</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="experience" href="experience.html">/experience</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="projects" href="projects.html">/projects</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="contact" href="contact.html">/contact</a>
+  </nav>
+</div>
+
+  <!-- Main Hero & Overview Content -->
+  <main id="main-content" class="w-full pt-24 pb-14 relative z-10 flex-grow">
+    <!-- WebGL Ambient Shader Canvas Background -->
+    <div class="fixed inset-0 pointer-events-none opacity-20 z-0">
+      <canvas id="shader-canvas-ambient" class="w-full h-full block"></canvas>
+    </div>
+
+    <!-- Main Container -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center gap-12">
+
+      <!-- Hero Grid Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        <!-- Hero Text Column -->
+        <div class="lg:col-span-7 flex flex-col justify-between gap-6">
+          <div class="flex flex-col gap-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-orange-50 border border-orange-200/60 rounded-full w-fit">
+              <span class="w-2 h-2 rounded-full bg-orange-600 animate-pulse"></span>
+              <span class="font-code-sm text-xs font-bold text-orange-700 uppercase tracking-wide">Principal Consultant & SAP BTP Architect</span>
+            </div>
+
+            <h1 class="font-display-lg text-4xl sm:text-5xl lg:text-6xl text-slate-900 font-bold leading-none tracking-tight">
+              Kallol Chakraborty
+              <span class="gradient-text-orange text-2xl sm:text-3xl lg:text-4xl block font-semibold mt-2">
+                AI Strategy & SAP BTP Solutions
+              </span>
+            </h1>
+
+            <!-- Pill Badges -->
+            <div class="flex flex-wrap gap-2 font-code-sm text-xs">
+              <a href="https://people.sap.com/kallolathome" target="_blank" class="badge-pill hover:scale-105 transition-transform flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">workspace_premium</span>
+                <span>SAP Americas Hack2Build Winner</span>
+                <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+              </a>
+              <a href="https://people.sap.com/kallolathome" target="_blank" class="badge-pill hover:scale-105 transition-transform flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">verified</span>
+                <span>7x SAP Certified</span>
+                <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+              </a>
+              <span class="badge-pill flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">bolt</span>
+                <span>SAP CAP & Gen AI</span>
+              </span>
+              <span class="badge-pill flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">location_on</span>
+                <span>Kolkata, India</span>
+              </span>
+            </div>
+
+            <div class="p-5 rounded-xl glass-panel-faang relative overflow-hidden border-l-4 border-l-orange-600">
+              <p class="font-body-lg text-sm sm:text-base text-on-surface-variant leading-relaxed">
+                Principal Consultant specializing in SAP technologies, cloud-native application development, and enterprise software architecture. Expertise includes SAP CAP (Node.js), Python, ABAP, SAP BTP, Gen AI, Gemma 4, RAG, and SAP S/4HANA. Product Builder for Oil &amp; Gas Utilities on SAP BTP (STO360 product).
+              </p>
+            </div>
+          </div>
+
+          <!-- Action CTAs -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="projects.html" class="shimmer-btn text-white font-code-sm text-sm font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all flex items-center gap-2 group">
+              <span class="material-symbols-outlined text-[20px]">space_dashboard</span>
+              <span>View Products & Solutions</span>
+            </a>
+            <a href="experience.html" class="bg-surface text-on-surface-variant font-code-sm text-sm font-bold px-6 py-3.5 rounded-xl border border-slate-200 hover:bg-surface-container hover:border-slate-300 transition-all flex items-center gap-2 shadow-xs">
+              <span class="material-symbols-outlined text-[20px]">work</span>
+              <span>Experience & Certifications</span>
+            </a>
+            <a href="contact.html" class="text-orange-600 font-code-sm text-sm font-bold flex items-center gap-1.5 hover:gap-2.5 transition-all ml-2 group">
+              <span>Contact</span>
+              <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Neural Core Visual Column -->
+        <div class="lg:col-span-5 relative w-full min-h-[420px] flex items-stretch">
+          <div class="w-full border border-slate-200/80 rounded-2xl bg-surface overflow-hidden flex flex-col shadow-xl shadow-slate-200/50">
+            <div class="w-full h-10 bg-surface border-b border-slate-100 flex items-center justify-between px-4 shrink-0">
+              <span class="font-code-sm text-xs text-slate-500 font-bold">NEURAL CORE · SAP BTP</span>
+              <span class="material-symbols-outlined text-slate-300 text-[18px]">image</span>
+            </div>
+            <div class="relative w-full h-full min-h-[360px] flex-grow overflow-hidden">
+              <img src="assets/neural-core.jpg" alt="SAP BTP neural core visual" class="absolute inset-0 w-full h-full object-cover"/>
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 to-transparent p-4">
+                <p class="font-code-sm text-xs text-white/90">SAP BTP Neural Core · HANA Cloud · RAG · Gen AI</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications & Top Skills Banner -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+        <div class="faang-card p-8 flex flex-col justify-between relative overflow-hidden group">
+          <div>
+            <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-3 text-orange-600 font-bold font-code-sm text-sm">
+                <div class="w-10 h-10 rounded-xl bg-orange-50 border border-orange-200/60 flex items-center justify-center text-orange-600 shadow-xs">
+                  <span class="material-symbols-outlined text-xl">verified</span>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">7x SAP CERTIFICATIONS</h3>
+                  <span class="text-xs text-slate-500 font-normal">Officially Verified Credentials</span>
+                </div>
+              </div>
+              <a href="https://people.sap.com/kallolathome" target="_blank" class="font-code-sm text-xs text-orange-600 font-bold hover:underline flex items-center gap-1">
+                <span>VERIFY</span>
+                <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+              </a>
+            </div>
+
+            <!-- Animated Certifications List with Direct Links -->
+            <ul class="font-code-sm text-xs text-slate-600 space-y-3">
+              <li>
+                <a href="https://www.credly.com/badges/408b684c-9fc6-4f22-907c-c56c959aae10" target="_blank" class="cert-item group/cert p-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-orange-50/50 hover:border-orange-200 transition-all flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                    <span class="font-medium text-slate-700 group-hover/cert:text-orange-600 transition-colors">
+                      <strong class="text-slate-900">SAP Certified Professional</strong> – Solution Architect – SAP BTP
+                    </span>
+                  </div>
+                  <span class="material-symbols-outlined text-base text-slate-400 group-hover/cert:text-orange-600 group-hover/cert:translate-x-0.5 transition-all ml-2 shrink-0">open_in_new</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.credly.com/badges/de358bc3-01a9-4e4a-8404-185fb8f2014b" target="_blank" class="cert-item group/cert p-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-orange-50/50 hover:border-orange-200 transition-all flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                    <span class="font-medium text-slate-700 group-hover/cert:text-orange-600 transition-colors">
+                      <strong class="text-slate-900">SAP Certified Associate</strong> – SAP Generative AI Developer
+                    </span>
+                  </div>
+                  <span class="material-symbols-outlined text-base text-slate-400 group-hover/cert:text-orange-600 group-hover/cert:translate-x-0.5 transition-all ml-2 shrink-0">open_in_new</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.credly.com/badges/60c9592e-bf51-4fe5-a476-6a9b1e380fef" target="_blank" class="cert-item group/cert p-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-orange-50/50 hover:border-orange-200 transition-all flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                    <span class="font-medium text-slate-700 group-hover/cert:text-orange-600 transition-colors">
+                      <strong class="text-slate-900">SAP Certified Associate</strong> – SAP Fiori Application Developer
+                    </span>
+                  </div>
+                  <span class="material-symbols-outlined text-base text-slate-400 group-hover/cert:text-orange-600 group-hover/cert:translate-x-0.5 transition-all ml-2 shrink-0">open_in_new</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.credly.com/badges/b04a9d84-2324-4180-b804-2a36d76eddf1" target="_blank" class="cert-item group/cert p-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-orange-50/50 hover:border-orange-200 transition-all flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                    <span class="font-medium text-slate-700 group-hover/cert:text-orange-600 transition-colors">
+                      <strong class="text-slate-900">SAP Certified Associate</strong> – SAP BTP Extension Developer (CAP)
+                    </span>
+                  </div>
+                  <span class="material-symbols-outlined text-base text-slate-400 group-hover/cert:text-orange-600 group-hover/cert:translate-x-0.5 transition-all ml-2 shrink-0">open_in_new</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.credly.com/badges/0b892442-4f98-4e24-9a1d-17777718e279" target="_blank" class="cert-item group/cert p-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-orange-50/50 hover:border-orange-200 transition-all flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                    <span class="font-medium text-slate-700 group-hover/cert:text-orange-600 transition-colors">
+                      <strong class="text-slate-900">SAP Certified Associate</strong> – SAP BTP Integration Developer
+                    </span>
+                  </div>
+                  <span class="material-symbols-outlined text-base text-slate-400 group-hover/cert:text-orange-600 group-hover/cert:translate-x-0.5 transition-all ml-2 shrink-0">open_in_new</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.credly.com/badges/dca74d89-0653-4a0c-88d9-6c0c9331d20e" target="_blank" class="cert-item group/cert p-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-orange-50/50 hover:border-orange-200 transition-all flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                    <span class="font-medium text-slate-700 group-hover/cert:text-orange-600 transition-colors">
+                      <strong class="text-slate-900">SAP Certified Associate</strong> – Back-End Developer – ABAP Cloud
+                    </span>
+                  </div>
+                  <span class="material-symbols-outlined text-base text-slate-400 group-hover/cert:text-orange-600 group-hover/cert:translate-x-0.5 transition-all ml-2 shrink-0">open_in_new</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.credly.com/badges/4e31969a-b428-49bd-8c16-a475fec211cc" target="_blank" class="cert-item group/cert p-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-orange-50/50 hover:border-orange-200 transition-all flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 shrink-0"></span>
+                    <span class="font-medium text-slate-700 group-hover/cert:text-orange-600 transition-colors">
+                      <strong class="text-slate-900">SAP Certified Associate</strong> – SAP Build Developer (LCNC)
+                    </span>
+                  </div>
+                  <span class="material-symbols-outlined text-base text-slate-400 group-hover/cert:text-orange-600 group-hover/cert:translate-x-0.5 transition-all ml-2 shrink-0">open_in_new</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faang-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-3 text-purple-600 font-bold font-code-sm text-sm">
+                <div class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200/60 flex items-center justify-center text-purple-600 shadow-xs">
+                  <span class="material-symbols-outlined text-xl">psychology</span>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900">TOP TECHNICAL COMPETENCIES</h3>
+                  <span class="text-xs text-slate-500 font-normal">Core Enterprise Stack</span>
+                </div>
+              </div>
+              <span class="font-code-sm text-xs text-purple-600 font-bold bg-purple-50 px-2.5 py-1 rounded-md">SPECIALIZATIONS</span>
+            </div>
+
+            <div class="flex flex-wrap gap-2 font-code-sm text-xs">
+              <span class="px-3 py-2 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl hover:scale-105 transition-transform cursor-pointer">Gen AI</span>
+              <span class="px-3 py-2 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl hover:scale-105 transition-transform cursor-pointer">Gemma 4</span>
+              <span class="px-3 py-2 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl hover:scale-105 transition-transform cursor-pointer">RAG</span>
+              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">SAP CAP (Node.js)</span>
+              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">Python</span>
+              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">ABAP / RAP</span>
+              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">SAP BTP & HANA Cloud</span>
+              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">SAP S/4HANA</span>
+              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">SAP Integration Suite</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Solutions Section -->
+      <div class="flex flex-col gap-6 pt-6">
+        <div class="flex items-center justify-between border-b border-slate-200/80 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-orange-600 text-2xl">folder_open</span>
+            <h2 class="font-display-lg text-2xl text-slate-900 font-bold">&gt; ls -la ./featured_solutions</h2>
+          </div>
+          <a href="projects.html" class="font-code-sm text-sm text-orange-600 hover:underline flex items-center gap-1 font-bold">
+            View All Products <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div class="faang-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 rounded-xl">
+                  <span class="material-symbols-outlined">verified</span>
+                </div>
+                <span class="font-code-sm text-xs text-orange-600 font-bold bg-orange-50 px-2.5 py-1 rounded-md">SAP Certified</span>
+              </div>
+              <h3 class="font-headline-lg text-xl font-bold text-slate-900 mb-2">STO360 Enterprise Product</h3>
+              <p class="font-body-md text-sm text-slate-600 leading-relaxed mb-6">
+                SAP-certified Oil & Gas stock-transfer solution on SAP BTP Cloud Foundry, integrated natively with SAP S/4HANA OP 2023. Architected with CAP (Node.js), Python microservices, SAP Event Mesh, and XSUAA security.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 font-code-sm text-xs border-t border-slate-100 pt-4 text-slate-500">
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">SAP BTP</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">CAP (Node.js)</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">Python</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">HANA Cloud</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="faang-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 rounded-xl">
+                  <span class="material-symbols-outlined">emoji_events</span>
+                </div>
+                <span class="font-code-sm text-xs text-purple-600 font-bold bg-purple-50 px-2.5 py-1 rounded-md">Americas Winner</span>
+              </div>
+              <h3 class="font-headline-lg text-xl font-bold text-slate-900 mb-2">Hack2Build RAP Extension</h3>
+              <p class="font-body-md text-sm text-slate-600 leading-relaxed mb-6">
+                1st Place Americas Region winner in SAP Hack2Build. Engineered S/4HANA side-by-side clean core extensions using ABAP RESTful Application Programming Model (RAP) and BTP ABAP Environment.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 font-code-sm text-xs border-t border-slate-100 pt-4 text-slate-500">
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">SAP RAP</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">ABAP Cloud</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">Clean Core</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="faang-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 rounded-xl">
+                  <span class="material-symbols-outlined">smart_toy</span>
+                </div>
+                <span class="font-code-sm text-xs text-emerald-600 font-bold bg-emerald-50 px-2.5 py-1 rounded-md">Gen AI & RAG</span>
+              </div>
+              <h3 class="font-headline-lg text-xl font-bold text-slate-900 mb-2">Gen AI & HANA Vector Engine</h3>
+              <p class="font-body-md text-sm text-slate-600 leading-relaxed mb-6">
+                Enterprise generative AI architectures combining LLMs (Gemma 4), SAP HANA Cloud Vector Engine, RAG, and SAP Event Mesh to automate complex document processing and decision workflows.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5 font-code-sm text-xs border-t border-slate-100 pt-4 text-slate-500">
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">Gen AI</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">Gemma 4</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">RAG</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded-md">Vector DB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Command Palette Modal -->
+  <dialog id="command-palette" class="bg-surface border border-slate-200 rounded-2xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60">
+    <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/50">
+      <div class="flex items-center gap-3 flex-1">
+        <span class="material-symbols-outlined text-orange-600">terminal</span>
+        <input id="command-input" type="text" placeholder="Type a command or path..." class="bg-transparent border-none outline-none font-code-sm text-sm text-slate-900 w-full"/>
+      </div>
+      <button id="close-palette" class="text-slate-400 hover:text-slate-700">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+    <div id="command-results" class="max-h-72 overflow-y-auto"></div>
+    <div class="p-2 bg-slate-50 text-right font-code-sm text-[10px] text-slate-400 pr-4 border-t border-slate-100">
+      Press ESC to dismiss
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="w-full bg-surface-container px-4 py-8 border-t border-surface-container-highest mt-12 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 font-code-sm text-xs text-on-surface-variant">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-primary"></span>
+      <span>Available for consulting & product roles</span>
+    </div>
+    <div class="flex gap-6">
+      <a class="hover:text-primary transition-colors" href="https://github.com/kallolchakraborty" target="_blank">GITHUB</a>
+      <a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank">LINKEDIN</a>
+      <a class="hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+    </div>
+    <div class="text-primary font-bold">© 2026 KALLOL CHAKRABORTY</div>
+  </div>
+</footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

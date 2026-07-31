@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>AI Collab Server | Kallol Chakraborty</title>
+  <meta name="description" content="AI Collab Server — a centralized collaboration and storage platform that resolves and synchronizes local-first semantic DAGs from the llm-git (lgit) ecosystem."/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="theme.js"></script>
+  <script>
+    (function() {
+      function applyToggle() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        var dark = document.documentElement.classList.contains('dark');
+        var icon = toggle.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = dark ? 'light_mode' : 'dark_mode';
+        toggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+      document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function() {
+          var dark = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+          applyToggle();
+        });
+        applyToggle();
+      });
+    })();
+  </script>
+  <link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased relative min-h-screen flex flex-col justify-between">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="fixed top-0 w-full z-50 header-glass">
+  <div class="h-16 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-[20px]">terminal</span>
+      </div>
+      <a href="index.html" class="font-code-sm text-sm font-bold text-on-surface hover:text-primary transition-colors">
+        Kallol Chakraborty
+      </a>
+    </div>
+    <nav id="site-nav" class="hidden md:flex items-center gap-8 font-code-sm text-sm font-medium" aria-label="Primary">
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="home" href="index.html">/home</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="experience" href="experience.html">/experience</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="projects" href="projects.html">/projects</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="contact" href="contact.html">/contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button data-trigger="command-palette" title="Open Command Palette (Cmd+K)" class="cursor-pointer flex items-center gap-2 px-3 py-1.5 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-all font-code-sm text-xs rounded-lg">
+        <span class="material-symbols-outlined text-[16px]">search</span>
+        <span class="hidden sm:inline font-bold">Cmd+K</span>
+      </button>
+      <button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode" class="cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+      </button>
+      <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[20px]">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-menu" class="md:hidden hidden fixed inset-0 z-40 bg-surface/95 backdrop-blur-md">
+  <nav aria-label="Mobile" class="h-full flex flex-col items-center justify-center gap-8 font-code-sm text-lg font-medium">
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="home" href="index.html">/home</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="experience" href="experience.html">/experience</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="projects" href="projects.html">/projects</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="contact" href="contact.html">/contact</a>
+  </nav>
+</div>
+
+  <main id="main-content" class="w-full pt-24 pb-14 relative z-10 flex-grow">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+
+      <!-- Breadcrumb + Header -->
+      <div>
+        <a href="projects.html" class="inline-flex items-center gap-2 font-code-sm text-xs text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          <span>&lt;- projects/</span>
+        </a>
+        <div class="mt-4 p-8 rounded-2xl glass-panel-faang relative overflow-hidden border-l-4 border-l-primary">
+          <div class="flex items-center gap-2 text-primary mb-2">
+            <span class="material-symbols-outlined text-lg">device_hub</span>
+            <span class="font-code-sm text-xs tracking-wider uppercase font-bold">PERSONAL PROJECT · AI INFRASTRUCTURE</span>
+          </div>
+          <h1 class="font-display-lg text-3xl sm:text-4xl font-bold text-slate-900">AI Collab Server</h1>
+          <p class="font-body-lg text-slate-600 mt-3 max-w-2xl">
+            Centralized remote repository for the llm-git ecosystem: a RESTful API for semantic commits (with intent, prompt, and invoking AI model) plus Content-Addressed Storage (CAS) for artifact blobs — extending local-first DAGs into a synchronized multi-user environment.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4 font-code-sm text-xs">
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">FastAPI + SQLAlchemy</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">Pydantic v2</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">SHA-256 CAS</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">Clean Architecture</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">MIT License</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 mt-5">
+            <a href="https://github.com/kallolchakraborty/ai-colab-server" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-on-primary font-code-sm text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">
+              <span class="material-symbols-outlined text-base">code</span> GITHUB REPO
+            </a>
+            <a href="https://github.com/kallolchakraborty/llm-git" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary font-code-sm text-xs font-bold rounded-lg transition-all">
+              <span class="material-symbols-outlined text-base">fork_right</span> COMPANION: LGIT
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture Diagram -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">account_tree</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Architecture</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <div class="flex flex-col items-center gap-2">
+            <!-- Clients -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">Clients</div>
+              <div class="diagram-sub">llm-git UI / CLI</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- API Layer -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">RESTful API (FastAPI)</div>
+              <div class="diagram-sub">POST /api/v1/objects/upload · POST /api/v1/commits</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- Services Split -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
+              <div class="diagram-box text-center">
+                <div class="diagram-title">StorageService (CAS)</div>
+                <div class="diagram-sub">SHA-256 content-addressed hashing → deduplication</div>
+              </div>
+              <div class="diagram-box text-center">
+                <div class="diagram-title">CommitService</div>
+                <div class="diagram-sub">Semantic commits · parent mapping · AI metadata</div>
+              </div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- Persistence -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
+              <div class="diagram-box text-center">
+                <div class="diagram-title">Local File System</div>
+                <div class="diagram-sub">storage/objects · keyed by payload hash</div>
+              </div>
+              <div class="diagram-box text-center">
+                <div class="diagram-title">SQLAlchemy / SQLite</div>
+                <div class="diagram-sub">Commit DAG topology + metadata</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- API -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">api</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">REST API</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <div class="space-y-5">
+            <div>
+              <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-2">1. Upload Artifacts (Blobs)</h3>
+              <p class="font-body-md text-sm text-slate-600 mb-1">Hash file contents and store immutably before referencing them in a commit.</p>
+              <pre class="font-code-sm text-xs text-slate-600 bg-slate-100 p-3 rounded-md overflow-x-auto"><span class="text-primary font-bold">POST</span> /api/v1/objects/upload   (multipart form: file)
+→ returns SHA-256 hash</pre>
+            </div>
+            <div>
+              <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-2">2. Create a Semantic Commit</h3>
+              <p class="font-body-md text-sm text-slate-600 mb-1">Link blobs into the DAG with full AI metadata — what was asked, why, and by which model.</p>
+              <pre class="font-code-sm text-xs text-slate-600 bg-slate-100 p-3 rounded-md overflow-x-auto"><span class="text-primary font-bold">POST</span> /api/v1/commits
+{
+  "message":    "Implement user authentication subsystem",
+  "snapshot":   { "src/auth.py": "e3b0c442..." },
+  "parent_ids": ["prev-commit-id-8char"],
+  "intent":     "Secure the API routes using JWT tokens.",
+  "prompt":     "Create a FastAPI authentication wrapper using standard JWT claims.",
+  "model":      "gpt-4-turbo"
+}</pre>
+            </div>
+            <div>
+              <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-2">3. Reconstruct Network Topology</h3>
+              <pre class="font-code-sm text-xs text-slate-600 bg-slate-100 p-3 rounded-md overflow-x-auto"><span class="text-primary font-bold">GET</span>  /api/v1/commits         → all Commit objects (DAG reconstruction)
+<span class="text-primary font-bold">GET</span>  /api/v1/objects/{sha}   → raw octet-stream blob</pre>
+            </div>
+          </div>
+          <p class="font-body-md text-sm text-slate-600 mt-5">Interactive Swagger docs auto-served at <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">http://localhost:8002/docs</code>. Server config is env-driven via <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">pydantic-settings</code> (<code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">HOST</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">PORT</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">STORAGE_BASE_DIR</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">DATABASE_URL</code>).</p>
+        </div>
+      </section>
+
+      <!-- Core Paradigms -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">tune</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Core Paradigms</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="faang-card p-6">
+            <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Semantic Separation</h3>
+            <p class="font-body-md text-sm text-slate-600">Like Git, metadata (commits) and objects (blobs) are stored entirely separately.</p>
+          </div>
+          <div class="faang-card p-6">
+            <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Immutability (CAS)</h3>
+            <p class="font-body-md text-sm text-slate-600">Files keyed by SHA-256 payload — identical files resolve to the same hash, auto-deduplicating network storage.</p>
+          </div>
+          <div class="faang-card p-6">
+            <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Topological Mapping</h3>
+            <p class="font-body-md text-sm text-slate-600">Commits define causal history via node-to-node parent IDs while embedding prompt, intent, and model metadata.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Codebase Layout -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">folder_open</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Codebase Layout</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <pre class="font-code-sm text-xs text-slate-600 leading-relaxed overflow-x-auto">├── main.py                   # ASGI application factory & global routing
+├── requirements.txt          # FastAPI, SQLAlchemy, pydantic-settings
+├── app/
+│   ├── api/routes.py         # Endpoint definitions (/commits, /objects)
+│   ├── core/config.py        # BaseSettings env injection
+│   ├── core/models.py        # Pydantic v2 request schemas
+│   ├── infrastructure/database.py  # SQLAlchemy engine + SQLite mapping
+│   └── services/storage.py   # Pure hash-based CAS logic
+└── storage/                  # Autogenerated persistence
+    ├── metadata/collab.db    # SQLite DAG topology
+    └── objects/              # Raw blobs keyed by hash (e.g. /e3/b0c442…)</pre>
+          <p class="font-body-md text-sm text-slate-600 mt-4">Clean Architecture per Google Python Style Guide: <code class="bg-slate-100 px-1.5 py-0.5 rounded">core</code> (domain) → <code class="bg-slate-100 px-1.5 py-0.5 rounded">infrastructure</code> (persistence) → <code class="bg-slate-100 px-1.5 py-0.5 rounded">services</code> (capabilities) → <code class="bg-slate-100 px-1.5 py-0.5 rounded">api</code> (routing).</p>
+        </div>
+      </section>
+
+      <!-- Tech Stack -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">layers</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Tech Stack</h2>
+        </div>
+        <div class="faang-card p-6 flex flex-wrap gap-2">
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Python 3.10+</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">FastAPI</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">SQLAlchemy</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">SQLite</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Pydantic v2</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">SHA-256 CAS</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Clean Architecture</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Command Palette Modal -->
+  <dialog id="command-palette" class="bg-surface border border-surface-container-highest rounded-xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60">
+    <div class="p-md border-b border-surface-container-highest flex items-center justify-between bg-surface-container-low">
+      <div class="flex items-center gap-sm flex-1">
+        <span class="material-symbols-outlined text-primary">terminal</span>
+        <input id="command-input" type="text" placeholder="Type a command or page path..." class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
+      </div>
+      <button id="close-palette" class="text-on-surface-variant hover:text-primary">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+    <div id="command-results" class="max-h-72 overflow-y-auto"></div>
+    <div class="p-xs bg-surface-container text-right font-code-sm text-[10px] text-on-surface-variant pr-md">
+      Press ESC to dismiss
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="w-full bg-surface-container px-4 py-8 border-t border-surface-container-highest mt-12 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 font-code-sm text-xs text-on-surface-variant">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-primary"></span>
+      <span>Available for consulting & product roles</span>
+    </div>
+    <div class="flex gap-6">
+      <a class="hover:text-primary transition-colors" href="https://github.com/kallolchakraborty" target="_blank">GITHUB</a>
+      <a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank">LINKEDIN</a>
+      <a class="hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+    </div>
+    <div class="text-primary font-bold">© 2026 KALLOL CHAKRABORTY</div>
+  </div>
+</footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

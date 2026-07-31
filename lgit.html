@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Lgit (llm-git) | Kallol Chakraborty</title>
+  <meta name="description" content="LLM-Git (lgit) — the semantic source control system for the AI era. Tracks the prompts, intents, and models behind every code evolution."/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="theme.js"></script>
+  <script>
+    (function() {
+      function applyToggle() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        var dark = document.documentElement.classList.contains('dark');
+        var icon = toggle.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = dark ? 'light_mode' : 'dark_mode';
+        toggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+      document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function() {
+          var dark = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+          applyToggle();
+        });
+        applyToggle();
+      });
+    })();
+  </script>
+  <link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased relative min-h-screen flex flex-col justify-between">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="fixed top-0 w-full z-50 header-glass">
+  <div class="h-16 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-[20px]">terminal</span>
+      </div>
+      <a href="index.html" class="font-code-sm text-sm font-bold text-on-surface hover:text-primary transition-colors">
+        Kallol Chakraborty
+      </a>
+    </div>
+    <nav id="site-nav" class="hidden md:flex items-center gap-8 font-code-sm text-sm font-medium" aria-label="Primary">
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="home" href="index.html">/home</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="experience" href="experience.html">/experience</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="projects" href="projects.html">/projects</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="contact" href="contact.html">/contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button data-trigger="command-palette" title="Open Command Palette (Cmd+K)" class="cursor-pointer flex items-center gap-2 px-3 py-1.5 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-all font-code-sm text-xs rounded-lg">
+        <span class="material-symbols-outlined text-[16px]">search</span>
+        <span class="hidden sm:inline font-bold">Cmd+K</span>
+      </button>
+      <button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode" class="cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+      </button>
+      <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[20px]">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-menu" class="md:hidden hidden fixed inset-0 z-40 bg-surface/95 backdrop-blur-md">
+  <nav aria-label="Mobile" class="h-full flex flex-col items-center justify-center gap-8 font-code-sm text-lg font-medium">
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="home" href="index.html">/home</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="experience" href="experience.html">/experience</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="projects" href="projects.html">/projects</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="contact" href="contact.html">/contact</a>
+  </nav>
+</div>
+
+  <main id="main-content" class="w-full pt-24 pb-14 relative z-10 flex-grow">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+
+      <!-- Breadcrumb + Header -->
+      <div>
+        <a href="projects.html" class="inline-flex items-center gap-2 font-code-sm text-xs text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          <span>&lt;- projects/</span>
+        </a>
+        <div class="mt-4 p-8 rounded-2xl glass-panel-faang relative overflow-hidden border-l-4 border-l-primary">
+          <div class="flex items-center gap-2 text-primary mb-2">
+            <span class="material-symbols-outlined text-lg">fork_right</span>
+            <span class="font-code-sm text-xs tracking-wider uppercase font-bold">PERSONAL PROJECT · DEV TOOL</span>
+          </div>
+          <h1 class="font-display-lg text-3xl sm:text-4xl font-bold text-slate-900">Lgit (llm-git)</h1>
+          <p class="font-body-lg text-slate-600 mt-3 max-w-2xl">
+            The Semantic Source Control System for the AI Era. Traditional Git tracks what changed; llm-git tracks why it changed — capturing the prompts, intents, and models behind every code evolution.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4 font-code-sm text-xs">
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">Python 3 · zero heavy deps</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">Semantic DAG + SHA-256 CAS</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">rich + click CLI</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">React dashboard</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">MIT License</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 mt-5">
+            <a href="https://github.com/kallolchakraborty/llm-git" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-on-primary font-code-sm text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">
+              <span class="material-symbols-outlined text-base">code</span> GITHUB REPO
+            </a>
+            <a href="https://github.com/kallolchakraborty/ai-colab-server" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary font-code-sm text-xs font-bold rounded-lg transition-all">
+              <span class="material-symbols-outlined text-base">device_hub</span> COMPANION: AI COLLAB SERVER
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture Diagram -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">account_tree</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Architecture</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <div class="flex flex-col items-center gap-2">
+            <!-- CLI -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">lgit CLI</div>
+              <div class="diagram-sub">init · add · commit · branch · checkout</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- Commit Model -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">Semantic Commit</div>
+              <div class="diagram-sub">message + intent + prompt + model → first-class metadata</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- DAG -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+              <div class="diagram-box text-center">
+                <div class="diagram-title">DAG of Commits</div>
+                <div class="diagram-sub">Causal history · parent links</div>
+              </div>
+              <div class="diagram-box text-center">
+                <div class="diagram-title">Branches</div>
+                <div class="diagram-sub">Parallel prompt experiments</div>
+              </div>
+              <div class="diagram-box text-center">
+                <div class="diagram-title">Tags</div>
+                <div class="diagram-sub">Versioned milestones (v0.1-alpha)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why llm-git -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">lightbulb</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Why llm-git?</h2>
+        </div>
+        <div class="faang-card p-6 font-body-md text-sm text-slate-600 space-y-3">
+          <p>In an era where a large share of code is AI-assisted, messages like <span class="font-code-sm bg-slate-100 px-1.5 py-0.5 rounded text-slate-800">"fix bug"</span> aren't enough. You need to know:</p>
+          <ul class="list-disc list-inside space-y-2">
+            <li>Which <strong class="text-slate-900">prompt</strong> led to this specific logic?</li>
+            <li>What was the <strong class="text-slate-900">intent</strong> defined by the user?</li>
+            <li>Which <strong class="text-slate-900">model</strong> (GPT-4o, Claude, Gemma...) was used?</li>
+            <li>How did the prompt <strong class="text-slate-900">evolve</strong> over branches?</li>
+          </ul>
+          <p class="text-slate-500 mt-2">llm-git answers these by treating AI metadata as a first-class citizen in the version control DAG — turning the repository into a searchable knowledge base of AI interactions.</p>
+        </div>
+      </section>
+
+      <!-- Internal Architecture -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">schema</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Under the Hood</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="faang-card p-6">
+            <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">DAG, not a linear log</h3>
+            <p class="font-body-md text-sm text-slate-600">Commits are nodes in a directed acyclic graph connected by parent links. Branches diverge and merge like git — but each node also carries the <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">intent</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">prompt</code>, and <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">model</code> that produced it.</p>
+          </div>
+          <div class="faang-card p-6">
+            <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">SHA-256 content addressing</h3>
+            <p class="font-body-md text-sm text-slate-600">Every snapshot is hashed into an immutable object ID. Identical content always maps to the same hash — the storage layer auto-deduplicates and every reference is cryptographically verifiable.</p>
+          </div>
+          <div class="faang-card p-6">
+            <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Semantic store</h3>
+            <p class="font-body-md text-sm text-slate-600">AI metadata is persisted alongside topology, so you can later answer "which prompt produced this code?" by walking the DAG — not by grepping commit messages.</p>
+          </div>
+          <div class="faang-card p-6">
+            <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Rich terminal UX</h3>
+            <p class="font-body-md text-sm text-slate-600">CLI output is rendered with <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">rich</code>/<code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">click</code> — tables, trees, and colored diffs, with a React dashboard companion for visual exploration.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Command Reference -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">terminal</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Command Reference</h2>
+        </div>
+        <div class="faang-card p-6 overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 font-code-sm text-xs text-slate-500 uppercase tracking-wider">
+                <th class="py-3 pr-4">Command</th>
+                <th class="py-3 pr-4">Purpose</th>
+                <th class="py-3">Semantic Flags</th>
+              </tr>
+            </thead>
+            <tbody class="font-body-md text-sm text-slate-700">
+              <tr class="border-b border-slate-100">
+                <td class="py-3 pr-4 font-code-sm text-xs text-primary font-bold">./lgit init</td>
+                <td class="py-3 pr-4">Bootstrap a semantic repository</td>
+                <td class="py-3 text-slate-500">—</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="py-3 pr-4 font-code-sm text-xs text-primary font-bold">./lgit add .</td>
+                <td class="py-3 pr-4">Stage the working tree into a snapshot</td>
+                <td class="py-3 text-slate-500">—</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="py-3 pr-4 font-code-sm text-xs text-primary font-bold">./lgit commit</td>
+                <td class="py-3 pr-4">Persist a snapshot as a DAG node</td>
+                <td class="py-3 text-slate-500">--intent · --prompt · --model</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="py-3 pr-4 font-code-sm text-xs text-primary font-bold">./lgit branch</td>
+                <td class="py-3 pr-4">Fork the DAG (parallel prompt experiments)</td>
+                <td class="py-3 text-slate-500">—</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-code-sm text-xs text-primary font-bold">./lgit checkout</td>
+                <td class="py-3 pr-4">Move HEAD, restore snapshot</td>
+                <td class="py-3 text-slate-500">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Quickstart -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">terminal</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Core Workflow</h2>
+        </div>
+        <div class="faang-card p-6 font-code-sm text-sm text-slate-600">
+          <pre class="bg-slate-50 p-4 rounded-lg overflow-x-auto text-xs text-slate-800"># Track an AI-assisted change with full semantic context
+./lgit init
+./lgit add .
+./lgit commit -m "Implement Auth" \
+             --intent "Add JWT security" \
+             --prompt "Write a Python login script using JWT" \
+             --model "GPT-4"
+
+# Test different prompts in parallel realities
+./lgit branch experimental-prompt
+./lgit checkout experimental-prompt
+./lgit commit -m "Attempt recursive approach"</pre>
+        </div>
+      </section>
+
+      <!-- Tech Stack -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">layers</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Tech Stack</h2>
+        </div>
+        <div class="faang-card p-6 flex flex-wrap gap-2">
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Python</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Zero heavy dependencies</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">rich</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">click</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Semantic DAG</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">AI Metadata Model</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Command Palette Modal -->
+  <dialog id="command-palette" class="bg-surface border border-surface-container-highest rounded-xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60">
+    <div class="p-md border-b border-surface-container-highest flex items-center justify-between bg-surface-container-low">
+      <div class="flex items-center gap-sm flex-1">
+        <span class="material-symbols-outlined text-primary">terminal</span>
+        <input id="command-input" type="text" placeholder="Type a command or page path..." class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
+      </div>
+      <button id="close-palette" class="text-on-surface-variant hover:text-primary">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+    <div id="command-results" class="max-h-72 overflow-y-auto"></div>
+    <div class="p-xs bg-surface-container text-right font-code-sm text-[10px] text-on-surface-variant pr-md">
+      Press ESC to dismiss
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="w-full bg-surface-container px-4 py-8 border-t border-surface-container-highest mt-12 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 font-code-sm text-xs text-on-surface-variant">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-primary"></span>
+      <span>Available for consulting & product roles</span>
+    </div>
+    <div class="flex gap-6">
+      <a class="hover:text-primary transition-colors" href="https://github.com/kallolchakraborty" target="_blank">GITHUB</a>
+      <a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank">LINKEDIN</a>
+      <a class="hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+    </div>
+    <div class="text-primary font-bold">© 2026 KALLOL CHAKRABORTY</div>
+  </div>
+</footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

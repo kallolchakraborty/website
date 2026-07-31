@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Chhanda — Local AI Gateway | Kallol Chakraborty</title>
+  <meta name="description" content="Chhanda (ছন্দা) — an on-device, privacy-first local LLM and RAG application for Android built in Kotlin with Gemma models via LiteRT-LM."/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="theme.js"></script>
+  <script>
+    (function() {
+      function applyToggle() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        var dark = document.documentElement.classList.contains('dark');
+        var icon = toggle.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = dark ? 'light_mode' : 'dark_mode';
+        toggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+      document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function() {
+          var dark = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+          applyToggle();
+        });
+        applyToggle();
+      });
+    })();
+  </script>
+  <link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased relative min-h-screen flex flex-col justify-between">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="fixed top-0 w-full z-50 header-glass">
+  <div class="h-16 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-[20px]">terminal</span>
+      </div>
+      <a href="index.html" class="font-code-sm text-sm font-bold text-on-surface hover:text-primary transition-colors">
+        Kallol Chakraborty
+      </a>
+    </div>
+    <nav id="site-nav" class="hidden md:flex items-center gap-8 font-code-sm text-sm font-medium" aria-label="Primary">
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="home" href="index.html">/home</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="experience" href="experience.html">/experience</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="projects" href="projects.html">/projects</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="contact" href="contact.html">/contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button data-trigger="command-palette" title="Open Command Palette (Cmd+K)" class="cursor-pointer flex items-center gap-2 px-3 py-1.5 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-all font-code-sm text-xs rounded-lg">
+        <span class="material-symbols-outlined text-[16px]">search</span>
+        <span class="hidden sm:inline font-bold">Cmd+K</span>
+      </button>
+      <button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode" class="cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+      </button>
+      <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[20px]">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-menu" class="md:hidden hidden fixed inset-0 z-40 bg-surface/95 backdrop-blur-md">
+  <nav aria-label="Mobile" class="h-full flex flex-col items-center justify-center gap-8 font-code-sm text-lg font-medium">
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="home" href="index.html">/home</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="experience" href="experience.html">/experience</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="projects" href="projects.html">/projects</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="contact" href="contact.html">/contact</a>
+  </nav>
+</div>
+
+  <main id="main-content" class="w-full pt-24 pb-14 relative z-10 flex-grow">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+
+      <!-- Breadcrumb + Header -->
+      <div>
+        <a href="projects.html" class="inline-flex items-center gap-2 font-code-sm text-xs text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          <span>&lt;- projects/</span>
+        </a>
+        <div class="mt-4 p-8 rounded-2xl glass-panel-faang relative overflow-hidden border-l-4 border-l-primary">
+          <div class="flex items-center gap-2 text-primary mb-2">
+            <span class="material-symbols-outlined text-lg">psychology</span>
+            <span class="font-code-sm text-xs tracking-wider uppercase font-bold">PERSONAL PROJECT · LOCAL AI</span>
+          </div>
+          <h1 class="font-display-lg text-3xl sm:text-4xl font-bold text-slate-900">Chhanda — Local AI Gateway</h1>
+          <p class="font-body-lg text-slate-600 mt-3 max-w-2xl">
+            100% offline, privacy-first, production-hardened AI &amp; RAG ecosystem for Android — named after the Bengali poetic meter (ছন্দ), dedicated to the developer's mother. Solo-developed, 14,500+ LOC, 100% Kotlin, zero cloud dependency.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4 font-code-sm text-xs">
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">Kotlin 2.1.0 · 14,500+ LOC</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">Android 8.0+ (API 26 → 34)</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">Gemma 4 · LiteRT-LM</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">MVVM + Clean Architecture</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-md text-slate-700">Gemma for Good Hackathon</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 mt-5">
+            <a href="https://github.com/kallolchakraborty/Chhanda-AI" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-on-primary font-code-sm text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">
+              <span class="material-symbols-outlined text-base">code</span> GITHUB REPO
+            </a>
+            <a href="https://github.com/kallolchakraborty/Chhanda-AI" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary font-code-sm text-xs font-bold rounded-lg transition-all">
+              <span class="material-symbols-outlined text-base">open_in_new</span> VIEW ON GITHUB
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture Diagram -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">account_tree</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Architecture</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <div class="flex flex-col items-center gap-2">
+            <!-- Layer 1: Presentation -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">Presentation Layer</div>
+              <div class="diagram-sub">DashboardScreen · ChatScreen · KnowledgeBaseScreen · ConfigScreen · LogsScreen · WelcomeScreen</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- Layer 2: ViewModel + Domain -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">ViewModel + Domain Layer</div>
+              <div class="diagram-sub">SystemViewModel (2,022 LOC) · ChatViewModel · SendMessageUseCase · IngestDocumentUseCase · ScrapeUrlUseCase</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- Layer 3: Data / Inference -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
+              <div class="diagram-box text-center">
+                <div class="diagram-title">Inference</div>
+                <div class="diagram-sub">LiteRTLMEngine · LiteRTEmbeddingEngine (512-dim) · JNI</div>
+              </div>
+              <div class="diagram-box text-center">
+                <div class="diagram-title">RAG Pipeline</div>
+                <div class="diagram-sub">AndroidMultimodalIngestor · LocalVectorStore · TextChunker · ContextManager</div>
+              </div>
+              <div class="diagram-box text-center">
+                <div class="diagram-title">Gateway Server</div>
+                <div class="diagram-sub">ChhandaServer (Ktor-CIO) · ServerOrchestrator · ModelProvisioner</div>
+              </div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- Layer 4: Persistence + Services -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
+              <div class="diagram-box text-center">
+                <div class="diagram-title">Persistence</div>
+                <div class="diagram-sub">Room DB (4 DAOs) · EncryptedSharedPreferences · DataStore</div>
+              </div>
+              <div class="diagram-box text-center">
+                <div class="diagram-title">Android Services</div>
+                <div class="diagram-sub">ForegroundService · Quick-Settings Tile · DownloadWorker · IngestionWorker</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Inference -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">memory</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Zero-Cloud Local Inference</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
+            <li>Google <strong>LiteRT-LM</strong> engine (<code>litertlm-android:0.11.0</code>) with native JNI acceleration.</li>
+            <li>Models: <strong>Gemma 2B, 4B, 4n</strong> — 4-bit GGUF quantized; optional <strong>TurboQuant</strong> KV-cache compression for long-context VRAM relief.</li>
+            <li>Auto model discovery: scans <code>Downloads/</code>, app-private storage, and shared external dirs.</li>
+            <li>Configurable context window <strong>102 → 32,768 tokens</strong> via Settings slider.</li>
+            <li>Token-by-token <strong>streaming</strong> with live tokens/sec counter and Thinking Mode (<code>&lt;thought&gt;</code> toggle).</li>
+            <li>Hardware-aware slider init: 2GB RAM → 1024, 4GB → 2048, 8GB+ → 4096 tokens.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- RAG -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">database</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Adaptive Multimodal RAG Pipeline</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Ingestion</h3>
+              <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
+                <li>PDF, DOCX, DOC, XLSX, XLS, CSV, TSV, XML, HTML, MD, JSON + <strong>OCR via ML Kit</strong>.</li>
+                <li>Jsoup-based web scraping with depth-first link following (<code>ScrapeUrlUseCase</code>).</li>
+                <li>Paragraph-first text chunking (<code>TextChunker</code>).</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Retrieval</h3>
+              <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
+                <li>On-device MediaPipe embeddings, <strong>512-dim</strong> vectors.</li>
+                <li><strong>Int8 quantization → 75% storage reduction</strong> vs Float32.</li>
+                <li>Min-Heap PriorityQueue similarity search — <strong>O(N log K)</strong>.</li>
+                <li>Adaptive thresholds: 0.80 chat / 0.60 explicit / 0.50 follow-up; pronoun-aware query expansion.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gateway Server -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">router</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Production-Grade AI Gateway</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
+            <li><strong>Ktor-CIO</strong> coroutine-based server (no Netty/JNI overhead); embedded Web UI served over HTTP.</li>
+            <li>OpenAI-compatible REST API — works with <strong>VS Code Continue</strong>, IDEs, and mobile clients.</li>
+            <li>mDNS (NSD) service registration + <strong>QR-code sharing</strong> of connection config.</li>
+            <li>Mandatory <code>X-API-Key</code> header on all endpoints (KeyStore-backed), <strong>Leaky Bucket</strong> throttling (1 req/s/IP), semaphore queue (max 2 inference tasks), 30-second device reaper.</li>
+            <li>SSH reverse tunnel via <code>localhost.run</code> for zero-config remote access; active VPN warning.</li>
+            <li>Serves up to <strong>20 concurrent clients</strong>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Safety -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">security</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Safety &amp; Privacy — Defense in Depth</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
+              <li><strong>Prompt injection:</strong> keyword blacklist + heuristic regex + defensive delimiters (<code>[USER_INPUT_START/END]</code>).</li>
+              <li><strong>PII redaction:</strong> bidirectional input/output masking of emails, phones, SSNs, cards.</li>
+              <li><strong>Content filtering:</strong> regex detection of violent, illegal, self-harm content.</li>
+              <li>Ephemeral API mode — API conversations never persisted to disk.</li>
+            </ul>
+            <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
+              <li>Key storage in <code>EncryptedSharedPreferences</code> backed by Android KeyStore TEE/SE.</li>
+              <li>Biometric lock + <code>PrivacyGuard</code>, <code>SafetyGuardrails</code>, <code>SslCertManager</code>.</li>
+              <li>HuggingFace read-only token stored in KeyStore for authenticated model downloads.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hardware Resilience -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">thermostat</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Hardware Resilience</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
+            <li><code>ThermalStatusTracker</code> auto-reduces context window under thermal stress; <code>MemoryPressureMonitor</code> guards OOM.</li>
+            <li>2.5s flush delay between model switches; hot model swap with safe engine teardown.</li>
+            <li>Lifecycle-aware telemetry (12%+ battery savings); persistent inference via Wake/Wi-Fi locks.</li>
+            <li>System tile (<code>ChhandaTileService</code>) for instant server status; crash handler for zero-loss restarts.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Benchmarks -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">query_stats</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Performance &amp; Security Benchmarks</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8 overflow-x-auto">
+          <table class="w-full text-sm font-body-md">
+            <thead>
+              <tr class="font-code-sm text-xs uppercase tracking-wider text-slate-500 border-b border-slate-200">
+                <th class="text-left py-2 pr-4">Metric</th>
+                <th class="text-left py-2 pr-4">Standard</th>
+                <th class="text-left py-2">Chhanda (Hardened)</th>
+              </tr>
+            </thead>
+            <tbody class="text-slate-600">
+              <tr class="border-b border-slate-100"><td class="py-2 pr-4 font-semibold text-slate-800">Vector storage</td><td class="py-2 pr-4">Float32 (4 bytes/dim)</td><td class="py-2">Int8 quantized — 75% less disk</td></tr>
+              <tr class="border-b border-slate-100"><td class="py-2 pr-4 font-semibold text-slate-800">Search complexity</td><td class="py-2 pr-4">O(N log N) full sort</td><td class="py-2">O(N log K) min-heap — 3× faster top-K</td></tr>
+              <tr class="border-b border-slate-100"><td class="py-2 pr-4 font-semibold text-slate-800">Network security</td><td class="py-2 pr-4">Open port</td><td class="py-2">Leaky Bucket + API key + device limit</td></tr>
+              <tr class="border-b border-slate-100"><td class="py-2 pr-4 font-semibold text-slate-800">Battery</td><td class="py-2 pr-4">Active background polling</td><td class="py-2">Lifecycle-aware — 12% less battery</td></tr>
+              <tr class="border-b border-slate-100"><td class="py-2 pr-4 font-semibold text-slate-800">Token storage</td><td class="py-2 pr-4">Plain-text prefs</td><td class="py-2">EncryptedSharedPreferences (TEE)</td></tr>
+              <tr class="border-b border-slate-100"><td class="py-2 pr-4 font-semibold text-slate-800">Concurrency</td><td class="py-2 pr-4">Unbounded</td><td class="py-2">Semaphore (max 2 tasks) — crash-free</td></tr>
+              <tr><td class="py-2 pr-4 font-semibold text-slate-800">Cold start</td><td class="py-2 pr-4">Eager initialization</td><td class="py-2">Lazy DI (<code>dagger.Lazy&lt;&gt;</code>) — 15% faster</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Repo Structure -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">folder_open</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Codebase at a Glance</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <pre class="font-code-sm text-xs text-slate-600 leading-relaxed overflow-x-auto">app/src/main/java/com/chhanda/ai/
+├── data/
+│   ├── inference/          ChhandaServer.kt (48KB) · LiteRTLMEngine · LiteRTEmbeddingEngine
+│   │                       AndroidMultimodalIngestor (27KB) · ServerTemplateProvider (40KB)
+│   └── repository/         AppDatabase (Room, 4 DAOs) · LocalVectorStore · ModelProvisioner
+│                           HardwareMonitor · SettingsRepository · SecurityRepository
+├── domain/
+│   ├── model/              ContextManager · PersonaManager · TextChunker · RAGMetricsManager
+│   └── usecase/            SendMessageUseCase (46KB) · ScrapeUrlUseCase · IngestDocumentUseCase
+├── presentation/
+│   ├── ui/                 DashboardScreen (88KB) · ConfigScreen (55KB) · KnowledgeBaseScreen
+│   │                       ChatScreen · LogsScreen · WelcomeScreen · ChatComponents
+│   └── viewmodel/          SystemViewModel (54KB) · ChatViewModel · ChatUiState
+├── service/                ChhandaForegroundService · ChhandaTileService · DownloadWorker
+│                           IngestionWorker · CloudSyncWorker · InferenceService
+└── util/                   SafetyGuardrails · Localization (32KB) · VoiceAssistant · DocumentGenerator
+                            PrivacyGuard · ThermalStatusTracker · CrashHandler</pre>
+          <p class="font-body-md text-sm text-slate-600 mt-4">
+            Shipped with <code>MANUAL.md</code>, <code>HACKATHON_SUBMISSION.md</code>, <code>FAQSheet.md</code>, <code>TestCases.md</code>, an Android instrumentation test suite (<code>EngineInferenceTest</code>, <code>RAGPipelineTest</code>) and unit tests (<code>SystemViewModelTest</code>, <code>ContextManagerTest</code>).
+          </p>
+        </div>
+      </section>
+
+      <!-- Tech Stack -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">layers</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Tech Stack</h2>
+        </div>
+        <div class="faang-card p-6 flex flex-wrap gap-2">
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Kotlin 2.1.0 (100% Kotlin)</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Android 8.0+ (API 26→34)</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">LiteRT-LM 0.11.0</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Gemma 2B / 4B / 4n (GGUF 4-bit)</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Ktor-CIO</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Room · DataStore · Hilt DI</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">MediaPipe (embedding/OCR)</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Jsoup · Apache POI · ML Kit</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Android KeyStore TEE</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Command Palette Modal -->
+  <dialog id="command-palette" class="bg-surface border border-surface-container-highest rounded-xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60">
+    <div class="p-md border-b border-surface-container-highest flex items-center justify-between bg-surface-container-low">
+      <div class="flex items-center gap-sm flex-1">
+        <span class="material-symbols-outlined text-primary">terminal</span>
+        <input id="command-input" type="text" placeholder="Type a command or page path..." class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
+      </div>
+      <button id="close-palette" class="text-on-surface-variant hover:text-primary">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+    <div id="command-results" class="max-h-72 overflow-y-auto"></div>
+    <div class="p-xs bg-surface-container text-right font-code-sm text-[10px] text-on-surface-variant pr-md">
+      Press ESC to dismiss
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="w-full bg-surface-container px-4 py-8 border-t border-surface-container-highest mt-12 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 font-code-sm text-xs text-on-surface-variant">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-primary"></span>
+      <span>Available for consulting & product roles</span>
+    </div>
+    <div class="flex gap-6">
+      <a class="hover:text-primary transition-colors" href="https://github.com/kallolchakraborty" target="_blank">GITHUB</a>
+      <a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank">LINKEDIN</a>
+      <a class="hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+    </div>
+    <div class="text-primary font-bold">© 2026 KALLOL CHAKRABORTY</div>
+  </div>
+</footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+/* FAANG-Grade Design System: Modern Terminal Light & Dark Theme Base */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+  --bg-main: #fcfcfc;
+  --surface-white: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --brand-orange: #d946ef; /* Refined accent vibrancy */
+  --primary-accent: #ea580c;
+  --primary-glow: rgba(234, 88, 12, 0.12);
+  --border-subtle: #f1f5f9;
+  --border-card: #e2e8f0;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-terminal: 6px 6px 0 0 #ea580c;
+  --radius-card: 16px;
+  --radius-pill: 9999px;
+
+  /* Light theme tokens (RGB triplets consumed by theme.js) */
+  --bg: 252 252 252;
+  --surface: 255 255 255;
+  --surface-container: 248 250 252;
+  --surface-container-low: 241 245 249;
+  --surface-container-high: 241 245 249;
+  --surface-container-highest: 226 232 240;
+  --surface-variant: 226 232 240;
+  --on-surface: 15 23 42;
+  --on-surface-variant: 71 85 105;
+  --primary: 234 88 12;
+  --on-primary: 255 255 255;
+  --secondary: 124 58 237;
+  --error: 220 38 38;
+  --tertiary: 5 150 105;
+  --outline-variant: 148 163 184;
+
+  /* Slate scale (light) */
+  --slate-50: 248 250 252;
+  --slate-100: 241 245 249;
+  --slate-200: 226 232 240;
+  --slate-300: 203 213 225;
+  --slate-400: 148 163 184;
+  --slate-500: 100 116 139;
+  --slate-600: 71 85 105;
+  --slate-700: 51 65 85;
+  --slate-800: 30 41 59;
+  --slate-900: 15 23 42;
+  --slate-950: 2 6 23;
+
+  /* Orange scale (light) */
+  --orange-50: 255 247 237;
+  --orange-100: 255 237 213;
+  --orange-200: 254 215 170;
+  --orange-300: 253 186 116;
+  --orange-400: 251 146 60;
+  --orange-500: 249 115 22;
+  --orange-600: 234 88 12;
+  --orange-700: 194 65 12;
+
+  /* Accent scales (light) */
+  --purple-50: 250 245 255;
+  --purple-100: 243 232 255;
+  --purple-200: 233 213 255;
+  --purple-600: 147 51 234;
+  --emerald-50: 236 253 245;
+  --emerald-100: 209 250 229;
+  --emerald-200: 167 243 208;
+  --emerald-600: 5 150 105;
+  --amber-500: 245 158 11;
+}
+
+.dark {
+  --bg-main: #0f172a;
+  --surface-white: #ffffff;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --brand-orange: #f97316;
+  --primary-accent: #fb923c;
+  --primary-glow: rgba(249, 115, 22, 0.18);
+  --border-subtle: #1e293b;
+  --border-card: #334155;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --shadow-terminal: 6px 6px 0 0 #fb923c;
+
+  /* Dark theme tokens (RGB triplets) */
+  --bg: 15 23 42;
+  --surface: 30 41 59;
+  --surface-container: 24 34 51;
+  --surface-container-low: 21 30 45;
+  --surface-container-high: 36 48 68;
+  --surface-container-highest: 51 65 85;
+  --surface-variant: 51 65 85;
+  --on-surface: 241 245 249;
+  --on-surface-variant: 203 213 225;
+  --primary: 251 146 60;
+  --on-primary: 51 65 85;
+  --secondary: 167 139 250;
+  --error: 248 113 113;
+  --tertiary: 52 211 153;
+  --outline-variant: 100 116 139;
+
+  /* Slate scale (dark) */
+  --slate-50: 15 23 42;
+  --slate-100: 24 34 51;
+  --slate-200: 36 48 68;
+  --slate-300: 51 65 85;
+  --slate-400: 100 116 139;
+  --slate-500: 148 163 184;
+  --slate-600: 203 213 225;
+  --slate-700: 226 232 240;
+  --slate-800: 241 245 249;
+  --slate-900: 248 250 252;
+  --slate-950: 255 255 255;
+
+  /* Orange scale (dark) */
+  --orange-50: 40 22 6;
+  --orange-100: 51 28 8;
+  --orange-200: 66 36 10;
+  --orange-300: 104 56 14;
+  --orange-400: 251 146 60;
+  --orange-500: 249 115 22;
+  --orange-600: 251 146 60;
+  --orange-700: 253 186 116;
+
+  /* Accent scales (dark) */
+  --purple-50: 33 22 56;
+  --purple-100: 45 30 74;
+  --purple-200: 60 40 98;
+  --purple-600: 196 181 253;
+  --emerald-50: 4 34 22;
+  --emerald-100: 6 46 30;
+  --emerald-200: 11 68 44;
+  --emerald-600: 52 211 153;
+  --amber-500: 251 191 36;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Scale & Weights */
+.font-mono, .font-code-sm, .font-display-lg, .font-headline-lg {
+  font-family: 'Ubuntu Mono', monospace !important;
+}
+
+.font-sans, .font-body-lg, .font-body-md {
+  font-family: 'Ubuntu', sans-serif !important;
+}
+
+/* Premium Header Blur */
+.header-glass {
+  background: rgba(var(--surface) / 0.82);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(var(--surface-container-highest) / 0.8);
+}
+
+/* Elevated Glass Panels */
+.glass-panel-faang {
+  background: rgba(var(--surface) / 0.85);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-card);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-faang:hover {
+  border-color: rgba(var(--primary) / 0.4);
+  box-shadow: 0 12px 24px -4px rgba(var(--primary) / 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* FAANG Card Hover Elevation */
+.faang-card {
+  background: rgba(var(--surface) / 1);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.02);
+}
+
+.faang-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--primary) / 0.4);
+  box-shadow: 0 20px 25px -5px rgba(var(--primary) / 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Gradient Text Effect */
+.gradient-text-orange {
+  background: linear-gradient(135deg, rgb(var(--primary) / 1) 0%, rgb(var(--orange-700) / 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Status Pill Badges */
+.badge-pill {
+  display: inline-flex;
+  items-center: center;
+  padding: 4px 12px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 9999px;
+  background: rgb(var(--orange-50) / 1);
+  color: rgb(var(--orange-700) / 1);
+  border: 1px solid rgb(var(--orange-100) / 1);
+  transition: all 0.2s ease;
+}
+
+.badge-pill:hover {
+  background: rgb(var(--orange-100) / 1);
+}
+
+/* Hide scrollbars cleanly */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Accessibility: visible keyboard focus (High) */
+:focus-visible {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Accessibility: respect reduced-motion preference (High) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip link for keyboard users (Medium) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--primary-accent);
+  color: #fff;
+  padding: 8px 16px;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Shimmer Highlight Effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Terminal-style hard shadow on project card hover */
+.hover-terminal-shadow:hover {
+  box-shadow: var(--shadow-terminal);
+  transform: translate(-3px, -3px);
+}
+
+.shimmer-btn {
+  background: linear-gradient(90deg, rgb(var(--primary) / 1) 0%, rgb(var(--orange-500) / 1) 50%, rgb(var(--primary) / 1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear;
+}
+
+/* Timeline Scroll-Reveal Animation */.timeline-item {
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.timeline-item:nth-child(2) { transition-delay: 0.08s; }
+.timeline-item:nth-child(3) { transition-delay: 0.16s; }
+.timeline-item:nth-child(4) { transition-delay: 0.24s; }
+.timeline-item:nth-child(5) { transition-delay: 0.32s; }
+.timeline-item:nth-child(6) { transition-delay: 0.4s; }
+
+/* Modal Discrete Top Layer */
+dialog {
+  border-radius: 20px;
+  border: 1px solid var(--border-card);
+  transition: opacity 0.25s ease, transform 0.25s ease, display 0.25s allow-discrete, overlay 0.25s allow-discrete;
+}
+
+dialog[open] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+dialog::backdrop {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.dark dialog::backdrop {
+  background: rgba(2, 6, 23, 0.7);
+}
+
+/* Project Detail Architecture Diagram */
+.diagram-box {
+  background: rgba(var(--surface) / 1);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.diagram-box:hover {
+  border-color: rgba(var(--primary) / 0.5);
+  box-shadow: 0 8px 16px -4px rgba(var(--primary) / 0.12);
+}
+.diagram-box .diagram-title {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(var(--primary) / 1);
+}
+.diagram-box .diagram-sub {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(var(--on-surface-variant) / 1);
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+.diagram-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(var(--primary) / 0.8);
+}
+.diagram-arrow span {
+  font-size: 1.4rem;
+  line-height: 1;
+}

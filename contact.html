@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Contact & Endpoints | Kallol Chakraborty</title>
+  <meta name="description" content="Get in touch directly with Kallol Chakraborty - Principal Consultant, AI Strategy & SAP BTP Solutions Architect."/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="theme.js"></script>
+  <script>
+    (function() {
+      function applyToggle() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        var dark = document.documentElement.classList.contains('dark');
+        var icon = toggle.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = dark ? 'light_mode' : 'dark_mode';
+        toggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+      document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function() {
+          var dark = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+          applyToggle();
+        });
+        applyToggle();
+      });
+    })();
+  </script>
+  <link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased relative min-h-screen flex flex-col justify-between">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="fixed top-0 w-full z-50 header-glass">
+  <div class="h-16 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-[20px]">terminal</span>
+      </div>
+      <a href="index.html" class="font-code-sm text-sm font-bold text-on-surface hover:text-primary transition-colors">
+        Kallol Chakraborty
+      </a>
+    </div>
+    <nav id="site-nav" class="hidden md:flex items-center gap-8 font-code-sm text-sm font-medium" aria-label="Primary">
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="home" href="index.html">/home</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="experience" href="experience.html">/experience</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="projects" href="projects.html">/projects</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="contact" href="contact.html">/contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button data-trigger="command-palette" title="Open Command Palette (Cmd+K)" class="cursor-pointer flex items-center gap-2 px-3 py-1.5 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-all font-code-sm text-xs rounded-lg">
+        <span class="material-symbols-outlined text-[16px]">search</span>
+        <span class="hidden sm:inline font-bold">Cmd+K</span>
+      </button>
+      <button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode" class="cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+      </button>
+      <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[20px]">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-menu" class="md:hidden hidden fixed inset-0 z-40 bg-surface/95 backdrop-blur-md">
+  <nav aria-label="Mobile" class="h-full flex flex-col items-center justify-center gap-8 font-code-sm text-lg font-medium">
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="home" href="index.html">/home</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="experience" href="experience.html">/experience</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="projects" href="projects.html">/projects</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="contact" href="contact.html">/contact</a>
+  </nav>
+</div>
+
+  <!-- Main Contact Content -->
+  <main id="main-content" class="w-full pt-24 pb-12 min-h-screen relative z-10 flex-grow">
+    <!-- WebGL Ambient Shader Canvas Background -->
+    <div class="fixed inset-0 pointer-events-none opacity-30 z-0">
+      <canvas id="shader-canvas-ambient" class="w-full h-full block"></canvas>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-md md:px-lg flex flex-col gap-xl">
+      
+      <!-- Page Header -->
+      <div class="mb-lg">
+        <h1 class="font-display-lg text-3xl md:text-5xl font-bold text-on-surface flex items-center gap-sm">
+          <span class="text-primary font-bold">~ $</span> init connection
+        </h1>
+        <p class="font-code-sm text-xs text-on-surface-variant mt-sm flex items-center gap-sm">
+          <span class="w-2 h-2 bg-primary animate-pulse rounded-full"></span>
+          <span>STATUS: AWAITING_INPUT // ENCRYPTION: AES-256</span>
+        </p>
+      </div>
+
+      <!-- Main Contact Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+        
+        <!-- Terminal Form Panel -->
+        <div class="lg:col-span-7 flex flex-col relative group">
+          <div class="bg-surface border border-surface-container-highest shadow-lg flex flex-col w-full h-full p-lg md:p-xl">
+            <div class="flex justify-between items-center mb-xl pb-sm border-b border-surface-container-highest">
+              <span class="font-code-sm text-xs font-bold text-on-surface-variant">./contact.sh</span>
+              <div class="flex gap-xs">
+                <span class="w-3 h-3 rounded-full bg-error"></span>
+                <span class="w-3 h-3 rounded-full bg-primary/40"></span>
+                <span class="w-3 h-3 rounded-full bg-primary"></span>
+              </div>
+            </div>
+
+            <form id="terminal-contact-form" class="flex flex-col gap-lg font-code-sm text-xs">
+              <!-- Name Input -->
+              <div class="flex flex-col md:flex-row md:items-center gap-sm">
+                <label class="text-secondary w-24 shrink-0 font-bold">--name</label>
+                <div class="flex items-center flex-1 bg-surface-container border border-surface-container-highest px-sm py-sm focus-within:border-primary focus-within:bg-surface transition-all">
+                  <span class="text-primary mr-sm font-bold">&gt;</span>
+                  <input type="text" required placeholder="Name or Organization" class="bg-transparent w-full outline-none text-on-surface font-code-sm"/>
+                </div>
+              </div>
+
+              <!-- Email Input -->
+              <div class="flex flex-col md:flex-row md:items-center gap-sm">
+                <label class="text-secondary w-24 shrink-0 font-bold">--email</label>
+                <div class="flex items-center flex-1 bg-surface-container border border-surface-container-highest px-sm py-sm focus-within:border-primary focus-within:bg-surface transition-all">
+                  <span class="text-primary mr-sm font-bold">&gt;</span>
+                  <input type="email" required placeholder="user@host.domain" class="bg-transparent w-full outline-none text-on-surface font-code-sm"/>
+                </div>
+              </div>
+
+              <!-- Message Textarea -->
+              <div class="flex flex-col md:flex-row items-start gap-sm mt-md">
+                <label class="text-secondary w-24 shrink-0 pt-sm font-bold">--msg</label>
+                <div class="flex flex-1 bg-surface-container border border-surface-container-highest px-sm py-sm focus-within:border-primary focus-within:bg-surface transition-all min-h-[140px] w-full">
+                  <span class="text-primary mr-sm font-bold pt-xs">&gt;</span>
+                  <textarea id="msg-input" required placeholder="Enter message payload..." class="bg-transparent w-full outline-none text-on-surface font-code-sm resize-none min-h-[120px]"></textarea>
+                </div>
+              </div>
+
+              <!-- Action Area -->
+              <div class="mt-xl flex justify-end">
+                <button type="submit" class="bg-primary text-on-primary font-code-sm text-xs font-bold py-md px-xl uppercase tracking-widest transition-all hover:bg-surface-tint hover:shadow-[4px_4px_0_0_rgba(127,80,108,1)] flex items-center gap-sm">
+                  <span class="material-symbols-outlined text-[18px]">send</span>
+                  <span>Transmit</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Endpoints & Diagnostics Sidebar -->
+        <div class="lg:col-span-5 flex flex-col gap-lg">
+          
+          <!-- Endpoints Card -->
+          <div class="bg-surface border border-surface-container-highest p-lg shadow-sm">
+            <h2 class="font-headline-lg text-xl font-bold text-on-surface mb-lg flex items-center gap-sm">
+              <span class="material-symbols-outlined text-primary">hub</span> Direct Endpoints
+            </h2>
+            <div class="flex flex-col gap-md font-code-sm text-xs">
+              
+              <a href="mailto:kallol.a.chakraborty@gmail.com" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
+                <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
+                  <span>./email_direct.sh</span>
+                  <span class="text-primary">SMTP</span>
+                </div>
+                <div class="text-on-surface flex items-center gap-sm">
+                  <span class="text-secondary">-&gt;</span> kallol.a.chakraborty@gmail.com
+                </div>
+              </a>
+
+              <a href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
+                <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
+                  <span>./linkedin.sh</span>
+                  <span class="text-primary">200 OK</span>
+                </div>
+                <div class="text-on-surface flex items-center gap-sm">
+                  <span class="text-secondary">-&gt;</span> in/kallol-chakraborty-9728a699
+                </div>
+              </a>
+
+              <a href="https://github.com/kallolchakraborty" target="_blank" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
+                <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
+                  <span>./github.sh</span>
+                  <span class="text-primary">200 OK</span>
+                </div>
+                <div class="text-on-surface flex items-center gap-sm">
+                  <span class="text-secondary">-&gt;</span> github.com/kallolchakraborty
+                </div>
+              </a>
+
+              <a href="https://people.sap.com/kallolathome" target="_blank" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
+                <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
+                  <span>./sap_community.sh</span>
+                  <span class="text-secondary">PROFILE</span>
+                </div>
+                <div class="text-on-surface flex items-center gap-sm">
+                  <span class="text-secondary">-&gt;</span> people.sap.com/kallolathome
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+          <!-- Network Diagnostics Card -->
+          <div class="bg-on-surface text-background p-lg flex flex-col gap-sm shadow-md font-code-sm text-xs">
+            <div class="flex justify-between items-center text-primary font-bold uppercase mb-sm border-b border-surface-variant/20 pb-xs">
+              <span>System Diagnostics</span>
+              <span class="material-symbols-outlined text-sm">memory</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-outline-variant">LOCATION</span>
+              <span class="text-primary font-bold">Kolkata, West Bengal, India</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-outline-variant">LANGUAGES</span>
+              <span class="text-primary font-bold">English, Hindi, Bengali</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-outline-variant">ENCRYPTION</span>
+              <span class="text-primary font-bold">AES-256-GCM</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Command Palette Modal -->
+  <dialog id="command-palette" class="bg-surface border border-surface-container-highest rounded-xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60">
+    <div class="p-md border-b border-surface-container-highest flex items-center justify-between bg-surface-container-low">
+      <div class="flex items-center gap-sm flex-1">
+        <span class="material-symbols-outlined text-primary">terminal</span>
+        <input id="command-input" type="text" placeholder="Type a command or page path..." class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
+      </div>
+      <button id="close-palette" class="text-on-surface-variant hover:text-primary">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+    <div id="command-results" class="max-h-72 overflow-y-auto"></div>
+    <div class="p-xs bg-surface-container text-right font-code-sm text-[10px] text-on-surface-variant pr-md">
+      Press ESC to dismiss
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="w-full bg-surface-container px-4 py-8 border-t border-surface-container-highest mt-12 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 font-code-sm text-xs text-on-surface-variant">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-primary"></span>
+      <span>Available for consulting & product roles</span>
+    </div>
+    <div class="flex gap-6">
+      <a class="hover:text-primary transition-colors" href="https://github.com/kallolchakraborty" target="_blank">GITHUB</a>
+      <a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank">LINKEDIN</a>
+      <a class="hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+    </div>
+    <div class="text-primary font-bold">© 2026 KALLOL CHAKRABORTY</div>
+  </div>
+</footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Form Transmission Simulation
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('terminal-contact-form');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const originalHTML = btn.innerHTML;
+
+        btn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[18px]">autorenew</span><span>Transmitting...</span>`;
+        btn.classList.add('opacity-80', 'pointer-events-none');
+
+        setTimeout(() => {
+          btn.innerHTML = `<span class="material-symbols-outlined text-[18px]">done_all</span><span>Ack: 200 OK</span>`;
+          btn.classList.replace('bg-primary', 'bg-tertiary');
+
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.replace('bg-tertiary', 'bg-primary');
+            btn.classList.remove('opacity-80', 'pointer-events-none');
+            form.reset();
+          }, 2500);
+        }, 1200);
+      });
+    });
+  </script>
+</body>
+</html>

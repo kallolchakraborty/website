@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Products & Enterprise Solutions | Kallol Chakraborty</title>
+  <meta name="description" content="Featured SAP products, enterprise extensions, Gen AI integrations, and cloud solutions built by Kallol Chakraborty."/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="theme.js"></script>
+  <script>
+    (function() {
+      function applyToggle() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        var dark = document.documentElement.classList.contains('dark');
+        var icon = toggle.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = dark ? 'light_mode' : 'dark_mode';
+        toggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+      document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function() {
+          var dark = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+          applyToggle();
+        });
+        applyToggle();
+      });
+    })();
+  </script>
+  <link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased relative min-h-screen flex flex-col justify-between">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="fixed top-0 w-full z-50 header-glass">
+  <div class="h-16 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-[20px]">terminal</span>
+      </div>
+      <a href="index.html" class="font-code-sm text-sm font-bold text-on-surface hover:text-primary transition-colors">
+        Kallol Chakraborty
+      </a>
+    </div>
+    <nav id="site-nav" class="hidden md:flex items-center gap-8 font-code-sm text-sm font-medium" aria-label="Primary">
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="home" href="index.html">/home</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="experience" href="experience.html">/experience</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="projects" href="projects.html">/projects</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="contact" href="contact.html">/contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button data-trigger="command-palette" title="Open Command Palette (Cmd+K)" class="cursor-pointer flex items-center gap-2 px-3 py-1.5 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-all font-code-sm text-xs rounded-lg">
+        <span class="material-symbols-outlined text-[16px]">search</span>
+        <span class="hidden sm:inline font-bold">Cmd+K</span>
+      </button>
+      <button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode" class="cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+      </button>
+      <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
+        <span class="material-symbols-outlined text-[20px]">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-menu" class="md:hidden hidden fixed inset-0 z-40 bg-surface/95 backdrop-blur-md">
+  <nav aria-label="Mobile" class="h-full flex flex-col items-center justify-center gap-8 font-code-sm text-lg font-medium">
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="home" href="index.html">/home</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="experience" href="experience.html">/experience</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="projects" href="projects.html">/projects</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors" data-path="contact" href="contact.html">/contact</a>
+  </nav>
+</div>
+
+  <!-- Main Projects Content -->
+  <main id="main-content" class="w-full pt-24 pb-12 min-h-screen relative z-10 flex-grow">
+    <!-- WebGL Ambient Shader Canvas Background -->
+    <div class="fixed inset-0 pointer-events-none opacity-30 z-0">
+      <canvas id="shader-canvas-ambient" class="w-full h-full block"></canvas>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-md md:px-lg flex flex-col gap-xl">
+      
+      <!-- Page Header -->
+      <div class="border-l-4 border-primary bg-surface/70 backdrop-blur-md border border-surface-container-highest overflow-hidden">
+        <div class="p-lg">
+          <div class="flex items-center gap-sm text-primary mb-xs">
+            <span class="material-symbols-outlined">folder_open</span>
+            <span class="font-code-sm text-xs tracking-wider uppercase font-bold">ENTERPRISE PRODUCTS & AI SOLUTIONS</span>
+          </div>
+          <h1 class="font-display-lg text-3xl md:text-5xl font-bold text-on-surface">
+            &gt; ls -la ./featured_work
+          </h1>
+          <p class="font-body-lg text-on-surface-variant mt-sm">
+            A showcase of SAP-certified products, hackathon-winning architectures, Gen AI workflows, and enterprise integrations.
+          </p>
+
+          <!-- Project Stats -->
+          <div class="mt-md grid grid-cols-2 md:grid-cols-4 gap-sm">
+            <div class="bg-surface border border-surface-container-highest p-md">
+              <div class="text-2xl font-bold text-primary font-display-lg">11</div>
+              <div class="font-code-sm text-[10px] uppercase tracking-wider text-on-surface-variant mt-xs">Projects</div>
+            </div>
+            <div class="bg-surface border border-surface-container-highest p-md">
+              <div class="text-2xl font-bold text-primary font-display-lg">1</div>
+              <div class="font-code-sm text-[10px] uppercase tracking-wider text-on-surface-variant mt-xs">SAP-Certified Product</div>
+            </div>
+            <div class="bg-surface border border-surface-container-highest p-md">
+              <div class="text-2xl font-bold text-primary font-display-lg">1</div>
+              <div class="font-code-sm text-[10px] uppercase tracking-wider text-on-surface-variant mt-xs">Hack2Build Winner</div>
+            </div>
+            <div class="bg-surface border border-surface-container-highest p-md">
+              <div class="text-2xl font-bold text-primary font-display-lg">1</div>
+              <div class="font-code-sm text-[10px] uppercase tracking-wider text-on-surface-variant mt-xs">Kaggle Hackathon</div>
+            </div>
+          </div>
+
+          <!-- Category + Stack Chips -->
+          <div class="mt-sm flex flex-wrap gap-xs font-code-sm text-xs">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">2 × SAP BTP &amp; S/4HANA</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">3 × Gen AI &amp; Automation</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">1 × Integrations &amp; Data</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">3 × Apps &amp; Tools</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">5 Office · 6 Personal</span>
+          </div>
+          <div class="mt-xs flex flex-wrap gap-xs font-code-sm text-xs">
+            <span class="font-code-sm font-bold text-on-surface-variant tracking-wider mt-xs mr-xs">STACK:</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">CAP</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Python</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">ABAP/RAP</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">HANA Cloud</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Kotlin</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">FastAPI</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="flex flex-wrap gap-sm px-lg pb-lg font-code-sm text-xs" id="filter-tabs">
+          <button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary">All (11)</button>
+          <button data-filter="sap-btp" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">SAP BTP & S/4HANA (2)</button>
+          <button data-filter="gen-ai" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Gen AI & Automation (3)</button>
+          <button data-filter="integration" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Integrations & Data (1)</button>
+          <button data-filter="apps" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Apps & Tools (5)</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg" id="projects-grid">
+        
+        <!-- Project 1: STO360 -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="sap-btp">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">verified</span>
+              </div>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">STO360 Product</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mb-xs">Office Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              SAP-certified product for Oil & Gas Utilities built on SAP BTP Cloud Foundry, seamlessly integrated with SAP S/4HANA OP 2023. Managed packaging via SAP Add-On Assembly Kit (AAK).
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">SAP CAP (Node.js)</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Python (Flask)</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">HANA Cloud</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">XSUAA</span>
+          </div>
+        </div>
+
+        <!-- Project 2: Hack2Build Americas Winner Extension -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="sap-btp">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">military_tech</span>
+              </div>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Hack2Build Winner Extension</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mb-xs">Office Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Award-winning extension for S/4HANA OP built with SAP ABAP RESTful Application Programming Model (RAP) on SAP BTP ABAP Environment. 1st Place Americas Region winner.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">SAP RAP</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">ABAP Environment</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Clean Core</span>
+          </div>
+        </div>
+
+        <!-- Project 3: Gen AI Business Automation -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="gen-ai">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">psychology</span>
+              </div>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Gen AI Workflow Automation</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mb-xs">Office Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Enterprise AI proof-of-concepts integrating LLMs, Gemma 4, RAG, SAP Event Mesh, CAP, and SAP HANA Cloud to automate complex document processing and enterprise workflows.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Gen AI</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Gemma 4</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">RAG</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Python</span>
+          </div>
+        </div>
+
+        <!-- Project 4: SAP BTP Terraform IaC Orchestration -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="integration">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">cloud_sync</span>
+              </div>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">BTP Infrastructure as Code (IaC)</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mb-xs">Office Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Automated SAP BTP provisioning, entitlement configuration, and role-mapping access management using Terraform and Infrastructure as Code practices.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Terraform</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">SAP BTP CLI</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Cloud Foundry</span>
+          </div>
+        </div>
+
+        <!-- Project 5: Python Automation Services -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="gen-ai">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">integration_instructions</span>
+              </div>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Python Backend Services</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mb-xs">Office Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Microservices developed in Python for document generation, data transformations, and automated API testing with Postman and SAP Document Management Service (DMS).
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Python</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Postman</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">SAP DMS</span>
+          </div>
+        </div>
+
+        <!-- Project 6: Chhanda-AI (Kaggle Gemma Hackathon) -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="gen-ai">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">psychology</span>
+              </div>
+              <a href="https://github.com/kallolchakraborty/Chhanda-AI" target="_blank" class="text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-xl">open_in_new</span>
+              </a>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Chhanda — Local AI Gateway</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              On-device local LLM application with RAG functionality. Runs Gemma models locally and shares downloaded LLMs for chat and other purposes. Kaggle Gemma Good Hackathon submission.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Kotlin</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Local LLM</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">RAG</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Kaggle Hackathon</span>
+          </div>
+        </div>
+
+        <!-- Project 7: Health Simulator -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="apps">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">monitor_heart</span>
+              </div>
+              <a href="https://github.com/kallolchakraborty/health-simulator" target="_blank" class="text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-xl">open_in_new</span>
+              </a>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Medical Vital Signs Simulator</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Professional-grade, web-based Medical Vital Signs Simulator for clinical training, UI/UX prototyping, and physiological monitoring demonstrations.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">JavaScript</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Clinical Simulation</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">UI/UX Prototyping</span>
+          </div>
+        </div>
+
+        <!-- Project 8: Free Chess -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="apps">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">sports_esports</span>
+              </div>
+              <a href="free-chess.html" class="text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-xl">open_in_new</span>
+              </a>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Free Chess</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Open-source chess application with playable board gameplay and clean, focused interface.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">JavaScript</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Chess Engine</span>
+          </div>
+        </div>
+
+        <!-- Project 9: Effort Planner -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="apps">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">calendar_month</span>
+              </div>
+              <a href="https://github.com/kallolchakraborty/Effort-Planner" target="_blank" class="text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-xl">open_in_new</span>
+              </a>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Effort Planner</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Professional, feature-rich calendar application built with FastAPI and FullCalendar.js for managing resource effort, shifts, tasks, daily notes, and events with precise scheduling logic and a premium modern UI.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">FastAPI</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">FullCalendar.js</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Scheduling</span>
+          </div>
+        </div>
+
+        <!-- Project 10: AI Collab Server -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="apps">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">device_hub</span>
+              </div>
+              <a href="https://github.com/kallolchakraborty/ai-colab-server" target="_blank" class="text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-xl">open_in_new</span>
+              </a>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">AI Collab Server</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Centralized collaboration and storage platform that resolves and synchronizes local-first semantic DAGs, such as those produced by the llm-git (lgit) ecosystem.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Python</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Semantic DAGs</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Collaboration</span>
+          </div>
+        </div>
+
+        <!-- Project 11: llm-git (Lgit) -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="apps">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">fork_right</span>
+              </div>
+              <a href="https://github.com/kallolchakraborty/llm-git" target="_blank" class="text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-xl">open_in_new</span>
+              </a>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Lgit (llm-git)</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              The Semantic Source Control System for the AI Era — version control designed for semantic DAGs and AI-native collaboration.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Python</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Source Control</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">AI-Native</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Command Palette Modal -->
+  <dialog id="command-palette" class="bg-surface border border-surface-container-highest rounded-xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60">
+    <div class="p-md border-b border-surface-container-highest flex items-center justify-between bg-surface-container-low">
+      <div class="flex items-center gap-sm flex-1">
+        <span class="material-symbols-outlined text-primary">terminal</span>
+        <input id="command-input" type="text" placeholder="Type a command or page path..." class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
+      </div>
+      <button id="close-palette" class="text-on-surface-variant hover:text-primary">
+        <span class="material-symbols-outlined text-xl">close</span>
+      </button>
+    </div>
+    <div id="command-results" class="max-h-72 overflow-y-auto"></div>
+    <div class="p-xs bg-surface-container text-right font-code-sm text-[10px] text-on-surface-variant pr-md">
+      Press ESC to dismiss
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="w-full bg-surface-container px-4 py-8 border-t border-surface-container-highest mt-12 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 font-code-sm text-xs text-on-surface-variant">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-primary"></span>
+      <span>Available for consulting & product roles</span>
+    </div>
+    <div class="flex gap-6">
+      <a class="hover:text-primary transition-colors" href="https://github.com/kallolchakraborty" target="_blank">GITHUB</a>
+      <a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank">LINKEDIN</a>
+      <a class="hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+    </div>
+    <div class="text-primary font-bold">© 2026 KALLOL CHAKRABORTY</div>
+  </div>
+</footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Personal project detail page mapping (tile click -> detail page)
+    var DETAIL_PAGES = {
+      'Chhanda — Local AI Gateway': 'chhanda-ai.html',
+      'Medical Vital Signs Simulator': 'health-simulator.html',
+      'Free Chess': 'free-chess.html',
+      'Effort Planner': 'effort-planner.html',
+      'AI Collab Server': 'ai-colab-server.html',
+      'Lgit (llm-git)': 'lgit.html'
+    };
+
+    // Project Category Filter Handler
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.project-card-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-primary', 'text-on-primary', 'font-bold');
+            b.classList.add('bg-surface', 'text-on-surface-variant');
+          });
+          btn.classList.add('bg-primary', 'text-on-primary', 'font-bold');
+          btn.classList.remove('bg-surface', 'text-on-surface-variant');
+
+          const category = btn.getAttribute('data-filter');
+
+          cards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Clickable tiles: personal projects open their detail page
+      cards.forEach(card => {
+        const title = card.querySelector('h2')?.innerText;
+        const page = DETAIL_PAGES[title];
+        if (!page) return;
+        card.classList.add('cursor-pointer');
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return;
+          window.location.href = page;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
