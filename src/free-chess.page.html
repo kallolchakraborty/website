@@ -1,0 +1,80 @@
+{{head}}
+{{header}}
+
+  <main id="main-content" class="w-full pt-24 pb-14 relative z-10 flex-grow">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+
+      <!-- Breadcrumb + Header -->
+      <div>
+        <a href="projects.html" class="inline-flex items-center gap-2 font-code-sm text-xs text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          <span>&lt;- projects/</span>
+        </a>
+        <div class="mt-4 p-8 rounded-2xl glass-panel-faang relative overflow-hidden border-l-4 border-l-primary">
+          <div class="flex items-center gap-2 text-primary mb-2">
+            <span class="material-symbols-outlined text-lg">sports_esports</span>
+            <span class="font-code-sm text-xs tracking-wider uppercase font-bold">PERSONAL PROJECT · GAME</span>
+          </div>
+          <h1 class="font-display-lg text-3xl sm:text-4xl font-bold text-slate-900">Free Chess</h1>
+          <p class="font-body-lg text-slate-600 mt-3 max-w-2xl">
+            An open-source chess application with playable board gameplay and a clean, focused interface.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 mt-5">
+            <span class="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-amber-300 text-amber-700 font-code-sm text-xs font-bold rounded-lg">
+              <span class="material-symbols-outlined text-base">lock</span> REPO CURRENTLY PRIVATE
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture Diagram -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">account_tree</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Architecture</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <div class="flex flex-col items-center gap-2">
+            <!-- Board UI -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">Board UI</div>
+              <div class="diagram-sub">Clean, focused chess board · move interaction</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- Game Engine -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">Game Engine</div>
+              <div class="diagram-sub">Move validation · turn management · win / checkmate / stalemate rules</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- Client-only -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">Runs 100% in the Browser</div>
+              <div class="diagram-sub">Static app · no backend required</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech Stack -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">layers</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Tech Stack</h2>
+        </div>
+        <div class="faang-card p-6 flex flex-wrap gap-2">
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">JavaScript</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Chess Engine Logic</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">HTML5 / CSS3</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+{{dialog}}
+
+{{footer}}
+
+</body>
+</html>

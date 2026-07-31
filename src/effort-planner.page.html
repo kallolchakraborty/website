@@ -1,0 +1,127 @@
+{{head}}
+{{header}}
+
+  <main id="main-content" class="w-full pt-24 pb-14 relative z-10 flex-grow">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+
+      <!-- Breadcrumb + Header -->
+      <div>
+        <a href="projects.html" class="inline-flex items-center gap-2 font-code-sm text-xs text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          <span>&lt;- projects/</span>
+        </a>
+        <div class="mt-4 p-8 rounded-2xl glass-panel-faang relative overflow-hidden border-l-4 border-l-primary">
+          <div class="flex items-center gap-2 text-primary mb-2">
+            <span class="material-symbols-outlined text-lg">calendar_month</span>
+            <span class="font-code-sm text-xs tracking-wider uppercase font-bold">PERSONAL PROJECT · PRODUCTIVITY</span>
+          </div>
+          <h1 class="font-display-lg text-3xl sm:text-4xl font-bold text-slate-900">Effort Planner</h1>
+          <p class="font-body-lg text-slate-600 mt-3 max-w-2xl">
+            A professional, feature-rich calendar application for managing resource effort, shifts, tasks, daily notes, and events — with precise scheduling logic and a premium modern UI.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 mt-5">
+            <a href="https://github.com/kallolchakraborty/Effort-Planner" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-on-primary font-code-sm text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">
+              <span class="material-symbols-outlined text-base">code</span> GITHUB REPO
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture Diagram -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">account_tree</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Architecture</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <div class="flex flex-col items-center gap-2">
+            <!-- Frontend -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">Frontend</div>
+              <div class="diagram-sub">FullCalendar.js v6 · Vanilla JS · Font Awesome · Dark glassmorphism UI</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- API -->
+            <div class="diagram-box w-full max-w-md text-center">
+              <div class="diagram-title">FastAPI Backend (Python 3.12+)</div>
+              <div class="diagram-sub">REST endpoints · Pydantic validation · input sanitization</div>
+            </div>
+            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <!-- Persistence -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
+              <div class="diagram-box text-center">
+                <div class="diagram-title">JSON Storage</div>
+                <div class="diagram-sub">data/ directory · tasks, shifts, notes, events</div>
+              </div>
+              <div class="diagram-box text-center">
+                <div class="diagram-title">Holidays Library</div>
+                <div class="diagram-sub">Dynamic global holiday detection for scheduling</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Smart Scheduling -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">psychology</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Smart Effort Scheduling</h2>
+        </div>
+        <div class="faang-card p-6 font-body-md text-sm text-slate-600 space-y-3">
+          <p>Total task effort is <strong class="text-slate-900">automatically split</strong> among assigned resources, with completion dates computed individually by allocation percentage and daily shift hours:</p>
+          <div class="bg-slate-50 border border-slate-100 rounded-lg p-4 font-code-sm text-xs text-slate-700">
+            <span class="font-bold text-slate-900">Example:</span> a 40-hour task split between<br/>
+            Alice (100%, 8h/day) → finishes in 2.5 days<br/>
+            Bob (50%, 4h/day) → finishes in 5 days
+          </div>
+          <p class="text-slate-500">Tasks render as colored bars with tooltips showing daily working hours and total effort. Supports overlapping events, shift planning, and daily notes (max 250 chars) as distinct all-day events.</p>
+        </div>
+      </section>
+
+      <!-- Tech Stack -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">layers</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Tech Stack</h2>
+        </div>
+        <div class="faang-card p-6 flex flex-wrap gap-2">
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Python 3.12+</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">FastAPI</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">FullCalendar.js v6</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Pydantic</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">JSON Storage</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">holidays lib</span>
+          <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Font Awesome</span>
+        </div>
+      </section>
+
+      <!-- Codebase Layout -->
+      <section>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary text-lg">folder_open</span>
+          <h2 class="font-headline-lg text-xl font-bold text-slate-900">Codebase Layout</h2>
+        </div>
+        <div class="faang-card p-6 md:p-8">
+          <pre class="font-code-sm text-xs text-slate-600 leading-relaxed overflow-x-auto">├── main.py          # FastAPI app: routes, CORS, request lifecycle (~13 KB)
+├── models.py        # Pydantic schemas: Task, Shift, Note, Event, Assignment
+├── crud.py          # CRUD operations per resource type
+├── utils.py         # Effort-splitting math & scheduling helpers
+├── data/            # JSON persistence
+│   ├── tasks.json · shifts.json · notes.json · events.json
+│   ├── holidays.json       # resolved holidays per country
+│   └── countries.json      # global country/holiday dataset (~34 KB)
+└── static/          # Frontend
+    ├── index.html  ·  style.css  ·  script.js (~56 KB, FullCalendar.js v6)</pre>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+{{dialog}}
+
+{{footer}}
+
+</body>
+</html>
