@@ -67,6 +67,15 @@ def build():
         index.extend(index_projects(read(projects_html)))
     static = os.path.join(ROOT, 'static')
     os.makedirs(static, exist_ok=True)
+    sitemap_urls = ['https://kallolchakraborty.github.io/website/'] + [
+        f'https://kallolchakraborty.github.io/website/{p["name"]}.html'
+        for p in pages if p['name'] != '404' and p['name'] != 'index'
+    ]
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
+        ''.join(f'<url><loc>{u}</loc></url>\n' for u in sitemap_urls) + '</urlset>\n'
+    with open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8') as f:
+        f.write(sitemap)
+    print(f'wrote sitemap.xml ({len(sitemap_urls)} urls)')
     with open(os.path.join(static, 'search-index.json'), 'w', encoding='utf-8') as f:
         json.dump(index, f)
     print(f'wrote static/search-index.json ({len(index)} entries)')
