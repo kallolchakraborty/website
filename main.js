@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCommandPalette,
     initMobileMenu,
     initWebGLShaderBackground,
-    initTerminalAnimations,
+    initRevealAnimations,
     initBackToTop
   ];
   for (const init of inits) {
@@ -377,21 +377,30 @@ void main() {
   }
 }
 
-// 4. Reveal Scroll Animations & Micro-Interactions
-function initTerminalAnimations() {
+// 4. Reveal Scroll Animations (single observer, GPU-friendly, reduced-motion aware)
+function initRevealAnimations() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+
+  const revealAll = () => els.forEach(el => el.classList.add('revealed'));
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (typeof IntersectionObserver === 'undefined' || reducedMotion) {
+    revealAll();
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove('opacity-0', 'translate-y-8');
-        entry.target.classList.add('opacity-100', 'translate-y-0');
-        observer.unobserve(entry.target);
-      }
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.classList.add('revealed');
+      observer.unobserve(el);
+      el.addEventListener('transitionend', () => { el.style.willChange = 'auto'; }, { once: true });
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.project-card, .timeline-item, .reveal-on-scroll').forEach(el => {
-    observer.observe(el);
-  });
+  els.forEach(el => observer.observe(el));
 }
 
 // 5. Mobile Navigation Menu
