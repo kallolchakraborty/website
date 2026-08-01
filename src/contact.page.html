@@ -36,6 +36,9 @@
             </div>
 
             <form id="terminal-contact-form" class="flex flex-col gap-lg font-code-sm text-xs" action="https://formspree.io/f/mdovgbqw" method="POST">
+              <!-- Honeypot (hidden from humans, bots fill it → Formspree drops submission) -->
+              <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+
               <!-- Name Input -->
               <div class="flex flex-col md:flex-row md:items-center gap-sm">
                 <label class="text-secondary w-24 shrink-0 font-bold">--name</label>
@@ -94,7 +97,7 @@
                 </div>
               </a>
 
-              <a href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
+              <a href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
                 <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
                   <span>./linkedin.sh</span>
                   <span class="text-primary">200 OK</span>
@@ -104,7 +107,7 @@
                 </div>
               </a>
 
-              <a href="https://github.com/kallolchakraborty" target="_blank" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
+              <a href="https://github.com/kallolchakraborty" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
                 <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
                   <span>./github.sh</span>
                   <span class="text-primary">200 OK</span>
@@ -114,7 +117,7 @@
                 </div>
               </a>
 
-              <a href="https://people.sap.com/kallolathome" target="_blank" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
+              <a href="https://people.sap.com/kallolathome" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
                 <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
                   <span>./sap_community.sh</span>
                   <span class="text-secondary">PROFILE</span>
