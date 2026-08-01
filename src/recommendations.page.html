@@ -43,20 +43,33 @@
             </div>
           </div>
         </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-sm px-lg pb-lg font-code-sm text-xs" id="filter-tabs">
+<button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary">All (26)</button>
+<button data-filter="manager" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Managers & Reports (5)</button>
+<button data-filter="same-team" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Same Team (11)</button>
+<button data-filter="senior" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Senior Colleagues (4)</button>
+<button data-filter="studied" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Studied Together (3)</button>
+<button data-filter="different" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Different Team (3)</button>
+        </div>
       </div>
 
       <!-- Recommendations Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg" id="recommendations-grid">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">LM</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Jan 2026</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I&rsquo;ve had the privilege of working closely with Kallol, and he is truly someone who binds the team together while leading from the front. Beyond his role as a technical leader, Kallol has always supported me like a big brother in a family, offering guidance, encouragement, and clarity whenever needed. Technically, he brings deep expertise in Python, SAP ABAP, CAPM, and SAP BTP services, and consistently applies this knowledge to design robust, scalable solutions. His ability to lead teams, mentor individuals, and still remain hands-on with complex technical challenges sets him apart. Kallol&rsquo;s leadership style fosters trust, collaboration, and high performance, making him an invaluable asset to any organization. I highly recommend him for both his technical excellence and his people-first leadership approach.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Python</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP ABAP</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">CAP</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP BTP</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Lav Mishra</div>
@@ -65,15 +78,17 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="senior">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">DM</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Nov 2025</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I had the opportunity to work alongside Kallol, an excellent ABAP Technical Consultant. He possesses deep technical knowledge of SAP HR module and consistently delivers efficient, high-quality solutions. Kallol is proactive, dependable, and always willing to share knowledge and support the team. His strong problem-solving skills and collaborative approach made working together both productive and enjoyable. I highly recommend Kallol for any SAP ABAP Technical projects — a true team player and valuable asset to any organization.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP ABAP</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP HR</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Deepak Maheshwari</div>
@@ -82,12 +97,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AB</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Jan 2025</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol has always been the know it all guy in the team, all thanks to his in depth knowledge. His understanding of the technical concepts help him come up with a solution to the most critical issues. On the other hand his dedication is something to learn from and the fact that he is a good human being is a cherry on the cake.</blockquote>
@@ -99,15 +112,17 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="different">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SR</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Feb 2024</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I have known Kallol as a very good technical resource. He is a young dynamic passionate SAP technical. He adopted the latest niche skills and now became a seasoned ERP consultant. He wrote a few very good blogs, which can be referred.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP BTP</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">ERP Consulting</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Samannaya Roy</div>
@@ -116,29 +131,34 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-primary/50 p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="manager">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AK</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Feb 2023</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I have had the opportunity to work closely with Kallol for quite some time now and I am impressed by his technical expertise. Kallol has a deep understanding of various skills like RESTful Application Programming Model, Cloud Application Programming Model, Node.js, Python, ABAP HR. He is able to apply this knowledge to design and implement complex technical solutions that meet the needs of the organization. Kallol has also been instrumental to get the Award for Wipro on &ldquo;SAP Global Hackathon&rdquo; last Quarter working on a BTP solution. Kallol is a strong researcher and is able to effectively articulate technical concepts to both technical and non-technical stakeholders. He has a proven track record of building strong relationships with cross-functional teams and collaborating effectively to achieve project goals.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP RAP</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">CAP</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Node.js</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Python</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">ABAP HR</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">BTP</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Hackathon</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Dr. Arpita Karmakar</div>
             <div class="font-body-md text-xs text-on-surface-variant mt-xs">Global Portfolio Delivery Leader | Led 10,000+ Teams Across US, Europe, Middle East, APAC, and India</div>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mt-sm">Manager</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary px-1.5 py-0.5 mt-sm"><svg class="icon text-[12px] inline-block -mt-0.5 mr-1" aria-hidden="true"><use href="#i-workspace_premium"/></svg>Manager</span>
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AG</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Mar 2022</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol worked with me for approximately 1 and half years. He is very talented and skilled resource. He has the capability to learn things quickly. I wish him all the very best.</blockquote>
@@ -150,12 +170,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AD</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Jan 2022</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol is a gem, superb technical knowledge with functional analysis skills. He has the interest of learning new technology and grabs it easily. Working with him is always so easy. Best wishes!</blockquote>
@@ -167,12 +185,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="different">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AC</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Aug 2021</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I have worked with Kallol in many assignments and I must say that it is indeed a great privilege to work with a thorough professional like him. Kallol exhibits highest level of quality in his work and his eye for detail is simply commendable. Being a consultant, he drills down the business requirements so as to achieve the perfection in the delivery of a project. Needless to say, being a great team player and a rare mix. Kallol often provides that much required peer support to other members when required.</blockquote>
@@ -184,29 +200,30 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-primary/50 p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="manager">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">DN</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Aug 2021</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol comes with exceptionally great vision to solve any technical issues in business process. He is an expert in SAP ABAP, ABAP on HANA, workflow, design and development. He is good mentor with great work management skills. Always ready for new challenges.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP ABAP</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">ABAP on HANA</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Workflow</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Dipak Nandeshwar</div>
             <div class="font-body-md text-xs text-on-surface-variant mt-xs">PM | AI Solutions | MBA, IIM Nagpur</div>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mt-sm">Reported to Kallol</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary px-1.5 py-0.5 mt-sm"><svg class="icon text-[12px] inline-block -mt-0.5 mr-1" aria-hidden="true"><use href="#i-workspace_premium"/></svg>Reported to Kallol</span>
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SC</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Jul 2021</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I worked with Kallol at IBM. He is very proactive learning new technologies and always super dedicated and efficient to his work.</blockquote>
@@ -218,29 +235,28 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-primary/50 p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="manager">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AG</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Jul 2021</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol is energetic, approachable and always looking for opportunities to learn new things. If anyone needs any guidance on SAP ABAP then they could be contacted him. Wishing him continued success in SAP world.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP ABAP</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Amit Gupta</div>
             <div class="font-body-md text-xs text-on-surface-variant mt-xs">Group IT - Global Applications - IT Lead for HR Transformation program at Capgemini</div>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mt-sm">Manager</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary px-1.5 py-0.5 mt-sm"><svg class="icon text-[12px] inline-block -mt-0.5 mr-1" aria-hidden="true"><use href="#i-workspace_premium"/></svg>Manager</span>
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="different">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AD</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Oct 2020</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol is very knowledgeable. Whenever you are stuck in any code - he is your Go-To-Guy. He is inspiring and very fun to work with.</blockquote>
@@ -252,15 +268,16 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SB</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Oct 2020</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I had the pleasure of working with Kallol since couple of years... As a team member or a senior, Kallol earns my highest recommendation as a ABAP developer... I was particularly impressed by Kallol&rsquo;s ability to develop most toughest logic into a easy way of understanding also by his logical approach especially in the field of SAP....</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP ABAP</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Sitesh Behera</div>
@@ -269,15 +286,18 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SD</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Feb 2020</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Yes, Kallol is a knowledgeable guy in Python (Machine Learning) &amp; expert in SAP ABAP HR and ABAP. He also has the functional HCM knowledge.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Python / ML</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">ABAP HR</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">HCM</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Suman Das</div>
@@ -286,12 +306,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="studied">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">PR</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Sep 2019</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol and I studied together. We completed our BCA from same college. Kallol was very good student and always has interest in new technologies. I am looking forward to work with him in future.</blockquote>
@@ -303,29 +321,30 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-primary/50 p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="manager">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">BB</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Mar 2019</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I have worked with Kallol for almost an year. Needless to say, if you think of any kind of solutioning regarding SAP HR, he is the guy you should reach out to. Kallol has sound expertise both on Technical and Functional areas of SAP HR, specially Payroll related tools like PU12 etc. He is very much dynamic in his solutioning, and very flexible in doing &lsquo;magic&rsquo; related stuffs in the tool when no other solutions has worked on in order to achieve the Business specific requirements. I wish him all the best for his future endeavours :)</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP HR</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Payroll</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">PU12</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Bikramjit Banerjee</div>
             <div class="font-body-md text-xs text-on-surface-variant mt-xs">SAP SuccessFactors Nordics Practice Lead | SAP SuccessFactors Cloud Advisory &amp; Technologist | 16+ Years | 10+ SAP Certifications</div>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mt-sm">Manager</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary px-1.5 py-0.5 mt-sm"><svg class="icon text-[12px] inline-block -mt-0.5 mr-1" aria-hidden="true"><use href="#i-workspace_premium"/></svg>Manager</span>
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SR</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Mar 2019</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol is a very dedicated and hard working resource we have in our project. He is a very soft spoken person. He possess an excellent technical knowledge.</blockquote>
@@ -337,12 +356,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AP</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Mar 2019</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I really have an immense pleasure of working with him for last 1 odd year. I am impressed by Kallol&rsquo;s ability to deal with toughest situations with so much efficiency. This skill often takes years to develop, but it seemed to have come naturally to him. With so much sound technical knowledge, the hunger to learn and explore more, I am sure Kallol surely has the ability to fly high in his career and will literally be an asset to any company. As a peer colleague, Kallol earns my highest recommendation. I hope we can work together for few more years to come and would learn more and more&hellip;</blockquote>
@@ -354,12 +371,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="senior">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SD</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Sep 2018</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol is very hard working and knowledgeable person. He is fast learner.</blockquote>
@@ -371,15 +386,17 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AH</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Sep 2018</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Myself and Kallol worked together in the same project at Capgemini. He is an intelligent individual who has strong ABAP and SAP HR knowledge. He is very dynamic in his work and is always ready to upgrade his skills. He is an asset to any team who has the knack to solve any critical issues. He is a true team player.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP ABAP</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP HR</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Arnab Hait</div>
@@ -388,12 +405,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="same-team">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">PD</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Aug 2018</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol is excellent! He is ready to take up any work challenges and delivers before time. Niche attitude and he can be a good asset to any team.</blockquote>
@@ -405,12 +420,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-primary/50 p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="manager">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SB</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Jul 2018</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol is a very hard working and dedicated resource. His learning aptitude and eagerness to pick up new technologies is exemplary. He can be an asset for any team.</blockquote>
@@ -418,19 +431,21 @@
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Saswati Bhattacharjee</div>
             <div class="font-body-md text-xs text-on-surface-variant mt-xs">Solutions Architect @ Capgemini | Leading HR Transformations</div>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mt-sm">Manager</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary px-1.5 py-0.5 mt-sm"><svg class="icon text-[12px] inline-block -mt-0.5 mr-1" aria-hidden="true"><use href="#i-workspace_premium"/></svg>Manager</span>
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="studied">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SN</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Jul 2018</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">We know each other on and off the pitch. He has extensive knowledge in the technical domain. He is proficient in c++ and java. So I will strongly recommend him as a c++ developer in any prestigious firm.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">C++</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Java</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Soumen Naskar</div>
@@ -439,15 +454,17 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="senior">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SS</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Feb 2018</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">I and Kallol worked together for Myconnect Project in Capgemini. I find Kallol as very dynamic and intelligent person. He is very quick at work and sharp in decision making. Very good at SAP HR and ABAP. Good at getting things done in time and full. He was a very good asset for the company. A highly dedicated guy for the work and is an asset for any organisation.</blockquote>
+    <div class="flex flex-wrap gap-xs font-code-sm text-xs mt-sm">
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">SAP HR</span>
+      <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">ABAP</span>
+    </div>
           </div>
           <div class="border-t border-surface-container pt-sm mt-sm">
             <div class="font-code-sm text-sm font-bold text-on-surface">Shubhro Seal</div>
@@ -456,12 +473,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="senior">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">AC</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Jul 2016</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol and I worked together in Capgemini. He is a quick learner as well as he has a great problem solving attitude. He will be an asset for any organization.</blockquote>
@@ -473,12 +488,10 @@
           </div>
         </div>
 
-        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between">
+        <div class="bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="studied">
           <div>
             <div class="flex items-center justify-between mb-md">
-              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
-                <svg class="icon" aria-hidden="true"><use href="#i-format_quote"/></svg>
-              </div>
+              <div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-code-sm text-xs font-bold">SG</div>
               <span class="font-code-sm text-xs text-on-surface-variant">Nov 2014</span>
             </div>
             <blockquote class="font-body-md text-sm text-on-surface leading-relaxed mb-md">Kallol, 1st of all, is an amazing person and a friend of mine since college days. We have worked together in multiple projects; building from the scratch to implementation. Kallol always does come up with innovative, easy-to-implement and brilliant ideas. He has this power to see through the problem and coming up with the solution soon as possible. He is hard working, an analytical thinker, quick learner. One can really count on Kallol when the time is at stake. He is not the easy-break kind of person. And when he is not working, you can either find him grooving to some beats or he is studying about new technologies. Given a chance he will surely be an asset to any organization. I wish him all the very best for the future endeavors.</blockquote>
@@ -489,10 +502,31 @@
             <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/40 px-1.5 py-0.5 mt-sm">Studied together</span>
           </div>
         </div>
-
       </div>
     </div>
   </main>
 
+
+
   {{dialog}}
   {{footer}}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('#recommendations-grid > div');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-primary', 'text-on-primary', 'font-bold');
+            b.classList.add('bg-surface', 'text-on-surface-variant');
+          });
+          btn.classList.add('bg-primary', 'text-on-primary', 'font-bold');
+          btn.classList.remove('bg-surface', 'text-on-surface-variant');
+          const category = btn.getAttribute('data-filter');
+          cards.forEach(card => {
+            card.style.display = (category === 'all' || card.getAttribute('data-category') === category) ? 'flex' : 'none';
+          });
+        });
+      });
+    });
+  </script>
