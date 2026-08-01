@@ -222,7 +222,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-account_tree"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Architecture</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <div class="flex flex-col items-center gap-2">
             <!-- Layer 1: Presentation -->
             <div class="diagram-box w-full max-w-md text-center">
@@ -273,7 +273,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-memory"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Zero-Cloud Local Inference</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
             <li>Google <strong>LiteRT-LM</strong> engine (<code>litertlm-android:0.11.0</code>) with native JNI acceleration.</li>
             <li>Models: <strong>Gemma 2B, 4B, 4n</strong> — 4-bit GGUF quantized; optional <strong>TurboQuant</strong> KV-cache compression for long-context VRAM relief.</li>
@@ -291,7 +291,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-database"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Adaptive Multimodal RAG Pipeline</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Ingestion</h3>
@@ -320,7 +320,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-router"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Production-Grade AI Gateway</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
             <li><strong>Ktor-CIO</strong> coroutine-based server (no Netty/JNI overhead); embedded Web UI served over HTTP.</li>
             <li>OpenAI-compatible REST API — works with <strong>VS Code Continue</strong>, IDEs, and mobile clients.</li>
@@ -338,7 +338,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-security"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Safety &amp; Privacy — Defense in Depth</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
               <li><strong>Prompt injection:</strong> keyword blacklist + heuristic regex + defensive delimiters (<code>[USER_INPUT_START/END]</code>).</li>
@@ -361,7 +361,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-thermostat"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Hardware Resilience</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
             <li><code>ThermalStatusTracker</code> auto-reduces context window under thermal stress; <code>MemoryPressureMonitor</code> guards OOM.</li>
             <li>2.5s flush delay between model switches; hot model swap with safe engine teardown.</li>
@@ -377,7 +377,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-query_stats"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Performance &amp; Security Benchmarks</h2>
         </div>
-        <div class="faang-card p-6 md:p-8 overflow-x-auto">
+        <div class="faang-card reveal p-6 md:p-8 overflow-x-auto">
           <table class="w-full text-sm font-body-md">
             <thead>
               <tr class="font-code-sm text-xs uppercase tracking-wider text-slate-500 border-b border-slate-200">
@@ -405,7 +405,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-folder_open"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Codebase at a Glance</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <pre class="font-code-sm text-xs text-slate-600 leading-relaxed overflow-x-auto">app/src/main/java/com/chhanda/ai/
 ├── data/
 │   ├── inference/          ChhandaServer.kt (48KB) · LiteRTLMEngine · LiteRTEmbeddingEngine
@@ -435,7 +435,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-layers"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Tech Stack</h2>
         </div>
-        <div class="faang-card p-6 flex flex-wrap gap-2">
+        <div class="faang-card reveal p-6 flex flex-wrap gap-2">
           <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Kotlin 2.1.0 (100% Kotlin)</span>
           <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Android 8.0+ (API 26→34)</span>
           <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">LiteRT-LM 0.11.0</span>
