@@ -2,7 +2,7 @@
   "name": "kallol-website-github-pages",
   "private": true,
   "scripts": {
-    "build": "python3 build.py && tailwindcss -i ./static/input.css -o ./static/site.css --minify"
+    "build": "python3 build.py && tailwindcss -i ./static/input.css -o ./static/site.css --minify && cat styles.css >> static/site.css"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.19"

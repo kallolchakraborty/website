@@ -183,7 +183,7 @@ function initCommandPalette() {
         html += `
           <div class="command-item flex items-center justify-between gap-sm px-md py-2.5 cursor-pointer transition-colors border-l-2 border-transparent hover:bg-surface-container" data-action>
             <div class="flex items-center gap-sm min-w-0">
-              <span class="material-symbols-outlined text-primary text-[16px] shrink-0">${item.icon || 'terminal'}</span>
+              <svg class="icon text-primary text-[16px] shrink-0" aria-hidden="true"><use href="#i-terminal"/></svg>
               <span class="font-code-sm text-sm font-bold text-on-surface truncate">${highlight(item.name, q)}</span>
             </div>
             <span class="font-code-sm text-xs text-on-surface-variant truncate">${desc}</span>

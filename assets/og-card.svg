@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#ea580c"/>
+  <path d="M290 250V140h84q26 0 40 8.5 14 8.5 14 26.5 0 13-7 21.5t-19 11v2q15 4 24 15.5t9 27.5v30q0 14 8.5 21T472 316v28h-56v-20q0-16-1-30t-8-20q-7-6-19-8h-32v58h-66zm66-128v58h14q24 0 24-29 0-15-8-22t-30-7zm-240 206v-28h56v-28h-56v-30h58l58 86-58 86-58-86zm100 128h520q30 0 51 21t21 51v0H216v-72z" fill="#ea580c" opacity="0.95"/>
+  <text x="290" y="380" font-family="monospace" font-size="30" fill="#f8fafc" letter-spacing="2">~ $ init connection</text>
+  <text x="290" y="430" font-family="monospace" font-size="22" fill="#94a3b8">KALLOL CHAKRABORTY</text>
+  <text x="290" y="465" font-family="monospace" font-size="20" fill="#f8fafc">Principal Consultant — AI Strategy &amp; SAP BTP Solutions</text>
+  <text x="290" y="505" font-family="monospace" font-size="16" fill="#64748b">kallolchakraborty.github.io/website</text>
+</svg>

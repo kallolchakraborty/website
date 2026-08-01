@@ -7,12 +7,12 @@
       <!-- Breadcrumb + Header -->
       <div>
         <a href="projects.html" class="inline-flex items-center gap-2 font-code-sm text-xs text-on-surface-variant hover:text-primary transition-colors">
-          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          <svg class="icon text-sm" aria-hidden="true"><use href="#i-arrow_back"/></svg>
           <span>&lt;- projects/</span>
         </a>
         <div class="mt-4 p-8 rounded-2xl glass-panel-faang relative overflow-hidden border-l-4 border-l-primary">
           <div class="flex items-center gap-2 text-primary mb-2">
-            <span class="material-symbols-outlined text-lg">psychology</span>
+            <svg class="icon text-lg" aria-hidden="true"><use href="#i-psychology"/></svg>
             <span class="font-code-sm text-xs tracking-wider uppercase font-bold">PERSONAL PROJECT · LOCAL AI</span>
           </div>
           <h1 class="font-display-lg text-3xl sm:text-4xl font-bold text-slate-900">Chhanda — Local AI Gateway</h1>
@@ -28,10 +28,10 @@
           </div>
           <div class="flex flex-wrap items-center gap-3 mt-5">
             <a href="https://github.com/kallolchakraborty/Chhanda-AI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-on-primary font-code-sm text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">
-              <span class="material-symbols-outlined text-base">code</span> GITHUB REPO
+              <svg class="icon text-base" aria-hidden="true"><use href="#i-code"/></svg> GITHUB REPO
             </a>
             <a href="https://github.com/kallolchakraborty/Chhanda-AI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary font-code-sm text-xs font-bold rounded-lg transition-all">
-              <span class="material-symbols-outlined text-base">open_in_new</span> VIEW ON GITHUB
+              <svg class="icon text-base" aria-hidden="true"><use href="#i-open_in_new"/></svg> VIEW ON GITHUB
             </a>
           </div>
         </div>
@@ -40,7 +40,7 @@
       <!-- Architecture Diagram -->
       <section>
         <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg">account_tree</span>
+          <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-account_tree"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Architecture</h2>
         </div>
         <div class="faang-card p-6 md:p-8">
@@ -50,13 +50,13 @@
               <div class="diagram-title">Presentation Layer</div>
               <div class="diagram-sub">DashboardScreen · ChatScreen · KnowledgeBaseScreen · ConfigScreen · LogsScreen · WelcomeScreen</div>
             </div>
-            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <div class="diagram-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow_downward"/></svg></div>
             <!-- Layer 2: ViewModel + Domain -->
             <div class="diagram-box w-full max-w-md text-center">
               <div class="diagram-title">ViewModel + Domain Layer</div>
               <div class="diagram-sub">SystemViewModel (2,022 LOC) · ChatViewModel · SendMessageUseCase · IngestDocumentUseCase · ScrapeUrlUseCase</div>
             </div>
-            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <div class="diagram-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow_downward"/></svg></div>
             <!-- Layer 3: Data / Inference -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
               <div class="diagram-box text-center">
@@ -72,7 +72,7 @@
                 <div class="diagram-sub">ChhandaServer (Ktor-CIO) · ServerOrchestrator · ModelProvisioner</div>
               </div>
             </div>
-            <div class="diagram-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <div class="diagram-arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow_downward"/></svg></div>
             <!-- Layer 4: Persistence + Services -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">
               <div class="diagram-box text-center">
@@ -91,7 +91,7 @@
       <!-- Inference -->
       <section>
         <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg">memory</span>
+          <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-memory"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Zero-Cloud Local Inference</h2>
         </div>
         <div class="faang-card p-6 md:p-8">
@@ -109,7 +109,7 @@
       <!-- RAG -->
       <section>
         <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg">database</span>
+          <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-database"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Adaptive Multimodal RAG Pipeline</h2>
         </div>
         <div class="faang-card p-6 md:p-8">
@@ -138,7 +138,7 @@
       <!-- Gateway Server -->
       <section>
         <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg">router</span>
+          <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-router"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Production-Grade AI Gateway</h2>
         </div>
         <div class="faang-card p-6 md:p-8">
@@ -156,7 +156,7 @@
       <!-- Safety -->
       <section>
         <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg">security</span>
+          <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-security"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Safety &amp; Privacy — Defense in Depth</h2>
         </div>
         <div class="faang-card p-6 md:p-8">
@@ -179,7 +179,7 @@
       <!-- Hardware Resilience -->
       <section>
         <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg">thermostat</span>
+          <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-thermostat"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Hardware Resilience</h2>
         </div>
         <div class="faang-card p-6 md:p-8">
@@ -195,7 +195,7 @@
       <!-- Benchmarks -->
       <section>
         <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg">query_stats</span>
+          <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-query_stats"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Performance &amp; Security Benchmarks</h2>
         </div>
         <div class="faang-card p-6 md:p-8 overflow-x-auto">
@@ -223,7 +223,7 @@
       <!-- Repo Structure -->
       <section>
         <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg">folder_open</span>
+          <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-folder_open"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Codebase at a Glance</h2>
         </div>
         <div class="faang-card p-6 md:p-8">
@@ -253,7 +253,7 @@
       <!-- Tech Stack -->
       <section>
         <div class="flex items-center gap-2 mb-4">
-          <span class="material-symbols-outlined text-primary text-lg">layers</span>
+          <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-layers"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Tech Stack</h2>
         </div>
         <div class="faang-card p-6 flex flex-wrap gap-2">

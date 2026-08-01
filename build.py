@@ -51,6 +51,9 @@ def build():
                 .replace('{{header}}', partial('header.html'))
                 .replace('{{dialog}}', partial('dialog.html'))
                 .replace('{{footer}}', partial('footer.html')))
+        m = re.search(r'<body[^>]*>', html)
+        if m:
+            html = html[:m.end()] + '\n' + partial('icons.svg') + html[m.end():]
         with open(os.path.join(ROOT, p['name'] + '.html'), 'w', encoding='utf-8') as f:
             f.write(html)
         index.append({

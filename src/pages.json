@@ -1,72 +1,62 @@
 [
   {
     "name": "index",
-    "title": "Kallol Chakraborty | Principal Consultant - AI Strategy & SAP BTP Solutions",
-    "description": "Portfolio of Kallol Chakraborty - Principal Consultant, AI Strategy & SAP BTP Solutions Architect, Product Builder (STO360), SAP Americas Hack2Build Winner, and 7x SAP Certified.",
-    "extra_head": "  <link rel=\"preload\" as=\"image\" href=\"assets/neural-core.jpg\"/>\n\n<script type=\"application/ld+json\">\n{\"@context\": \"https://schema.org\", \"@type\": \"Person\", \"name\": \"Kallol Chakraborty\", \"url\": \"https://kallolchakraborty.github.io/website/\", \"jobTitle\": \"Principal Consultant - AI Strategy & SAP BTP Solutions\", \"sameAs\": [\"https://github.com/kallolchakraborty\", \"https://www.linkedin.com/in/kallol-chakraborty-9728a699/\", \"https://people.sap.com/kallolathome\"]}\n</script>",
-    "page_scripts": ""
+    "title": "Kallol Chakraborty | AI Strategy & SAP BTP Solutions",
+    "description": "Portfolio of Kallol Chakraborty - Principal Consultant, AI Strategy & SAP BTP Solutions Architect and 7x SAP Certified.",
+    "extra_head": "  <link rel=\"preload\" as=\"image\" href=\"assets/neural-core.jpg\"/>\n\n<script type=\"application/ld+json\">\n{\"@context\": \"https://schema.org\", \"@type\": \"Person\", \"name\": \"Kallol Chakraborty\", \"url\": \"https://kallolchakraborty.github.io/website/\", \"jobTitle\": \"Principal Consultant - AI Strategy & SAP BTP Solutions\", \"sameAs\": [\"https://github.com/kallolchakraborty\", \"https://www.linkedin.com/in/kallol-chakraborty-9728a699/\", \"https://people.sap.com/kallolathome\"]}\n</script>"
   },
   {
     "name": "experience",
     "title": "Experience Timeline | Kallol Chakraborty",
     "description": "Career timeline and work experience at Wipro, Capgemini, IBM, and TCS by Kallol Chakraborty - Principal Consultant (IC) & SAP BTP Architect.",
-    "extra_head": "",
-    "page_scripts": ""
+    "extra_head": ""
   },
   {
     "name": "projects",
     "title": "Products & Enterprise Solutions | Kallol Chakraborty",
     "description": "Featured SAP products, enterprise extensions, Gen AI integrations, and cloud solutions built by Kallol Chakraborty.",
-    "extra_head": "",
-    "page_scripts": "<script>\n    // Personal project detail page mapping (tile click -> detail page)\n    var DETAIL_PAGES = {\n      'Chhanda \u2014 Local AI Gateway': 'chhanda-ai.html',\n      'Medical Vital Signs Simulator': 'health-simulator.html',\n      'Free Chess': 'free-chess.html',\n      'Effort Planner': 'effort-planner.html',\n      'AI Collab Server': 'ai-colab-server.html',\n      'Lgit (llm-git)': 'lgit.html'\n    };\n\n    // Project Category Filter Handler\n    document.addEventListener('DOMContentLoaded', () => {\n      const filterBtns = document.querySelectorAll('.filter-btn');\n      const cards = document.querySelectorAll('.project-card-item');\n\n      filterBtns.forEach(btn => {\n        btn.addEventListener('click', () => {\n          filterBtns.forEach(b => {\n            b.classList.remove('bg-primary', 'text-on-primary', 'font-bold');\n            b.classList.add('bg-surface', 'text-on-surface-variant');\n          });\n          btn.classList.add('bg-primary', 'text-on-primary', 'font-bold');\n          btn.classList.remove('bg-surface', 'text-on-surface-variant');\n\n          const category = btn.getAttribute('data-filter');\n\n          cards.forEach(card => {\n            if (category === 'all' || card.getAttribute('data-category') === category) {\n              card.style.display = 'flex';\n            } else {\n              card.style.display = 'none';\n            }\n          });\n        });\n      });\n\n      // Clickable tiles: personal projects open their detail page\n      cards.forEach(card => {\n        const title = card.querySelector('h2')?.innerText;\n        const page = DETAIL_PAGES[title];\n        if (!page) return;\n        card.classList.add('cursor-pointer');\n        card.addEventListener('click', (e) => {\n          if (e.target.closest('a')) return;\n          window.location.href = page;\n        });\n      });\n    });\n  </script>"
+    "extra_head": ""
   },
   {
     "name": "contact",
     "title": "Contact & Endpoints | Kallol Chakraborty",
     "description": "Get in touch directly with Kallol Chakraborty - Principal Consultant, AI Strategy & SAP BTP Solutions Architect.",
-    "extra_head": "",
-    "page_scripts": ""
+    "extra_head": ""
   },
   {
     "name": "chhanda-ai",
-    "title": "Chhanda \u2014 Local AI Gateway | Kallol Chakraborty",
-    "description": "Chhanda (\u099b\u09a8\u09cd\u09a6\u09be) \u2014 an on-device, privacy-first local LLM and RAG application for Android built in Kotlin with Gemma models via LiteRT-LM.",
-    "extra_head": "",
-    "page_scripts": ""
+    "title": "Chhanda — Local AI Gateway | Kallol Chakraborty",
+    "description": "Chhanda (ছন্দা) — an on-device, privacy-first local LLM and RAG application for Android built in Kotlin with Gemma models via LiteRT-LM.",
+    "extra_head": ""
   },
   {
     "name": "ai-colab-server",
     "title": "AI Collab Server | Kallol Chakraborty",
-    "description": "AI Collab Server \u2014 a centralized collaboration and storage platform that resolves and synchronizes local-first semantic DAGs from the llm-git (lgit) ecosystem.",
-    "extra_head": "",
-    "page_scripts": ""
+    "description": "AI Collab Server — a centralized collaboration and storage platform that resolves and synchronizes local-first semantic DAGs from the llm-git (lgit) ecosystem.",
+    "extra_head": ""
   },
   {
     "name": "lgit",
     "title": "Lgit (llm-git) | Kallol Chakraborty",
-    "description": "LLM-Git (lgit) \u2014 the semantic source control system for the AI era. Tracks the prompts, intents, and models behind every code evolution.",
-    "extra_head": "",
-    "page_scripts": ""
+    "description": "LLM-Git (lgit) — the semantic source control system for the AI era. Tracks the prompts, intents, and models behind every code evolution.",
+    "extra_head": ""
   },
   {
     "name": "health-simulator",
     "title": "Medical Vital Signs Simulator | Kallol Chakraborty",
-    "description": "Health Simulator \u2014 a high-fidelity, web-based ICU critical care training tool with real-time waveforms, vital sign dynamics, drug library, ABG interpreter, and scenario timelines.",
-    "extra_head": "",
-    "page_scripts": ""
+    "description": "Health Simulator - a high-fidelity, web-based ICU critical care training tool with real-time waveforms and vital sign dynamics.",
+    "extra_head": ""
   },
   {
     "name": "effort-planner",
     "title": "Effort Planner | Kallol Chakraborty",
-    "description": "Effort Planner \u2014 a professional calendar and resource planning app built with FastAPI and FullCalendar.js. Split tasks by allocation, track shifts, notes, and events.",
-    "extra_head": "",
-    "page_scripts": ""
+    "description": "Effort Planner - a professional calendar and resource planning app built with FastAPI and FullCalendar.js.",
+    "extra_head": ""
   },
   {
     "name": "free-chess",
     "title": "Free Chess | Kallol Chakraborty",
-    "description": "Free Chess \u2014 an open-source chess application with playable board gameplay and a clean, focused interface.",
-    "extra_head": "",
-    "page_scripts": ""
+    "description": "Free Chess — an open-source chess application with playable board gameplay and a clean, focused interface.",
+    "extra_head": ""
   }
 ]
