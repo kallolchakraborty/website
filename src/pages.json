@@ -24,6 +24,12 @@
     "extra_head": ""
   },
   {
+    "name": "recommendations",
+    "title": "Recommendations | Kallol Chakraborty",
+    "description": "26 LinkedIn recommendations for Kallol Chakraborty from managers, colleagues, and peers who have worked with or studied alongside him across SAP, ABAP, and SAP BTP.",
+    "extra_head": ""
+  },
+  {
     "name": "chhanda-ai",
     "title": "Chhanda — Local AI Gateway | Kallol Chakraborty",
     "description": "Chhanda (ছন্দা) — an on-device, privacy-first local LLM and RAG application for Android built in Kotlin with Gemma models via LiteRT-LM.",
