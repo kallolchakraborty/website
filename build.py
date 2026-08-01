@@ -24,6 +24,7 @@ def build():
         head = (partial('head.html')
                 .replace('{{title}}', p['title'])
                 .replace('{{description}}', p['description'])
+                .replace('{{og_url}}', 'index.html' if p['name'] == 'index' else p['name'] + '.html')
                 .replace('{{extra_head}}', p['extra_head']))
         html = (body.replace('{{head}}', head)
                 .replace('{{header}}', partial('header.html'))

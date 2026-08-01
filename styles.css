@@ -1,16 +1,8 @@
 /* FAANG-Grade Design System: Modern Terminal Light & Dark Theme Base */
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-
 :root {
   --bg-main: #fcfcfc;
-  --surface-white: #ffffff;
   --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --brand-orange: #d946ef; /* Refined accent vibrancy */
   --primary-accent: #ea580c;
-  --primary-glow: rgba(234, 88, 12, 0.12);
-  --border-subtle: #f1f5f9;
   --border-card: #e2e8f0;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -73,14 +65,8 @@
 
 .dark {
   --bg-main: #0f172a;
-  --surface-white: #ffffff;
   --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --brand-orange: #f97316;
   --primary-accent: #fb923c;
-  --primary-glow: rgba(249, 115, 22, 0.18);
-  --border-subtle: #1e293b;
   --border-card: #334155;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
@@ -209,7 +195,6 @@ html, body {
 /* Status Pill Badges */
 .badge-pill {
   display: inline-flex;
-  items-center: center;
   padding: 4px 12px;
   font-family: 'Ubuntu Mono', monospace;
   font-size: 12px;

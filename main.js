@@ -5,9 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigationHighlighting,
     initCommandPalette,
     initMobileMenu,
-    initHeatmap,
     initWebGLShaderBackground,
-    initThreeJSScene,
     initTerminalAnimations
   ];
   for (const init of inits) {
@@ -146,44 +144,11 @@ function initCommandPalette() {
   }
 }
 
-// 3. GitHub-style Contribution Heatmap Generator
-function initHeatmap() {
-  const container = document.getElementById('heatmap-container');
-  if (!container) return;
-
-  const cols = 52;
-  const rows = 7;
-  const intensityClasses = [
-    'bg-surface-container-high border-surface-container-highest',
-    'bg-primary/20 border-primary/30',
-    'bg-primary/50 border-primary/60',
-    'bg-primary/80 border-primary/90',
-    'bg-primary border-primary'
-  ];
-
-  let html = '';
-  for (let c = 0; c < cols; c++) {
-    html += '<div class="flex flex-col gap-xs">';
-    for (let r = 0; r < rows; r++) {
-      const rand = Math.random();
-      let intensity = 0;
-      if (rand > 0.94) intensity = 4;
-      else if (rand > 0.84) intensity = 3;
-      else if (rand > 0.68) intensity = 2;
-      else if (rand > 0.48) intensity = 1;
-
-      const cssClass = intensityClasses[intensity];
-      html += `<div class="w-3 h-3 border rounded-sm transition-colors duration-300 hover:border-on-surface ${cssClass}" title="Contributions: ${intensity * 3} commits"></div>`;
-    }
-    html += '</div>';
-  }
-  container.innerHTML = html;
-}
-
-// 4. WebGL Ambient Background Shader
+// 3. WebGL Ambient Background Shader
 function initWebGLShaderBackground() {
   const canvas = document.getElementById('shader-canvas-ambient');
   if (!canvas) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   function syncSize() {
     const w = canvas.clientWidth || window.innerWidth;
@@ -253,88 +218,34 @@ void main() {
   const uTime = gl.getUniformLocation(prog, 'u_time');
   const uRes = gl.getUniformLocation(prog, 'u_resolution');
 
+  let rafId = null;
   function render(t) {
     syncSize();
     gl.viewport(0, 0, canvas.width, canvas.height);
     if (uTime) gl.uniform1f(uTime, t * 0.001);
     if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    requestAnimationFrame(render);
+    rafId = requestAnimationFrame(render);
   }
-  requestAnimationFrame(render);
+
+  if (typeof IntersectionObserver !== 'undefined') {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (rafId === null) rafId = requestAnimationFrame(render);
+        } else {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      });
+    });
+    io.observe(canvas);
+  } else {
+    rafId = requestAnimationFrame(render);
+  }
 }
 
-// 5. Three.js Interactive 3D Sphere Scene
-function initThreeJSScene() {
-  const container = document.getElementById('threejs-container');
-  if (!container || typeof THREE === 'undefined') return;
-
-  const width = container.clientWidth || 400;
-  const height = container.clientHeight || 400;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
-  camera.position.z = 18;
-
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  renderer.setSize(width, height);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  container.appendChild(renderer.domElement);
-
-  // Outer wireframe mesh
-  const geometry = new THREE.IcosahedronGeometry(7, 2);
-  const material = new THREE.MeshBasicMaterial({
-    color: 0xa93100,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.8
-  });
-  const sphere = new THREE.Mesh(geometry, material);
-  scene.add(sphere);
-
-  // Inner solid core mesh
-  const innerGeo = new THREE.IcosahedronGeometry(4, 1);
-  const innerMat = new THREE.MeshBasicMaterial({
-    color: 0x7f506c,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.4
-  });
-  const innerSphere = new THREE.Mesh(innerGeo, innerMat);
-  scene.add(innerSphere);
-
-  // Mouse interaction
-  let mouseX = 0;
-  let mouseY = 0;
-  window.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth) - 0.5;
-    mouseY = (e.clientY / window.innerHeight) - 0.5;
-  });
-
-  function animate() {
-    requestAnimationFrame(animate);
-    sphere.rotation.x += 0.004;
-    sphere.rotation.y += 0.006;
-    innerSphere.rotation.x -= 0.003;
-    innerSphere.rotation.y -= 0.005;
-
-    sphere.rotation.y += mouseX * 0.05;
-    sphere.rotation.x += mouseY * 0.05;
-
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    const newW = container.clientWidth;
-    const newH = container.clientHeight;
-    camera.aspect = newW / newH;
-    camera.updateProjectionMatrix();
-    renderer.setSize(newW, newH);
-  });
-}
-
-// 6. Reveal Scroll Animations & Micro-Interactions
+// 4. Reveal Scroll Animations & Micro-Interactions
 function initTerminalAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -351,7 +262,7 @@ function initTerminalAnimations() {
   });
 }
 
-// 7. Mobile Navigation Menu
+// 5. Mobile Navigation Menu
 function initMobileMenu() {
   const toggle = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
