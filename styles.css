@@ -282,6 +282,13 @@ html, body {
   transform: translate(-3px, -3px);
 }
 
+/* Office project tiles are non-clickable: static, muted hover, no lift */
+.project-card-item:not(.cursor-pointer):hover {
+  box-shadow: none;
+  transform: none;
+  border-color: rgb(var(--outline-variant));
+}
+
 .shimmer-btn {
   background: linear-gradient(90deg, rgb(var(--primary) / 1) 0%, rgb(var(--orange-500) / 1) 50%, rgb(var(--primary) / 1) 100%);
   background-size: 200% 100%;
