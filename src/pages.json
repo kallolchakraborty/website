@@ -58,5 +58,11 @@
     "title": "Free Chess | Kallol Chakraborty",
     "description": "Free Chess — an open-source chess application with playable board gameplay and a clean, focused interface.",
     "extra_head": ""
+  },
+  {
+    "name": "404",
+    "title": "404 Page Not Found | Kallol Chakraborty",
+    "description": "The page you were looking for was not found. Return to the portfolio of Kallol Chakraborty - AI Strategy & SAP BTP Solutions Architect.",
+    "extra_head": ""
   }
 ]

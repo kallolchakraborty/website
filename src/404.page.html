@@ -1,0 +1,29 @@
+{{head}}
+{{header}}
+
+  <main id="main-content" class="w-full pt-24 pb-14 relative z-10 flex-grow flex items-center justify-center">
+    <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="p-8 rounded-2xl glass-panel-faang relative overflow-hidden border-l-4 border-l-orange-600 text-center">
+        <div class="text-6xl sm:text-7xl font-display-lg font-bold text-orange-600 leading-none">404</div>
+        <p class="font-code-sm text-sm text-on-surface-variant mt-4">&gt; error: file not found<span class="cursor-blink">_</span></p>
+        <h1 class="font-body-lg text-xl sm:text-2xl font-bold text-on-surface mt-6">The page you are looking for doesn't exist</h1>
+        <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mt-2">
+          The link may be broken, or the page may have moved. Try the search palette (Ctrl+K) or head back home.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+          <a href="index.html" class="shimmer-btn text-white font-code-sm text-sm font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+            <svg class="icon text-[20px]" aria-hidden="true"><use href="#i-terminal"/></svg>
+            <span>Back to home</span>
+          </a>
+          <button data-trigger="command-palette" class="bg-surface text-on-surface-variant font-code-sm text-sm font-bold px-6 py-3.5 rounded-xl border border-slate-200 hover:bg-surface-container hover:border-slate-300 transition-all flex items-center gap-2 shadow-xs cursor-pointer">
+            <svg class="icon text-[20px]" aria-hidden="true"><use href="#i-search"/></svg>
+            <span>Search the site</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{{dialog}}
+
+{{footer}}

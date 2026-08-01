@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initCommandPalette,
     initMobileMenu,
     initWebGLShaderBackground,
-    initTerminalAnimations
+    initTerminalAnimations,
+    initBackToTop
   ];
   for (const init of inits) {
     try { init(); } catch (e) { console.warn('init failed:', e); }
@@ -278,6 +279,7 @@ function initCommandPalette() {
 function initWebGLShaderBackground() {
   const canvas = document.getElementById('shader-canvas-ambient');
   if (!canvas) return;
+  if (window.innerWidth < 768) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   function syncSize() {
@@ -414,4 +416,14 @@ function initMobileMenu() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') setOpen(false);
   });
+}
+
+// 6. Back to Top Button
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  const toggle = () => btn.classList.toggle('hidden', (window.scrollY || document.documentElement.scrollTop) < 400);
+  document.addEventListener('scroll', toggle, { passive: true });
+  toggle();
 }
