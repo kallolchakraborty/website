@@ -176,7 +176,7 @@
           <!-- Project Stats -->
           <div class="mt-md grid grid-cols-2 md:grid-cols-4 gap-sm">
             <div class="bg-surface border border-surface-container-highest p-md">
-              <div class="text-2xl font-bold text-primary font-display-lg">11</div>
+              <div class="text-2xl font-bold text-primary font-display-lg">14</div>
               <div class="font-code-sm text-[10px] uppercase tracking-wider text-on-surface-variant mt-xs">Projects</div>
             </div>
             <div class="bg-surface border border-surface-container-highest p-md">
@@ -195,31 +195,34 @@
 
           <!-- Category + Stack Chips -->
           <div class="mt-sm flex flex-wrap gap-xs font-code-sm text-xs">
-            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">2 × SAP BTP &amp; S/4HANA</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">3 × SAP BTP &amp; S/4HANA</span>
             <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">3 × Gen AI &amp; Automation</span>
             <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">1 × Integrations &amp; Data</span>
-            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">3 × Apps &amp; Tools</span>
-            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">5 Office · 6 Personal</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">5 × Apps &amp; Tools</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">5 Office · 9 Personal</span>
           </div>
           <div class="mt-xs flex flex-wrap gap-xs font-code-sm text-xs">
             <span class="font-code-sm font-bold text-on-surface-variant tracking-wider mt-xs mr-xs">STACK:</span>
             <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">CAP</span>
             <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Python</span>
             <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">ABAP/RAP</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">CDS</span>
             <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">HANA Cloud</span>
             <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Kotlin</span>
             <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">FastAPI</span>
             <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">JavaScript</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Bash</span>
+            <span class="bg-surface-container px-2 py-1 border border-surface-container-highest text-on-surface-variant">Git</span>
           </div>
         </div>
 
         <!-- Filter Category Tabs -->
         <div class="flex flex-wrap gap-sm px-lg pb-lg font-code-sm text-xs" id="filter-tabs">
-          <button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary">All (11)</button>
-          <button data-filter="sap-btp" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">SAP BTP & S/4HANA (2)</button>
+          <button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary">All (14)</button>
+          <button data-filter="sap-btp" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">SAP BTP & S/4HANA (3)</button>
           <button data-filter="gen-ai" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Gen AI & Automation (3)</button>
           <button data-filter="integration" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Integrations & Data (1)</button>
-          <button data-filter="apps" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Apps & Tools (5)</button>
+          <button data-filter="apps" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Apps & Tools (7)</button>
         </div>
       </div>
 
@@ -516,6 +519,102 @@
                 <svg class="icon text-[16px]" aria-hidden="true"><use href="#i-arrow_forward"/></svg>
               </a>
               <a href="https://github.com/kallolchakraborty/llm-git" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View Lgit (llm-git) source on GitHub" class="w-7 h-7 flex items-center justify-center rounded-md text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors">
+                <svg class="icon text-[16px]" aria-hidden="true"><use href="#i-code"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 12: CDS Bytes -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="sap-btp">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <svg class="icon" aria-hidden="true"><use href="#i-schema"/></svg>
+              </div>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">CDS Bytes</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Hands-on practice bank of SAP Core Data Services (CDS) views — AMDP, associations, casts, client handling, date functions and more, learned the ABAP way.
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+              <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">SAP CDS</span>
+              <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">ABAP</span>
+              <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">HANA Cloud</span>
+            </div>
+            <div class="flex items-center gap-sm border-t border-surface-container pt-sm mt-sm">
+              <a href="https://kallolchakraborty.github.io/cds-bytes/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-xs font-code-sm text-xs font-bold text-primary hover:text-primary/80 transition-colors">
+                Visit site
+                <svg class="icon text-[16px]" aria-hidden="true"><use href="#i-open_in_new"/></svg>
+              </a>
+              <a href="https://github.com/kallolchakraborty/cds-bytes" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View CDS Bytes source on GitHub" class="w-7 h-7 flex items-center justify-center rounded-md text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors">
+                <svg class="icon text-[16px]" aria-hidden="true"><use href="#i-code"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 13: Linux Bytes -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="apps">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>
+              </div>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Linux Bytes</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Field notes, cheatsheets and deep-dives on Linux and the terminal — commands, scripting, and system internals, one byte at a time.
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+              <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Linux</span>
+              <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Bash</span>
+              <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Shell Scripting</span>
+            </div>
+            <div class="flex items-center gap-sm border-t border-surface-container pt-sm mt-sm">
+              <a href="https://kallolchakraborty.github.io/linux-bytes/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-xs font-code-sm text-xs font-bold text-primary hover:text-primary/80 transition-colors">
+                Visit site
+                <svg class="icon text-[16px]" aria-hidden="true"><use href="#i-open_in_new"/></svg>
+              </a>
+              <a href="https://github.com/kallolchakraborty/linux-bytes" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View Linux Bytes source on GitHub" class="w-7 h-7 flex items-center justify-center rounded-md text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors">
+                <svg class="icon text-[16px]" aria-hidden="true"><use href="#i-code"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 14: Git Bytes -->
+        <div class="project-card-item bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="apps">
+          <div>
+            <div class="flex justify-between items-start mb-md">
+              <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                <svg class="icon" aria-hidden="true"><use href="#i-account_tree"/></svg>
+              </div>
+            </div>
+            <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Git Bytes</h2>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
+              Visual guides and workflows for Git, GitHub Actions, DevOps, and engineering at scale — rendered as a browsable docs site.
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-xs font-code-sm text-xs text-secondary border-t border-surface-container pt-sm">
+              <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">Git</span>
+              <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">GitHub Actions</span>
+              <span class="bg-surface-container px-2 py-1 border border-surface-container-highest">DevOps</span>
+            </div>
+            <div class="flex items-center gap-sm border-t border-surface-container pt-sm mt-sm">
+              <a href="https://kallolchakraborty.github.io/git-bytes/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-xs font-code-sm text-xs font-bold text-primary hover:text-primary/80 transition-colors">
+                Visit site
+                <svg class="icon text-[16px]" aria-hidden="true"><use href="#i-open_in_new"/></svg>
+              </a>
+              <a href="https://github.com/kallolchakraborty/git-bytes" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View Git Bytes source on GitHub" class="w-7 h-7 flex items-center justify-center rounded-md text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors">
                 <svg class="icon text-[16px]" aria-hidden="true"><use href="#i-code"/></svg>
               </a>
             </div>

@@ -62,11 +62,32 @@ def build():
             'terms': index_terms(html)
         })
         print(f'built {p["name"]}.html')
+    projects_html = os.path.join(ROOT, 'projects.html')
+    if os.path.exists(projects_html):
+        index.extend(index_projects(read(projects_html)))
     static = os.path.join(ROOT, 'static')
     os.makedirs(static, exist_ok=True)
     with open(os.path.join(static, 'search-index.json'), 'w', encoding='utf-8') as f:
         json.dump(index, f)
     print(f'wrote static/search-index.json ({len(index)} entries)')
+
+
+def index_projects(project_html):
+    cards = []
+    for chunk in project_html.split('<div class="project-card-item')[1:]:
+        chunk = chunk.split('<script>')[0]
+        title = re.search(r'<h2[^>]*>(.*?)</h2>', chunk, re.S)
+        desc = re.search(r'<p class="font-body-md[^>]*>(.*?)</p>', chunk, re.S)
+        if not title:
+            continue
+        tags = re.findall(r'<span class="bg-surface-container px-2 py-1[^>]*>(.*?)</span>', chunk, re.S)
+        text = ' '.join(filter(None, [title.group(1), desc and desc.group(1), ' '.join(tags)]))
+        cards.append({
+            'url': 'projects.html',
+            'title': strip_tags(title.group(1)).strip(),
+            'terms': strip_tags(text).split()
+        })
+    return cards
 
 
 if __name__ == '__main__':
