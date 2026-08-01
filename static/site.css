@@ -310,7 +310,7 @@ h1, h2 {
 }
 
 /* Office project tiles are non-clickable: static, muted hover, no lift */
-.project-card-item:not(.cursor-pointer):hover {
+html.js .project-card-item:not(.cursor-pointer).revealed:hover {
   box-shadow: none;
   transform: none;
   border-color: rgb(var(--outline-variant));
@@ -432,7 +432,7 @@ button:active, .btn:active { transform: scale(0.98); }
 .cert-item .icon { transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
 .cert-item:hover .icon { transform: translateX(3px); }
 
-.timeline-item:hover { transform: translateX(4px); }
+html.js .timeline-item:hover { transform: translateX(4px); }
 
 .timeline-dot { position: relative; }
 .timeline-dot::after {
@@ -457,7 +457,7 @@ html.js .hover-terminal-shadow.revealed:hover { transform: translate(-3px, -3px)
   button:active, .btn:active { transform: none; }
   .project-card-item:hover .icon-arrow,
   .cert-item:hover .icon,
-  .timeline-item:hover { transform: none; }
+  html.js .timeline-item:hover { transform: none; }
   .timeline-item:hover .timeline-dot::after { animation: none; }
   html.js .faang-card.revealed:hover,
   html.js .hover-terminal-shadow.revealed:hover { transform: none; }
