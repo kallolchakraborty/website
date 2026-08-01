@@ -1,9 +1,9 @@
 [
   {
     "name": "index",
-    "title": "Kallol Chakraborty | AI Strategy & SAP BTP Solutions",
-    "description": "Portfolio of Kallol Chakraborty - Principal Consultant, AI Strategy & SAP BTP Solutions Architect and 7x SAP Certified.",
-    "extra_head": "  <link rel=\"preload\" as=\"image\" href=\"assets/neural-core.webp\"/>\n\n<script type=\"application/ld+json\">\n{\"@context\": \"https://schema.org\", \"@type\": \"Person\", \"name\": \"Kallol Chakraborty\", \"url\": \"https://kallolchakraborty.github.io/website/\", \"jobTitle\": \"Principal Consultant - AI Strategy & SAP BTP Solutions\", \"sameAs\": [\"https://github.com/kallolchakraborty\", \"https://www.linkedin.com/in/kallol-chakraborty-9728a699/\", \"https://www.credly.com/badges/408b684c-9fc6-4f22-907c-c56c959aae10\"]}\n</script>"
+    "title": "Kallol Chakraborty | AI Enthusiast & SAP BTP Solutions",
+    "description": "Portfolio of Kallol Chakraborty - Principal Consultant, AI Enthusiast & SAP BTP Solutions Architect and 7x SAP Certified.",
+    "extra_head": "  <link rel=\"preload\" as=\"image\" href=\"assets/neural-core.webp\"/>\n\n<script type=\"application/ld+json\">\n{\"@context\": \"https://schema.org\", \"@type\": \"Person\", \"name\": \"Kallol Chakraborty\", \"url\": \"https://kallolchakraborty.github.io/website/\", \"jobTitle\": \"Principal Consultant - AI Enthusiast & SAP BTP Solutions\", \"sameAs\": [\"https://github.com/kallolchakraborty\", \"https://www.linkedin.com/in/kallol-chakraborty-9728a699/\", \"https://www.credly.com/badges/408b684c-9fc6-4f22-907c-c56c959aae10\"]}\n</script>"
   },
   {
     "name": "experience",
@@ -20,7 +20,7 @@
   {
     "name": "contact",
     "title": "Contact & Endpoints | Kallol Chakraborty",
-    "description": "Get in touch directly with Kallol Chakraborty - Principal Consultant, AI Strategy & SAP BTP Solutions Architect.",
+    "description": "Get in touch directly with Kallol Chakraborty - Principal Consultant, AI Enthusiast & SAP BTP Solutions Architect.",
     "extra_head": ""
   },
   {
@@ -68,7 +68,7 @@
   {
     "name": "404",
     "title": "404 Page Not Found | Kallol Chakraborty",
-    "description": "The page you were looking for was not found. Return to the portfolio of Kallol Chakraborty - AI Strategy & SAP BTP Solutions Architect.",
+    "description": "The page you were looking for was not found. Return to the portfolio of Kallol Chakraborty - AI Enthusiast & SAP BTP Solutions Architect.",
     "extra_head": ""
   }
 ]
