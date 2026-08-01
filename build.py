@@ -2,6 +2,26 @@
 """Build static site from src/*.page.html + partials/."""
 import json
 import os
+import re
+
+TAG_RE = re.compile(r'<[^>]+>')
+
+
+def strip_tags(text):
+    return TAG_RE.sub(' ', text)
+
+
+def index_terms(html):
+    parts = []
+    title = re.search(r'<title>(.*?)</title>', html, re.S)
+    if title:
+        parts.append(title.group(1))
+    for m in re.findall(r'<h[1-3][^>]*>(.*?)</h[1-3]>', html, re.S):
+        parts.append(m)
+    first_p = re.search(r'<p[^>]*>(.*?)</p>', html, re.S)
+    if first_p:
+        parts.append(first_p.group(1))
+    return strip_tags(' '.join(parts)).split()
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'src')
@@ -19,6 +39,7 @@ def partial(name):
 
 def build():
     pages = json.loads(read(os.path.join(SRC, 'pages.json')))
+    index = []
     for p in pages:
         body = read(os.path.join(SRC, p['name'] + '.page.html'))
         head = (partial('head.html')
@@ -32,7 +53,17 @@ def build():
                 .replace('{{footer}}', partial('footer.html')))
         with open(os.path.join(ROOT, p['name'] + '.html'), 'w', encoding='utf-8') as f:
             f.write(html)
+        index.append({
+            'url': 'index.html' if p['name'] == 'index' else p['name'] + '.html',
+            'title': p['title'],
+            'terms': index_terms(html)
+        })
         print(f'built {p["name"]}.html')
+    static = os.path.join(ROOT, 'static')
+    os.makedirs(static, exist_ok=True)
+    with open(os.path.join(static, 'search-index.json'), 'w', encoding='utf-8') as f:
+        json.dump(index, f)
+    print(f'wrote static/search-index.json ({len(index)} entries)')
 
 
 if __name__ == '__main__':

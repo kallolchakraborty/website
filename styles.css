@@ -255,6 +255,21 @@ html, body {
   left: 0;
 }
 
+/* Keyboard hint chips (search bar, palette footer) */
+.kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  border: 1px solid var(--outline-variant);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--on-surface-variant);
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 10px;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
 /* Shimmer Highlight Effect */
 @keyframes shimmer {
   0% { background-position: -200% 0; }

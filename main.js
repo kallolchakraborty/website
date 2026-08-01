@@ -44,6 +44,16 @@ function initNavigationHighlighting() {
 }
 
 // 2. Command Palette (Ctrl+K / Cmd+K / Terminal Icon trigger)
+let paletteSearchIndex = [];
+
+function loadSearchIndex() {
+  if (paletteSearchIndex.length) return;
+  fetch('static/search-index.json')
+    .then(r => r.json())
+    .then(data => { paletteSearchIndex = data; })
+    .catch(() => { paletteSearchIndex = []; });
+}
+
 function bindPaletteTriggers() {
   document.querySelectorAll('[data-trigger="command-palette"], .terminal-trigger').forEach(btn => {
     if (btn.dataset.paletteBound) return;
@@ -52,6 +62,7 @@ function bindPaletteTriggers() {
       const modal = document.getElementById('command-palette');
       if (!modal) return;
       modal.showModal();
+      loadSearchIndex();
       const input = document.getElementById('command-input');
       if (input) {
         input.value = '';
@@ -70,26 +81,59 @@ function initCommandPalette() {
 
   if (!modal) return;
 
+  const SECTIONS = {
+    nav: 'NAVIGATION',
+    actions: 'ACTIONS',
+    search: 'SEARCH RESULTS'
+  };
+
   const commands = [
-    { name: '/home', desc: 'Navigate to Home Overview', action: () => window.location.href = 'index.html' },
-    { name: '/experience', desc: 'View Work & Career History', action: () => window.location.href = 'experience.html' },
-    { name: '/projects', desc: 'Explore Software & Open Source Projects', action: () => window.location.href = 'projects.html' },
-    { name: '/contact', desc: 'Transmit a Direct Message', action: () => window.location.href = 'contact.html' },
-    { name: 'download resume', desc: 'Get PDF Resume', action: () => window.open('assets/resume.pdf', '_blank') },
-    { name: 'status', desc: 'Check System Health & Latency', action: () => alert('SYSTEM: ALL NODES OPERATIONAL | LATENCY: 12ms | AES-256') }
+    { section: 'nav', name: '/home', desc: 'Home overview', action: () => location.href = 'index.html' },
+    { section: 'nav', name: '/experience', desc: 'Work & career history', action: () => location.href = 'experience.html' },
+    { section: 'nav', name: '/projects', desc: 'Software & open-source projects', action: () => location.href = 'projects.html' },
+    { section: 'nav', name: '/contact', desc: 'Send a message', action: () => location.href = 'contact.html' },
+    { section: 'actions', name: 'download resume', desc: 'PDF resume', action: () => window.open('assets/resume.pdf', '_blank') },
+    { section: 'actions', name: 'copy email', desc: 'kallol.a.chakraborty@gmail.com', action: async () => {
+        try {
+          await navigator.clipboard.writeText('kallol.a.chakraborty@gmail.com');
+          flash('Email copied to clipboard');
+        } catch (e) {
+          prompt('Copy email:', 'kallol.a.chakraborty@gmail.com');
+        }
+      } },
+    { section: 'actions', name: 'github', desc: 'github.com/kallolchakraborty', action: () => window.open('https://github.com/kallolchakraborty', '_blank') },
+    { section: 'actions', name: 'linkedin', desc: 'LinkedIn profile', action: () => window.open('https://www.linkedin.com/in/kallol-chakraborty-9728a699/', '_blank') }
   ];
+
+  function highlight(name, q) {
+    if (!q) return name;
+    const idx = name.toLowerCase().indexOf(q);
+    if (idx === -1) return name;
+    return name.slice(0, idx) + '<mark class="bg-transparent text-primary font-bold">' + name.slice(idx, idx + q.length) + '</mark>' + name.slice(idx + q.length);
+  }
 
   function openPalette() {
     modal.showModal();
+    currentItems = commands;
+    activeIndex = 0;
     if (input) {
       input.value = '';
       input.focus();
       renderCommands(commands);
     }
+    loadSearchIndex();
   }
 
   function closePalette() {
     modal.close();
+  }
+
+  function flash(msg) {
+    const el = document.createElement('div');
+    el.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] px-4 py-2 rounded-lg bg-primary text-on-primary font-code-sm text-xs shadow-lg';
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1800);
   }
 
   bindPaletteTriggers();
@@ -111,35 +155,121 @@ function initCommandPalette() {
     }
   });
 
-  if (input) {
-    input.addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase();
-      const filtered = commands.filter(c => c.name.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q));
-      renderCommands(filtered);
+  function renderCommands(list) {
+    if (!resultsContainer) return;
+
+    if (list.length === 0) {
+      resultsContainer.innerHTML = '<div class="px-md py-3 font-code-sm text-sm text-on-surface-variant">No matches found</div>';
+      return;
+    }
+
+    const groups = [];
+    const seen = {};
+    for (const item of list) {
+      const key = item.section;
+      if (!seen[key]) {
+        seen[key] = true;
+        groups.push({ section: key, items: [] });
+      }
+      groups[groups.length - 1].items.push(item);
+    }
+
+    let html = '';
+    groups.forEach(g => {
+      html += '<div class="px-md pt-2.5 pb-1 font-code-sm text-[10px] tracking-wider text-on-surface-variant/60">' + SECTIONS[g.section] + '</div>';
+      g.items.forEach(item => {
+        const q = input ? input.value.toLowerCase().trim() : '';
+        const desc = highlight(item.desc, q);
+        html += `
+          <div class="command-item flex items-center justify-between gap-sm px-md py-2.5 cursor-pointer transition-colors border-l-2 border-transparent hover:bg-surface-container" data-action>
+            <div class="flex items-center gap-sm min-w-0">
+              <span class="material-symbols-outlined text-primary text-[16px] shrink-0">${item.icon || 'terminal'}</span>
+              <span class="font-code-sm text-sm font-bold text-on-surface truncate">${highlight(item.name, q)}</span>
+            </div>
+            <span class="font-code-sm text-xs text-on-surface-variant truncate">${desc}</span>
+          </div>`;
+      });
+    });
+
+    resultsContainer.innerHTML = html;
+    bindItemClicks();
+    const first = resultsContainer.querySelector('.command-item');
+    if (first) setActive(first);
+  }
+
+  function bindItemClicks() {
+    const items = resultsContainer.querySelectorAll('.command-item');
+    items.forEach((el, idx) => {
+      el.dataset.index = idx;
+      el.addEventListener('click', () => { runItem(idx); });
     });
   }
 
-  function renderCommands(list) {
-    if (!resultsContainer) return;
-    if (list.length === 0) {
-      resultsContainer.innerHTML = '<div class="p-md text-on-surface-variant font-code-sm">No command matches found</div>';
-      return;
-    }
-    resultsContainer.innerHTML = list.map((cmd, idx) => `
-      <div class="command-item flex items-center justify-between p-md border-b border-surface-container hover:bg-primary/10 cursor-pointer transition-colors" data-index="${idx}">
-        <div class="flex items-center gap-md">
-          <span class="material-symbols-outlined text-primary">terminal</span>
-          <span class="font-code-sm font-bold text-on-surface">${cmd.name}</span>
-        </div>
-        <span class="font-code-sm text-xs text-on-surface-variant">${cmd.desc}</span>
-      </div>
-    `).join('');
+  // Flat list of currently rendered commands, in display order.
+  let currentItems = [];
+  let activeIndex = 0;
 
-    resultsContainer.querySelectorAll('.command-item').forEach((el, idx) => {
-      el.addEventListener('click', () => {
-        closePalette();
-        list[idx].action();
-      });
+  function collectCurrent() {
+    const items = resultsContainer.querySelectorAll('.command-item');
+    return Array.from(items);
+  }
+
+  function runItem(idx) {
+    if (!currentItems[idx]) return;
+    closePalette();
+    currentItems[idx].action();
+  }
+
+  function setActive(el) {
+    collectCurrent().forEach((item, i) => {
+      const active = item === el;
+      item.classList.toggle('bg-surface-container', active);
+      item.classList.toggle('border-primary', active);
+      item.classList.toggle('border-transparent', !active);
+      item.dataset.active = active ? 'true' : '';
+    });
+    el.scrollIntoView({ block: 'nearest' });
+  }
+
+  if (input) {
+    input.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const filtered = commands.filter(c => c.name.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q));
+      const matches = [];
+      if (q) {
+        paletteSearchIndex.forEach(page => {
+          const terms = page.terms.join(' ').toLowerCase();
+          if (terms.includes(q)) {
+            matches.push({ section: 'search', name: page.title, desc: page.url, action: () => location.href = page.url });
+          }
+        });
+      }
+      currentItems = filtered.concat(matches);
+      activeIndex = 0;
+      renderCommands(currentItems);
+    });
+  }
+
+  // Keyboard navigation on the input
+  if (input) {
+    input.addEventListener('keydown', (e) => {
+      const items = collectCurrent();
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (!items.length) return;
+        activeIndex = (activeIndex + 1) % items.length;
+        setActive(items[activeIndex]);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (!items.length) return;
+        activeIndex = (activeIndex - 1 + items.length) % items.length;
+        setActive(items[activeIndex]);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (items.length && activeIndex < items.length) {
+          runItem(activeIndex);
+        }
+      }
     });
   }
 }

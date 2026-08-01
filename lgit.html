@@ -72,9 +72,9 @@
       <a class="text-on-surface-variant hover:text-primary transition-colors pb-1" data-path="contact" href="contact.html">/contact</a>
     </nav>
     <div class="flex items-center gap-3">
-      <button data-trigger="command-palette" title="Open Command Palette (Cmd+K)" class="cursor-pointer flex items-center gap-2 px-3 py-1.5 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-all font-code-sm text-xs rounded-lg">
+      <button data-trigger="command-palette" title="Search (Cmd+K)" aria-label="Search (Cmd+K)" class="cursor-pointer h-9 flex items-center gap-2 pl-3 pr-2 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-all font-code-sm text-xs rounded-lg">
         <span class="material-symbols-outlined text-[16px]">search</span>
-        <span class="hidden sm:inline font-bold">Cmd+K</span>
+        <span class="hidden sm:inline kbd">⌘K</span>
       </button>
       <button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode" class="cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
         <span class="material-symbols-outlined text-[18px]">dark_mode</span>
@@ -302,19 +302,20 @@
     </div>
   </main>
 
-  <dialog id="command-palette" class="bg-surface border border-surface-container-highest rounded-xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60">
-    <div class="p-md border-b border-surface-container-highest flex items-center justify-between bg-surface-container-low">
-      <div class="flex items-center gap-sm flex-1">
-        <span class="material-symbols-outlined text-primary">terminal</span>
-        <input id="command-input" type="text" placeholder="Type a command or page path..." class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
-      </div>
-      <button id="close-palette" class="text-on-surface-variant hover:text-primary">
+  <dialog id="command-palette" class="bg-surface border border-surface-container-highest rounded-2xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60 overflow-hidden" aria-label="Command palette">
+    <div class="h-14 border-b border-surface-container-highest flex items-center px-md gap-sm bg-surface-container-low">
+      <span class="material-symbols-outlined text-primary shrink-0">search</span>
+      <input id="command-input" type="text" placeholder="Search pages, projects, commands…" aria-label="Search" class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
+      <span class="kbd hidden sm:inline-block shrink-0">esc</span>
+      <button id="close-palette" class="text-on-surface-variant hover:text-primary cursor-pointer" aria-label="Close">
         <span class="material-symbols-outlined text-xl">close</span>
       </button>
     </div>
-    <div id="command-results" class="max-h-72 overflow-y-auto"></div>
-    <div class="p-xs bg-surface-container text-right font-code-sm text-[10px] text-on-surface-variant pr-md">
-      Press ESC to dismiss
+    <div id="command-results" class="max-h-80 overflow-y-auto py-1.5"></div>
+    <div class="px-md py-2 bg-surface-container border-t border-surface-container-highest font-code-sm text-[10px] text-on-surface-variant flex items-center gap-3 flex-wrap">
+      <span><span class="kbd">↑</span><span class="kbd">↓</span> navigate</span>
+      <span><span class="kbd">↵</span> open</span>
+      <span class="ml-auto hidden sm:inline">esc dismiss</span>
     </div>
   </dialog>
 
