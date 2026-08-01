@@ -172,7 +172,7 @@ git commit -m "feat: single optimized reveal observer with reduced-motion fallba
 
 **Files:**
 - Modify: `src/experience.page.html` (6 timeline items, 7 cert-items, 1 faang-card)
-- Modify: `src/projects.page.html` (15 project cards)
+- Modify: `src/projects.page.html` (14 project cards — the 15th `project-card-item` match is a JS `querySelectorAll` at line 502)
 
 **Interfaces:**
 - Consumes: `.reveal` CSS (Task 1). No output consumed by later tasks.
@@ -211,9 +211,9 @@ The certifications sidebar card (`faang-card p-8 flex flex-col justify-between`)
 
 - [ ] **Step 5: Project cards — add `reveal` + stagger**
 
-In `src/projects.page.html`, all 15 cards start with `class="project-card-item ..."`. Change each to `class="project-card-item reveal ..."`. Then add `reveal-stagger` to the grid container that holds them.
+In `src/projects.page.html`, all 14 cards start with `class="project-card-item ..."`. Change each to `class="project-card-item reveal ..."`. Then add `reveal-stagger` to the grid container that holds them.
 
-Verify: `grep -c "project-card-item reveal" src/projects.page.html` → 15, and `grep -c "reveal-stagger" src/projects.page.html` → 1.
+Verify: `grep -c "project-card-item reveal" src/projects.page.html` → 14, and `grep -c "reveal-stagger" src/projects.page.html` → 1.
 
 - [ ] **Step 6: Commit**
 
