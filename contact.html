@@ -118,11 +118,11 @@
       <!-- Main Contact Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
         
-        <!-- Terminal Form Panel -->
+        <!-- Connect Panel -->
         <div class="lg:col-span-7 flex flex-col relative group">
           <div class="bg-surface border border-surface-container-highest shadow-lg flex flex-col w-full h-full p-lg md:p-xl">
             <div class="flex justify-between items-center mb-xl pb-sm border-b border-surface-container-highest">
-              <span class="font-code-sm text-xs font-bold text-on-surface-variant">./contact.sh</span>
+              <span class="font-code-sm text-xs font-bold text-on-surface-variant">./connect.sh</span>
               <div class="flex gap-xs">
                 <span class="w-3 h-3 rounded-full bg-error"></span>
                 <span class="w-3 h-3 rounded-full bg-primary/40"></span>
@@ -130,45 +130,42 @@
               </div>
             </div>
 
-            <form id="terminal-contact-form" class="flex flex-col gap-lg font-code-sm text-xs" action="https://formspree.io/f/mdovgbqw" method="POST">
-              <!-- Honeypot (hidden from humans, bots fill it → Formspree drops submission) -->
-              <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true"/>
-
-              <!-- Name Input -->
-              <div class="flex flex-col md:flex-row md:items-center gap-sm">
-                <label class="text-secondary w-24 shrink-0 font-bold">--name</label>
-                <div class="flex items-center flex-1 bg-surface-container border border-surface-container-highest px-sm py-sm focus-within:border-primary focus-within:bg-surface transition-all">
-                  <span class="text-primary mr-sm font-bold">&gt;</span>
-                  <input type="text" name="name" required placeholder="Name or Organization" class="bg-transparent w-full outline-none text-on-surface font-code-sm"/>
-                </div>
+            <div class="flex flex-col gap-lg font-code-sm text-xs">
+              <div class="flex flex-col gap-sm">
+                <p class="text-on-surface-variant">> Preferred channel: <span class="text-primary font-bold">LinkedIn</span></p>
+                <p class="text-on-surface-variant">> One click to my profile — hit <span class="text-primary font-bold">Connect</span> there to send a request.</p>
               </div>
 
-              <!-- Email Input -->
-              <div class="flex flex-col md:flex-row md:items-center gap-sm">
-                <label class="text-secondary w-24 shrink-0 font-bold">--email</label>
-                <div class="flex items-center flex-1 bg-surface-container border border-surface-container-highest px-sm py-sm focus-within:border-primary focus-within:bg-surface transition-all">
-                  <span class="text-primary mr-sm font-bold">&gt;</span>
-                  <input type="email" name="email" required placeholder="user@host.domain" class="bg-transparent w-full outline-none text-on-surface font-code-sm"/>
-                </div>
-              </div>
+              <a href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank" rel="noopener noreferrer" class="bg-primary text-on-primary font-code-sm text-xs font-bold py-md px-xl uppercase tracking-widest transition-all hover:bg-surface-tint hover:shadow-[4px_4px_0_0_rgba(127,80,108,1)] flex items-center justify-center gap-sm group">
+                <span class="material-symbols-outlined text-[18px]">person_add</span>
+                <span>Send Connection Request</span>
+                <span class="material-symbols-outlined text-[18px] opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0">open_in_new</span>
+              </a>
 
-              <!-- Message Textarea -->
-              <div class="flex flex-col md:flex-row items-start gap-sm mt-md">
-                <label class="text-secondary w-24 shrink-0 pt-sm font-bold">--msg</label>
-                <div class="flex flex-1 bg-surface-container border border-surface-container-highest px-sm py-sm focus-within:border-primary focus-within:bg-surface transition-all min-h-[140px] w-full">
-                  <span class="text-primary mr-sm font-bold pt-xs">&gt;</span>
-                  <textarea id="msg-input" name="message" required placeholder="Enter message payload..." class="bg-transparent w-full outline-none text-on-surface font-code-sm resize-none min-h-[120px]"></textarea>
-                </div>
-              </div>
+              <p class="text-outline-variant">> LinkedIn has no public auto-invite URL — the button opens my profile, where Connect is one click away.</p>
 
-              <!-- Action Area -->
-              <div class="mt-xl flex justify-end">
-                <button type="submit" class="bg-primary text-on-primary font-code-sm text-xs font-bold py-md px-xl uppercase tracking-widest transition-all hover:bg-surface-tint hover:shadow-[4px_4px_0_0_rgba(127,80,108,1)] flex items-center gap-sm">
-                  <span class="material-symbols-outlined text-[18px]">send</span>
-                  <span>Transmit</span>
-                </button>
+              <div class="flex flex-col gap-md mt-md">
+                <a href="https://github.com/kallolchakraborty" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
+                  <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
+                    <span>./github.sh</span>
+                    <span class="text-primary">200 OK</span>
+                  </div>
+                  <div class="text-on-surface flex items-center gap-sm">
+                    <span class="text-secondary">-&gt;</span> github.com/kallolchakraborty
+                  </div>
+                </a>
+
+                <a href="https://people.sap.com/kallolathome" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
+                  <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
+                    <span>./sap_community.sh</span>
+                    <span class="text-secondary">PROFILE</span>
+                  </div>
+                  <div class="text-on-surface flex items-center gap-sm">
+                    <span class="text-secondary">-&gt;</span> people.sap.com/kallolathome
+                  </div>
+                </a>
               </div>
-            </form>
+            </div>
           </div>
         </div>
 
@@ -182,16 +179,6 @@
             </h2>
             <div class="flex flex-col gap-md font-code-sm text-xs">
               
-              <a href="mailto:kallol.a.chakraborty@gmail.com" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
-                <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
-                  <span>./email_direct.sh</span>
-                  <span class="text-primary">SMTP</span>
-                </div>
-                <div class="text-on-surface flex items-center gap-sm">
-                  <span class="text-secondary">-&gt;</span> kallol.a.chakraborty@gmail.com
-                </div>
-              </a>
-
               <a href="https://www.linkedin.com/in/kallol-chakraborty-9728a699/" target="_blank" rel="noopener noreferrer" class="group flex flex-col gap-xs p-sm bg-surface-container-low hover:bg-surface-container border border-surface-container-highest transition-colors">
                 <div class="flex justify-between text-on-surface-variant group-hover:text-primary transition-colors font-bold">
                   <span>./linkedin.sh</span>
@@ -287,66 +274,6 @@
 
   <script src="main.js"></script>
 
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('terminal-contact-form');
-      if (!form) return;
-
-      const btn = form.querySelector('button[type="submit"]');
-      const originalHTML = btn.innerHTML;
-      const status = document.createElement('div');
-      status.id = 'form-status';
-      status.className = 'font-code-sm text-xs mt-md min-h-[1.25rem]';
-      form.appendChild(status);
-
-      const setStatus = (msg, ok) => {
-        status.textContent = msg;
-        status.classList.toggle('text-tertiary', ok);
-        status.classList.toggle('text-error', !ok);
-      };
-
-      const resetBtn = () => {
-        btn.innerHTML = originalHTML;
-        btn.classList.remove('opacity-80', 'pointer-events-none');
-      };
-
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        setStatus('Transmitting...', true);
-        btn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[18px]">autorenew</span><span>Transmitting...</span>`;
-        btn.classList.add('opacity-80', 'pointer-events-none');
-
-        const formData = new FormData(form);
-        const body = `Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\n\n${formData.get('message')}`;
-
-        const mailtoFallback = () => {
-          const subject = encodeURIComponent(`Portfolio contact from ${formData.get('name')}`);
-          const mailBody = encodeURIComponent(body);
-          window.location.href = `mailto:kallol.a.chakraborty@gmail.com?subject=${subject}&body=${mailBody}`;
-          setStatus('Opening your email client...', true);
-        };
-
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: formData
-          });
-          if (res.ok) {
-            setStatus('Ack: message received — I\'ll get back to you.', true);
-            btn.innerHTML = `<span class="material-symbols-outlined text-[18px]">done_all</span><span>Ack: 200 OK</span>`;
-            form.reset();
-          } else {
-            mailtoFallback();
-          }
-        } catch (err) {
-          mailtoFallback();
-        }
-        setTimeout(resetBtn, 2500);
-      });
-    });
-  </script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
     "name": "index",
     "title": "Kallol Chakraborty | Principal Consultant - AI Strategy & SAP BTP Solutions",
     "description": "Portfolio of Kallol Chakraborty - Principal Consultant, AI Strategy & SAP BTP Solutions Architect, Product Builder (STO360), SAP Americas Hack2Build Winner, and 7x SAP Certified.",
-    "extra_head": "  <link rel=\"preload\" as=\"image\" href=\"assets/neural-core.jpg\"/>\n\n<script type=\"application/ld+json\">\n{\"@context\": \"https://schema.org\", \"@type\": \"Person\", \"name\": \"Kallol Chakraborty\", \"url\": \"https://kallolchakraborty.github.io/website/\", \"jobTitle\": \"Principal Consultant - AI Strategy & SAP BTP Solutions\", \"email\": \"mailto:kallol.a.chakraborty@gmail.com\", \"sameAs\": [\"https://github.com/kallolchakraborty\", \"https://www.linkedin.com/in/kallol-chakraborty-9728a699/\", \"https://people.sap.com/kallolathome\"]}\n</script>",
+    "extra_head": "  <link rel=\"preload\" as=\"image\" href=\"assets/neural-core.jpg\"/>\n\n<script type=\"application/ld+json\">\n{\"@context\": \"https://schema.org\", \"@type\": \"Person\", \"name\": \"Kallol Chakraborty\", \"url\": \"https://kallolchakraborty.github.io/website/\", \"jobTitle\": \"Principal Consultant - AI Strategy & SAP BTP Solutions\", \"sameAs\": [\"https://github.com/kallolchakraborty\", \"https://www.linkedin.com/in/kallol-chakraborty-9728a699/\", \"https://people.sap.com/kallolathome\"]}\n</script>",
     "page_scripts": ""
   },
   {
@@ -25,7 +25,7 @@
     "title": "Contact & Endpoints | Kallol Chakraborty",
     "description": "Get in touch directly with Kallol Chakraborty - Principal Consultant, AI Strategy & SAP BTP Solutions Architect.",
     "extra_head": "",
-    "page_scripts": "<script>\n    // Form Transmission Simulation\n    document.addEventListener('DOMContentLoaded', () => {\n      const form = document.getElementById('terminal-contact-form');\n      if (!form) return;\n\n      form.addEventListener('submit', (e) => {\n        e.preventDefault();\n        const btn = form.querySelector('button[type=\"submit\"]');\n        const originalHTML = btn.innerHTML;\n\n        btn.innerHTML = `<span class=\"material-symbols-outlined animate-spin text-[18px]\">autorenew</span><span>Transmitting...</span>`;\n        btn.classList.add('opacity-80', 'pointer-events-none');\n\n        setTimeout(() => {\n          btn.innerHTML = `<span class=\"material-symbols-outlined text-[18px]\">done_all</span><span>Ack: 200 OK</span>`;\n          btn.classList.replace('bg-primary', 'bg-tertiary');\n\n          setTimeout(() => {\n            btn.innerHTML = originalHTML;\n            btn.classList.replace('bg-tertiary', 'bg-primary');\n            btn.classList.remove('opacity-80', 'pointer-events-none');\n            form.reset();\n          }, 2500);\n        }, 1200);\n      });\n    });\n  </script>"
+    "page_scripts": ""
   },
   {
     "name": "chhanda-ai",
