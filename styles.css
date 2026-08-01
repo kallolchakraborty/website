@@ -322,16 +322,7 @@ h1, h2 {
   animation: shimmer 4s infinite linear;
 }
 
-/* Timeline Scroll-Reveal Animation */.timeline-item {
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.timeline-item:nth-child(2) { transition-delay: 0.08s; }
-.timeline-item:nth-child(3) { transition-delay: 0.16s; }
-.timeline-item:nth-child(4) { transition-delay: 0.24s; }
-.timeline-item:nth-child(5) { transition-delay: 0.32s; }
-.timeline-item:nth-child(6) { transition-delay: 0.4s; }
+/* Timeline items use the shared .reveal system (see .reveal above) */
 
 /* Modal Discrete Top Layer */
 dialog {
@@ -397,4 +388,33 @@ dialog::backdrop {
 .diagram-arrow span {
   font-size: 1.4rem;
   line-height: 1;
+}
+
+/* Site-wide Reveal Scroll Animation (opacity + transform only) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: opacity, transform;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* Stagger: timeline items + project cards */
+.reveal-stagger > *:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.05s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.1s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.15s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.2s; }
+.reveal-stagger > *:nth-child(6) { transition-delay: 0.25s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.revealed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
