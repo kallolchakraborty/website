@@ -214,16 +214,81 @@
               <span class="font-code-sm text-xs text-purple-600 font-bold bg-purple-50 px-2.5 py-1 rounded-md">SPECIALIZATIONS</span>
             </div>
 
-            <div class="flex flex-wrap gap-2 font-code-sm text-xs">
-              <span class="px-3 py-2 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl hover:scale-105 transition-transform cursor-pointer">Gen AI</span>
-              <span class="px-3 py-2 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl hover:scale-105 transition-transform cursor-pointer">Gemma 4</span>
-              <span class="px-3 py-2 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl hover:scale-105 transition-transform cursor-pointer">RAG</span>
-              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">SAP CAP (Node.js)</span>
-              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">Python</span>
-              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">ABAP / RAP</span>
-              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">SAP BTP & HANA Cloud</span>
-              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">SAP S/4HANA</span>
-              <span class="px-3 py-2 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl hover:bg-slate-100 transition-colors">SAP Integration Suite</span>
+            <!-- Proficiency Legend -->
+            <div class="flex flex-wrap gap-x-4 gap-y-1 mb-4 font-code-sm text-[10px] text-slate-500">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-orange-500"></span>EXPERT</span>
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-500"></span>ADVANCED</span>
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-slate-400"></span>WORKING</span>
+            </div>
+
+            <div class="divide-y divide-slate-100 space-y-3">
+              <!-- Group 1: Generative AI -->
+              <div class="pt-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="material-symbols-outlined text-base text-purple-600">auto_awesome</span>
+                  <h4 class="font-code-sm text-xs font-bold text-slate-800 uppercase tracking-wide">Generative AI & LLMs</h4>
+                </div>
+                <p class="text-xs text-slate-500 mb-2.5">LLM-powered enterprise automation, retrieval, and on-device inference</p>
+                <div class="flex flex-wrap gap-2 font-code-sm text-xs">
+                  <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Gen AI</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Gemma 4</span>
+                  <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>RAG</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Vector Search</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Joule / Gemini / ChatGPT</span>
+                </div>
+              </div>
+
+              <!-- Group 2: SAP Ecosystem -->
+              <div class="pt-3">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="material-symbols-outlined text-base text-orange-600">database</span>
+                  <h4 class="font-code-sm text-xs font-bold text-slate-800 uppercase tracking-wide">SAP Ecosystem</h4>
+                </div>
+                <p class="text-xs text-slate-500 mb-2.5">Certified cloud-native extension and core integration specialist</p>
+                <div class="flex flex-wrap gap-2 font-code-sm text-xs">
+                  <span class="px-3 py-1.5 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>ABAP / RAP</span>
+                  <span class="px-3 py-1.5 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>SAP BTP</span>
+                  <span class="px-3 py-1.5 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>SAP S/4HANA</span>
+                  <span class="px-3 py-1.5 bg-orange-50 border border-orange-200 text-orange-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>SAP HCM</span>
+                  <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>CAP (Node.js)</span>
+                  <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>HANA Cloud</span>
+                  <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Integration Suite</span>
+                  <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>OData / CDS Views</span>
+                </div>
+              </div>
+
+              <!-- Group 3: Backend & Cloud-Native -->
+              <div class="pt-3">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="material-symbols-outlined text-base text-emerald-600">cloud</span>
+                  <h4 class="font-code-sm text-xs font-bold text-slate-800 uppercase tracking-wide">Backend & Cloud-Native</h4>
+                </div>
+                <p class="text-xs text-slate-500 mb-2.5">Event-driven microservices, API security, and infrastructure as code</p>
+                <div class="flex flex-wrap gap-2 font-code-sm text-xs">
+                  <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Python (FastAPI / Flask)</span>
+                  <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Node.js (Express)</span>
+                  <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-700 font-bold rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Event Mesh / CloudEvents</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Microservices</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>OAuth2 / OIDC / XSUAA</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Terraform (IaC)</span>
+                </div>
+              </div>
+
+              <!-- Group 4: Languages & Tooling -->
+              <div class="pt-3">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="material-symbols-outlined text-base text-sky-600">terminal</span>
+                  <h4 class="font-code-sm text-xs font-bold text-slate-800 uppercase tracking-wide">Languages & Tooling</h4>
+                </div>
+                <p class="text-xs text-slate-500 mb-2.5">Engineering rigor: testing, static analysis, and source control</p>
+                <div class="flex flex-wrap gap-2 font-code-sm text-xs">
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>JavaScript</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Git / GitHub / Azure Repos</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>CI/CD (GitHub Actions)</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Jest / Chai / pytest</span>
+                  <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 font-medium rounded-xl flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>SonarQube / ATC</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
