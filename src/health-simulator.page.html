@@ -33,7 +33,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-account_tree"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Architecture</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <div class="flex flex-col items-center gap-2">
             <!-- Frontend UI -->
             <div class="diagram-box w-full max-w-md text-center">
@@ -69,14 +69,14 @@
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Key Features</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
               <li>ECG (12-lead equiv.), plethysmography, capnography &amp; arterial waveforms on Canvas.</li>
               <li>Vital signs with natural physiological drift: HR, SpO₂, NIBP, Temp, RR, EtCO₂, GCS, pain.</li>
               <li>15 drugs with dose-response and drug-drug interaction warnings.</li>
             </ul>
           </div>
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <ul class="font-body-md text-sm text-slate-600 space-y-2 list-disc list-inside">
               <li>ABG interpreter: acid-base classification, hypoxemia, lactate.</li>
               <li>Pre-built scenarios (Sepsis, STEMI, Anaphylaxis, Cardiac Arrest...) with time-triggered changes.</li>
@@ -93,19 +93,19 @@
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Clinical Intelligence</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">ABG Interpreter</h3>
             <p class="font-body-md text-sm text-slate-600">Acid-base status via Winter's formula (expected compensation vs actual pCO₂), full hypoxemia grading (PaO₂ / SpO₂ / A-a gradient), and lactate interpretation — every derangement flagged with the responsible physiological mechanism.</p>
           </div>
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">15-Drug Formulary</h3>
             <p class="font-body-md text-sm text-slate-600">Dose-response curves per drug (adrenaline, amiodarone, salbutamol, etc.) with interactions detected between co-administered agents — push a drug in a scenario and watch HR/BP/SpO₂ respond realistically.</p>
           </div>
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Early Warning Scores</h3>
             <p class="font-body-md text-sm text-slate-600">MEWS, qSOFA, and NEWS2 computed live from vitals. qSOFA captures the "does this patient have sepsis?" moment; NEWS2 drives the escalating alarm ladder for deterioration.</p>
           </div>
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Scenario Engine</h3>
             <p class="font-body-md text-sm text-slate-600">Timeline-driven states in <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">data.json</code> — physiological drift, time-triggered deterioration, and drug-response logic compose into scripted teaching cases.</p>
           </div>
@@ -118,7 +118,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-folder_open"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Codebase Layout</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <pre class="font-code-sm text-xs text-slate-600 leading-relaxed overflow-x-auto">├── docs/                 # Static single-page app (GitHub Pages)
 │   ├── index.html        # ICU monitor shell
 │   ├── script.js         # Simulation engines · clinical logic · UI (~175 KB)
@@ -138,7 +138,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-layers"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Tech Stack</h2>
         </div>
-        <div class="faang-card p-6 flex flex-wrap gap-2">
+        <div class="faang-card reveal p-6 flex flex-wrap gap-2">
           <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">HTML5</span>
           <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">CSS3 (Flexbox / Grid)</span>
           <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Vanilla JS (ES6+)</span>

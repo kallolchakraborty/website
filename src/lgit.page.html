@@ -43,7 +43,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-account_tree"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Architecture</h2>
         </div>
-        <div class="faang-card p-6 md:p-8">
+        <div class="faang-card reveal p-6 md:p-8">
           <div class="flex flex-col items-center gap-2">
             <!-- CLI -->
             <div class="diagram-box w-full max-w-md text-center">
@@ -82,7 +82,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-lightbulb"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Why llm-git?</h2>
         </div>
-        <div class="faang-card p-6 font-body-md text-sm text-slate-600 space-y-3">
+        <div class="faang-card reveal p-6 font-body-md text-sm text-slate-600 space-y-3">
           <p>In an era where a large share of code is AI-assisted, messages like <span class="font-code-sm bg-slate-100 px-1.5 py-0.5 rounded text-slate-800">"fix bug"</span> aren't enough. You need to know:</p>
           <ul class="list-disc list-inside space-y-2">
             <li>Which <strong class="text-slate-900">prompt</strong> led to this specific logic?</li>
@@ -101,19 +101,19 @@
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Under the Hood</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">DAG, not a linear log</h3>
             <p class="font-body-md text-sm text-slate-600">Commits are nodes in a directed acyclic graph connected by parent links. Branches diverge and merge like git — but each node also carries the <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">intent</code>, <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">prompt</code>, and <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">model</code> that produced it.</p>
           </div>
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">SHA-256 content addressing</h3>
             <p class="font-body-md text-sm text-slate-600">Every snapshot is hashed into an immutable object ID. Identical content always maps to the same hash — the storage layer auto-deduplicates and every reference is cryptographically verifiable.</p>
           </div>
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Semantic store</h3>
             <p class="font-body-md text-sm text-slate-600">AI metadata is persisted alongside topology, so you can later answer "which prompt produced this code?" by walking the DAG — not by grepping commit messages.</p>
           </div>
-          <div class="faang-card p-6">
+          <div class="faang-card reveal p-6">
             <h3 class="font-code-sm text-xs font-bold text-primary uppercase tracking-wider mb-3">Rich terminal UX</h3>
             <p class="font-body-md text-sm text-slate-600">CLI output is rendered with <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">rich</code>/<code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">click</code> — tables, trees, and colored diffs, with a React dashboard companion for visual exploration.</p>
           </div>
@@ -126,7 +126,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-terminal"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Command Reference</h2>
         </div>
-        <div class="faang-card p-6 overflow-x-auto">
+        <div class="faang-card reveal p-6 overflow-x-auto">
           <table class="w-full text-left text-sm">
             <thead>
               <tr class="border-b border-slate-200 font-code-sm text-xs text-slate-500 uppercase tracking-wider">
@@ -172,7 +172,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-terminal"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Core Workflow</h2>
         </div>
-        <div class="faang-card p-6 font-code-sm text-sm text-slate-600">
+        <div class="faang-card reveal p-6 font-code-sm text-sm text-slate-600">
           <pre class="bg-slate-50 p-4 rounded-lg overflow-x-auto text-xs text-slate-800"># Track an AI-assisted change with full semantic context
 ./lgit init
 ./lgit add .
@@ -194,7 +194,7 @@
           <svg class="icon text-primary text-lg" aria-hidden="true"><use href="#i-layers"/></svg>
           <h2 class="font-headline-lg text-xl font-bold text-slate-900">Tech Stack</h2>
         </div>
-        <div class="faang-card p-6 flex flex-wrap gap-2">
+        <div class="faang-card reveal p-6 flex flex-wrap gap-2">
           <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Python</span>
           <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">Zero heavy dependencies</span>
           <span class="bg-slate-100 px-3 py-1.5 rounded-md font-code-sm text-xs text-slate-700">rich</span>
