@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Build static site from src/*.page.html + partials/."""
+import datetime
 import json
 import os
 import re
 
 TAG_RE = re.compile(r'<[^>]+>')
+BASE = 'https://kallolchakraborty.github.io/website'
 
 
 def strip_tags(text):
@@ -27,6 +29,8 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'src')
 PARTIALS = os.path.join(ROOT, 'partials')
 
+PROJECT_DETAIL = {'chhanda-ai', 'ai-colab-server', 'lgit', 'health-simulator', 'effort-planner', 'free-chess'}
+
 
 def read(path):
     with open(path, encoding='utf-8') as f:
@@ -37,16 +41,88 @@ def partial(name):
     return read(os.path.join(PARTIALS, name))
 
 
+def page_url(name):
+    return BASE + ('/' if name == 'index' else '/' + name + '.html')
+
+
+def ld_json(obj):
+    return '<script type="application/ld+json">' + json.dumps(obj) + '</script>\n'
+
+
+def breadcrumb_schema(name):
+    if name == 'index':
+        return None
+    crumbs = [{'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': BASE + '/'}]
+    pos = 2
+    if name in PROJECT_DETAIL:
+        crumbs.append({'@type': 'ListItem', 'position': pos, 'name': 'Projects', 'item': BASE + '/projects.html'})
+        pos += 1
+    crumbs.append({'@type': 'ListItem', 'position': pos, 'name': name.replace('-', ' ').title(), 'item': page_url(name)})
+    return ld_json({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': crumbs
+    })
+
+
+def page_schema(p, body):
+    name = p['name']
+    schemas = ''
+    bc = breadcrumb_schema(name)
+    if bc:
+        schemas += bc
+    if name == 'projects':
+        cards = index_projects(body)
+        schemas += ld_json({
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            'name': p['title'],
+            'description': p['description'],
+            'url': page_url(name),
+            'mainEntity': {
+                '@type': 'ItemList',
+                'numberOfItems': len(cards),
+                'itemListElement': [{
+                    '@type': 'ListItem',
+                    'position': i + 1,
+                    'name': c['title'],
+                    'url': page_url(name)
+                } for i, c in enumerate(cards)]
+            }
+        })
+    if name in PROJECT_DETAIL:
+        schemas += ld_json({
+            '@context': 'https://schema.org',
+            '@type': 'TechArticle',
+            'headline': p['title'],
+            'description': p['description'],
+            'url': page_url(name),
+            'author': {'@type': 'Person', 'name': 'Kallol Chakraborty'},
+            'publisher': {'@type': 'Person', 'name': 'Kallol Chakraborty'}
+        })
+    return schemas
+
+
+def og_type(name):
+    if name == 'index':
+        return 'profile'
+    if name in PROJECT_DETAIL:
+        return 'article'
+    return 'website'
+
+
 def build():
     pages = json.loads(read(os.path.join(SRC, 'pages.json')))
     index = []
     for p in pages:
         body = read(os.path.join(SRC, p['name'] + '.page.html'))
+        schemas = page_schema(p, body)
         head = (partial('head.html')
                 .replace('{{title}}', p['title'])
                 .replace('{{description}}', p['description'])
                 .replace('{{og_url}}', 'index.html' if p['name'] == 'index' else p['name'] + '.html')
-                .replace('{{extra_head}}', p['extra_head']))
+                .replace('{{og_type}}', og_type(p['name']))
+                .replace('{{extra_head}}', p['extra_head'] + '\n' + schemas))
         html = (body.replace('{{head}}', head)
                 .replace('{{header}}', partial('header.html'))
                 .replace('{{dialog}}', partial('dialog.html'))
@@ -67,15 +143,21 @@ def build():
         index.extend(index_projects(read(projects_html)))
     static = os.path.join(ROOT, 'static')
     os.makedirs(static, exist_ok=True)
-    sitemap_urls = ['https://kallolchakraborty.github.io/website/'] + [
-        f'https://kallolchakraborty.github.io/website/{p["name"]}.html'
-        for p in pages if p['name'] != '404' and p['name'] != 'index'
-    ]
-    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
-        ''.join(f'<url><loc>{u}</loc></url>\n' for u in sitemap_urls) + '</urlset>\n'
+    today = datetime.date.today().isoformat()
+    def sitemap_entry(url, prio):
+        return (f'<url><loc>{url}</loc><lastmod>{today}</lastmod>'
+                f'<changefreq>monthly</changefreq><priority>{prio}</priority></url>\n')
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    sitemap += sitemap_entry(BASE + '/', '1.0')
+    for p in pages:
+        if p['name'] in ('404', 'index'):
+            continue
+        prio = '0.9' if p['name'] in ('experience', 'projects', 'contact') else '0.6'
+        sitemap += sitemap_entry(page_url(p['name']), prio)
+    sitemap += '</urlset>\n'
     with open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8') as f:
         f.write(sitemap)
-    print(f'wrote sitemap.xml ({len(sitemap_urls)} urls)')
+    print(f'wrote sitemap.xml ({len(pages) - 2} urls)')
     with open(os.path.join(static, 'search-index.json'), 'w', encoding='utf-8') as f:
         json.dump(index, f)
     print(f'wrote static/search-index.json ({len(index)} entries)')
