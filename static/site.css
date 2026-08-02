@@ -237,6 +237,35 @@ h1, h2 {
   animation: cursor-blink 1s step-end infinite;
 }
 
+--amber-500: 251 191 36;
+}
+
+/* Dark mode tags: invert light-mode bg-XXX-100/text-XXX-700|900 combos */
+.dark .bg-orange-100.text-orange-700,
+.dark .bg-orange-100.text-orange-800,
+.dark .bg-orange-100.text-orange-900 { background: var(--orange-100) !important; color: var(--orange-400) !important; }
+.dark .bg-green-100.text-green-700,
+.dark .bg-green-100.text-green-800,
+.dark .bg-green-100.text-green-900 { background: var(--emerald-100) !important; color: var(--tertiary) !important; }
+.dark .bg-blue-100.text-blue-700,
+.dark .bg-blue-100.text-blue-800,
+.dark .bg-blue-100.text-blue-900 { background: rgb(var(--surface-container-high) / 0.5) !important; color: var(--secondary) !important; }
+.dark .bg-teal-100.text-teal-700,
+.dark .bg-teal-100.text-teal-800,
+.dark .bg-teal-100.text-teal-900 { background: var(--emerald-100) !important; color: var(--tertiary) !important; }
+.dark .bg-indigo-100.text-indigo-700,
+.dark .bg-indigo-100.text-indigo-800,
+.dark .bg-indigo-100.text-indigo-900 { background: var(--purple-100) !important; color: var(--secondary) !important; }
+.dark .bg-purple-100.text-purple-700,
+.dark .bg-purple-100.text-purple-800,
+.dark .bg-purple-100.text-purple-900 { background: var(--purple-100) !important; color: var(--secondary) !important; }
+.dark .bg-rose-100.text-rose-700,
+.dark .bg-rose-100.text-rose-800,
+.dark .bg-rose-100.text-rose-900 { background: var(--orange-100) !important; color: var(--orange-400) !important; }
+.dark .bg-slate-100.text-slate-700,
+.dark .bg-slate-100.text-slate-800,
+.dark .bg-slate-100.text-slate-900 { background: var(--surface-container-high) !important; color: var(--on-surface) !important; }
+
 /* Accessibility: visible keyboard focus (High) */
 :focus-visible {
   outline: 2px solid var(--primary-accent);
