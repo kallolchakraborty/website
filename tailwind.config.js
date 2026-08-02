@@ -49,6 +49,7 @@ module.exports = {
         'emerald-100': 'rgb(var(--emerald-100) / <alpha-value>)',
         'emerald-200': 'rgb(var(--emerald-200) / <alpha-value>)',
         'emerald-600': 'rgb(var(--emerald-600) / <alpha-value>)',
+        'emerald-700': 'rgb(var(--emerald-700) / <alpha-value>)',
         'amber-500': 'rgb(var(--amber-500) / <alpha-value>)'
       },
       fontFamily: {

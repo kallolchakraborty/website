@@ -164,7 +164,8 @@
         <svg class="icon text-[18px]" aria-hidden="true"><use href="#i-dark_mode"/></svg>
       </button>
       <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
-        <svg class="icon text-[20px]" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="icon text-[20px] mobile-menu-open-icon" aria-hidden="true"><use href="#i-close"/></svg>
+        <svg class="icon text-[20px] mobile-menu-closed-icon" aria-hidden="true"><use href="#i-menu"/></svg>
       </button>
     </div>
   </div>
@@ -226,7 +227,7 @@
 
         <!-- Filter Tabs -->
         <div class="flex flex-wrap gap-sm px-lg pb-lg font-code-sm text-xs" id="filter-tabs">
-<button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary">All (26)</button>
+<button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary" aria-pressed="true">All (26)</button>
 <button data-filter="manager" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Managers & Reports (5)</button>
 <button data-filter="same-team" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Same Team (11)</button>
 <button data-filter="senior" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Senior Colleagues (4)</button>
@@ -691,13 +692,13 @@
     <dialog id="command-palette" class="bg-surface border border-surface-container-highest rounded-2xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60 overflow-hidden" aria-label="Command palette">
     <div class="h-14 border-b border-surface-container-highest flex items-center px-md gap-sm bg-surface-container-low">
       <svg class="icon text-primary shrink-0" aria-hidden="true"><use href="#i-search"/></svg>
-      <input id="command-input" type="text" placeholder="Search pages, projects, commands…" aria-label="Search" class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
+      <input id="command-input" type="text" placeholder="Search pages, projects, commands…" aria-label="Search" aria-controls="command-results" aria-activedescendant="" class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
       <span class="kbd hidden sm:inline-block shrink-0">esc</span>
       <button id="close-palette" class="text-on-surface-variant hover:text-primary cursor-pointer" aria-label="Close">
         <svg class="icon text-xl" aria-hidden="true"><use href="#i-close"/></svg>
       </button>
     </div>
-    <div id="command-results" class="max-h-80 overflow-y-auto py-1.5"></div>
+    <div id="command-results" role="listbox" aria-label="Search results" class="max-h-80 overflow-y-auto py-1.5"></div>
     <div class="px-md py-2 bg-surface-container border-t border-surface-container-highest font-code-sm text-[10px] text-on-surface-variant flex items-center gap-3 flex-wrap">
       <span><span class="kbd">↑</span><span class="kbd">↓</span> navigate</span>
       <span><span class="kbd">↵</span> open</span>
@@ -736,9 +737,11 @@
           filterBtns.forEach(b => {
             b.classList.remove('bg-primary', 'text-on-primary', 'font-bold');
             b.classList.add('bg-surface', 'text-on-surface-variant');
+            b.setAttribute('aria-pressed', 'false');
           });
           btn.classList.add('bg-primary', 'text-on-primary', 'font-bold');
           btn.classList.remove('bg-surface', 'text-on-surface-variant');
+          btn.setAttribute('aria-pressed', 'true');
           const category = btn.getAttribute('data-filter');
           cards.forEach(card => {
             card.style.display = (category === 'all' || card.getAttribute('data-category') === category) ? 'flex' : 'none';

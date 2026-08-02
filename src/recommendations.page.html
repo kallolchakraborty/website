@@ -46,7 +46,7 @@
 
         <!-- Filter Tabs -->
         <div class="flex flex-wrap gap-sm px-lg pb-lg font-code-sm text-xs" id="filter-tabs">
-<button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary">All (26)</button>
+<button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary" aria-pressed="true">All (26)</button>
 <button data-filter="manager" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Managers & Reports (5)</button>
 <button data-filter="same-team" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Same Team (11)</button>
 <button data-filter="senior" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Senior Colleagues (4)</button>
@@ -519,9 +519,11 @@
           filterBtns.forEach(b => {
             b.classList.remove('bg-primary', 'text-on-primary', 'font-bold');
             b.classList.add('bg-surface', 'text-on-surface-variant');
+            b.setAttribute('aria-pressed', 'false');
           });
           btn.classList.add('bg-primary', 'text-on-primary', 'font-bold');
           btn.classList.remove('bg-surface', 'text-on-surface-variant');
+          btn.setAttribute('aria-pressed', 'true');
           const category = btn.getAttribute('data-filter');
           cards.forEach(card => {
             card.style.display = (category === 'all' || card.getAttribute('data-category') === category) ? 'flex' : 'none';

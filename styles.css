@@ -60,6 +60,7 @@
   --emerald-100: 209 250 229;
   --emerald-200: 167 243 208;
   --emerald-600: 5 150 105;
+  --emerald-700: 4 120 87;
   --amber-500: 245 158 11;
 }
 
@@ -122,6 +123,7 @@
   --emerald-100: 6 46 30;
   --emerald-200: 11 68 44;
   --emerald-600: 52 211 153;
+  --emerald-700: 74 222 165;
   --amber-500: 251 191 36;
 }
 
@@ -160,6 +162,20 @@ h1, h2 {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid rgba(var(--surface-container-highest) / 0.8);
+}
+
+/* Mobile Menu Toggle Icon Swap */
+#mobile-menu-toggle[aria-expanded="true"] .mobile-menu-open-icon {
+  display: block;
+}
+#mobile-menu-toggle[aria-expanded="true"] .mobile-menu-closed-icon {
+  display: none;
+}
+#mobile-menu-toggle[aria-expanded="false"] .mobile-menu-open-icon {
+  display: none;
+}
+#mobile-menu-toggle[aria-expanded="false"] .mobile-menu-closed-icon {
+  display: block;
 }
 
 /* Elevated Glass Panels */

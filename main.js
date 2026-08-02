@@ -178,11 +178,12 @@ function initCommandPalette() {
     let html = '';
     groups.forEach(g => {
       html += '<div class="px-md pt-2.5 pb-1 font-code-sm text-[10px] tracking-wider text-on-surface-variant/60">' + SECTIONS[g.section] + '</div>';
-      g.items.forEach(item => {
+      g.items.forEach((item, itemIdx) => {
         const q = input ? input.value.toLowerCase().trim() : '';
         const desc = highlight(item.desc, q);
+        const itemId = 'cmd-' + itemIdx;
         html += `
-          <div class="command-item flex items-center justify-between gap-sm px-md py-2.5 cursor-pointer transition-colors border-l-2 border-transparent hover:bg-surface-container" data-action>
+          <div id="${itemId}" class="command-item flex items-center justify-between gap-sm px-md py-2.5 cursor-pointer transition-colors border-l-2 border-transparent hover:bg-surface-container" data-action role="option">
             <div class="flex items-center gap-sm min-w-0">
               <svg class="icon text-primary text-[16px] shrink-0" aria-hidden="true"><use href="#i-terminal"/></svg>
               <span class="font-code-sm text-sm font-bold text-on-surface truncate">${highlight(item.name, q)}</span>
@@ -228,6 +229,13 @@ function initCommandPalette() {
       item.classList.toggle('border-primary', active);
       item.classList.toggle('border-transparent', !active);
       item.dataset.active = active ? 'true' : '';
+      if (active) {
+        item.setAttribute('aria-selected', 'true');
+        if (input) input.setAttribute('aria-activedescendant', item.id);
+        resultsContainer.setAttribute('aria-activedescendant', item.id);
+      } else {
+        item.setAttribute('aria-selected', 'false');
+      }
     });
     el.scrollIntoView({ block: 'nearest' });
   }
@@ -409,21 +417,39 @@ function initMobileMenu() {
   const menu = document.getElementById('mobile-menu');
   if (!toggle || !menu) return;
 
+  let lastFocused = null;
+
   const setOpen = (open) => {
     menu.classList.toggle('hidden', !open);
     toggle.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      lastFocused = document.activeElement;
+      const firstLink = menu.querySelector('a');
+      if (firstLink) firstLink.focus();
+    } else if (lastFocused) {
+      lastFocused.focus();
+      lastFocused = null;
+    }
   };
 
   toggle.addEventListener('click', () => {
     setOpen(menu.classList.contains('hidden'));
   });
 
+  // Close on link click
   menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => setOpen(false));
   });
 
+  // Close on backdrop click
+  menu.addEventListener('click', (e) => {
+    if (e.target === menu) setOpen(false);
+  });
+
+  // Close on Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') setOpen(false);
+    if (e.key === 'Escape' && !menu.classList.contains('hidden')) setOpen(false);
   });
 }
 

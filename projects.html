@@ -164,7 +164,8 @@
         <svg class="icon text-[18px]" aria-hidden="true"><use href="#i-dark_mode"/></svg>
       </button>
       <button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden cursor-pointer w-9 h-9 rounded-lg bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-primary hover:border-primary transition-colors flex items-center justify-center">
-        <svg class="icon text-[20px]" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="icon text-[20px] mobile-menu-open-icon" aria-hidden="true"><use href="#i-close"/></svg>
+        <svg class="icon text-[20px] mobile-menu-closed-icon" aria-hidden="true"><use href="#i-menu"/></svg>
       </button>
     </div>
   </div>
@@ -248,7 +249,7 @@
 
         <!-- Filter Category Tabs -->
         <div class="flex flex-wrap gap-sm px-lg pb-lg font-code-sm text-xs" id="filter-tabs">
-          <button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary">All (14)</button>
+          <button data-filter="all" class="filter-btn active cursor-pointer bg-primary text-on-primary px-md py-sm font-bold border border-primary" aria-pressed="true">All (14)</button>
           <button data-filter="sap-btp" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">SAP BTP & S/4HANA (3)</button>
           <button data-filter="gen-ai" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Gen AI & Automation (3)</button>
           <button data-filter="integration" class="filter-btn cursor-pointer bg-surface text-on-surface-variant hover:text-primary px-md py-sm border border-surface-container-highest">Integrations & Data (1)</button>
@@ -381,7 +382,7 @@
               </div>
             </div>
             <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Chhanda — Local AI Gateway</h2>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-700/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
             <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
               On-device local LLM application with RAG functionality. Runs Gemma models locally and shares downloaded LLMs for chat and other purposes. Kaggle Gemma Good Hackathon submission.
             </p>
@@ -414,7 +415,7 @@
               </div>
             </div>
             <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Medical Vital Signs Simulator</h2>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-700/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
             <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
               Professional-grade, web-based Medical Vital Signs Simulator for clinical training, UI/UX prototyping, and physiological monitoring demonstrations.
             </p>
@@ -446,7 +447,7 @@
               </div>
             </div>
             <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Free Chess</h2>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-700/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
             <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
               Open-source chess application with playable board gameplay and clean, focused interface.
             </p>
@@ -474,7 +475,7 @@
               </div>
             </div>
             <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Effort Planner</h2>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-700/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
             <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
               Professional, feature-rich calendar application built with FastAPI and FullCalendar.js for managing resource effort, shifts, tasks, daily notes, and events with precise scheduling logic and a premium modern UI.
             </p>
@@ -506,7 +507,7 @@
               </div>
             </div>
             <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">AI Collab Server</h2>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-700/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
             <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
               Centralized collaboration and storage platform that resolves and synchronizes local-first semantic DAGs, such as those produced by the llm-git (lgit) ecosystem.
             </p>
@@ -538,7 +539,7 @@
               </div>
             </div>
             <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Lgit (llm-git)</h2>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-700/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
             <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
               The Semantic Source Control System for the AI Era — version control designed for semantic DAGs and AI-native collaboration.
             </p>
@@ -570,7 +571,7 @@
               </div>
             </div>
             <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">CDS Bytes</h2>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-700/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
             <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
               Hands-on practice bank of SAP Core Data Services (CDS) views — AMDP, associations, casts, client handling, date functions and more, learned the ABAP way.
             </p>
@@ -602,7 +603,7 @@
               </div>
             </div>
             <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Linux Bytes</h2>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-700/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
             <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
               Field notes, cheatsheets and deep-dives on Linux and the terminal — commands, scripting, and system internals, one byte at a time.
             </p>
@@ -634,7 +635,7 @@
               </div>
             </div>
             <h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-xs">Git Bytes</h2>
-            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-600 border border-emerald-600/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
+            <span class="inline-block font-code-sm text-[10px] font-bold uppercase tracking-wider text-emerald-700 border border-emerald-700/40 px-1.5 py-0.5 mb-xs">Personal Project</span>
             <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-md">
               Visual guides and workflows for Git, GitHub Actions, DevOps, and engineering at scale — rendered as a browsable docs site.
             </p>
@@ -664,13 +665,13 @@
   <dialog id="command-palette" class="bg-surface border border-surface-container-highest rounded-2xl p-0 w-full max-w-xl shadow-2xl backdrop:bg-black/60 overflow-hidden" aria-label="Command palette">
     <div class="h-14 border-b border-surface-container-highest flex items-center px-md gap-sm bg-surface-container-low">
       <svg class="icon text-primary shrink-0" aria-hidden="true"><use href="#i-search"/></svg>
-      <input id="command-input" type="text" placeholder="Search pages, projects, commands…" aria-label="Search" class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
+      <input id="command-input" type="text" placeholder="Search pages, projects, commands…" aria-label="Search" aria-controls="command-results" aria-activedescendant="" class="bg-transparent border-none outline-none font-code-sm text-sm text-on-surface w-full"/>
       <span class="kbd hidden sm:inline-block shrink-0">esc</span>
       <button id="close-palette" class="text-on-surface-variant hover:text-primary cursor-pointer" aria-label="Close">
         <svg class="icon text-xl" aria-hidden="true"><use href="#i-close"/></svg>
       </button>
     </div>
-    <div id="command-results" class="max-h-80 overflow-y-auto py-1.5"></div>
+    <div id="command-results" role="listbox" aria-label="Search results" class="max-h-80 overflow-y-auto py-1.5"></div>
     <div class="px-md py-2 bg-surface-container border-t border-surface-container-highest font-code-sm text-[10px] text-on-surface-variant flex items-center gap-3 flex-wrap">
       <span><span class="kbd">↑</span><span class="kbd">↓</span> navigate</span>
       <span><span class="kbd">↵</span> open</span>
@@ -723,9 +724,11 @@
           filterBtns.forEach(b => {
             b.classList.remove('bg-primary', 'text-on-primary', 'font-bold');
             b.classList.add('bg-surface', 'text-on-surface-variant');
+            b.setAttribute('aria-pressed', 'false');
           });
           btn.classList.add('bg-primary', 'text-on-primary', 'font-bold');
           btn.classList.remove('bg-surface', 'text-on-surface-variant');
+          btn.setAttribute('aria-pressed', 'true');
 
           const category = btn.getAttribute('data-filter');
 
@@ -745,9 +748,19 @@
         const page = DETAIL_PAGES[title];
         if (!page) return;
         card.classList.add('cursor-pointer');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'link');
+        card.setAttribute('aria-label', `View ${title} project details`);
+        const navigate = () => { window.location.href = page; };
         card.addEventListener('click', (e) => {
           if (e.target.closest('a')) return;
-          window.location.href = page;
+          navigate();
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            navigate();
+          }
         });
       });
     });
