@@ -1,0 +1,14 @@
+{
+  "title": "CAP Guardian",
+  "slug": "cap-guardian",
+  "data_added": "2026-08-04",
+  "description": "Production-grade SAP CAP (Node.js) skill engine, synthesized from the full capire docs \u2014 enforces strict behavioral guardrails, a 3-hard-gate code review, 11 red flags, 12 prohibitions, and per-rule evidence tracking with a 118-assertion evaluation harness (100%).",
+  "tags": [
+    "SAP CAP",
+    "Node.js",
+    "CDS",
+    "Security"
+  ],
+  "github_url": "https://github.com/kallolchakraborty/cap-guardian",
+  "website_url": "https://kallolchakraborty.github.io/website/projects.html"
+}

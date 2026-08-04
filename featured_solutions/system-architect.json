@@ -1,0 +1,14 @@
+{
+  "title": "System Architect",
+  "slug": "system-architect",
+  "data_added": "2026-08-04",
+  "description": "Distributed systems design skill engine for LLMs and AI agents \u2014 a mathematically rigorous 4-step methodology with strict behavioral guardrails, covering capacity estimation, high-level topology, component deep dives, and explicit trade-off matrices. Industry evaluation harness: 300/300 points (100%).",
+  "tags": [
+    "System Design",
+    "Distributed Systems",
+    "Architecture",
+    "Python"
+  ],
+  "github_url": "https://github.com/kallolchakraborty/system-architect",
+  "website_url": "https://kallolchakraborty.github.io/website/projects.html"
+}

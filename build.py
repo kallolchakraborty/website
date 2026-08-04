@@ -141,6 +141,17 @@ def build():
     projects_html = os.path.join(ROOT, 'projects.html')
     if os.path.exists(projects_html):
         index.extend(index_projects(read(projects_html)))
+    featured = featured_projects(read(projects_html), 3) if os.path.exists(projects_html) else []
+    dest = os.path.join(ROOT, 'featured_solutions')
+    os.makedirs(dest, exist_ok=True)
+    for existing in os.listdir(dest):
+        p = os.path.join(dest, existing)
+        if os.path.isfile(p):
+            os.remove(p)
+    for c in featured:
+        with open(os.path.join(dest, c['slug'] + '.json'), 'w', encoding='utf-8') as f:
+            json.dump(c, f, indent=2)
+    print(f'wrote featured_solutions ({len(featured)} projects)')
     static = os.path.join(ROOT, 'static')
     os.makedirs(static, exist_ok=True)
     today = datetime.date.today().isoformat()
@@ -179,6 +190,35 @@ def index_projects(project_html):
             'terms': strip_tags(text).split()
         })
     return cards
+
+
+def featured_projects(project_html, count=3):
+    cards = []
+    for chunk in project_html.split('<div class="project-card-item')[1:]:
+        chunk = chunk.split('<script>')[0]
+        added = re.search(r'data-added="([^"]*)"', chunk)
+        if not added:
+            continue
+        title_m = re.search(r'<h2[^>]*>(.*?)</h2>', chunk, re.S)
+        if not title_m:
+            continue
+        desc_m = re.search(r'<p class="font-body-md[^>]*>(.*?)</p>', chunk, re.S)
+        tags = re.findall(r'<span class="bg-surface-container px-2 py-1[^>]*>(.*?)</span>', chunk, re.S)
+        gh_m = re.search(r'<a href="(https://github\.com/[^"]*)"[^>]*>\s*View on GitHub', chunk, re.S)
+        href_m = re.search(r'<a href="([^"]+)"[^>]*>', chunk, re.S)
+        title = strip_tags(title_m.group(1)).strip()
+        slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
+        cards.append({
+            'title': title,
+            'slug': slug,
+            'data_added': added.group(1),
+            'description': strip_tags(desc_m.group(1)).strip() if desc_m else '',
+            'tags': [strip_tags(t).strip() for t in tags],
+            'github_url': gh_m.group(1) if gh_m else (href_m.group(1) if href_m else ''),
+            'website_url': page_url('projects'),
+        })
+    cards.sort(key=lambda c: c['data_added'], reverse=True)
+    return cards[:count]
 
 
 if __name__ == '__main__':
