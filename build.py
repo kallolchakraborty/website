@@ -146,10 +146,16 @@ def build():
     os.makedirs(dest, exist_ok=True)
     for existing in os.listdir(dest):
         p = os.path.join(dest, existing)
-        if os.path.isfile(p):
-            os.remove(p)
+        if os.path.isfile(p) or os.path.isdir(p):
+            if os.path.isdir(p) and not os.path.islink(p):
+                import shutil
+                shutil.rmtree(p)
+            else:
+                os.remove(p)
     for c in featured:
-        with open(os.path.join(dest, c['slug'] + '.json'), 'w', encoding='utf-8') as f:
+        proj_dir = os.path.join(dest, c['slug'])
+        os.makedirs(proj_dir, exist_ok=True)
+        with open(os.path.join(proj_dir, 'index.json'), 'w', encoding='utf-8') as f:
             json.dump(c, f, indent=2)
     print(f'wrote featured_solutions ({len(featured)} projects)')
     static = os.path.join(ROOT, 'static')
