@@ -498,12 +498,26 @@ html.js .hover-terminal-shadow.revealed:hover { transform: translate(-3px, -3px)
   100% { transform: scale(1.4); opacity: 0; }
 }
 
+.latest-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  animation: latest-pulse 2s ease-in-out infinite;
+}
+
+@keyframes latest-pulse {
+  0%   { opacity: 0.9; filter: scale(1); }
+  50%  { opacity: 1;   filter: scale(1.15); }
+  100% { opacity: 0.9; filter: scale(1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   button:active, .btn:active { transform: none; }
   .project-card-item:hover .icon-arrow,
   .cert-item:hover .icon,
   html.js .timeline-item:hover { transform: none; }
   .timeline-item:hover .timeline-dot::after { animation: none; }
+  .latest-badge { animation: none; }
   html.js .faang-card.revealed:hover,
   html.js .hover-terminal-shadow.revealed:hover { transform: none; }
   .faang-card:hover { transform: none; }
