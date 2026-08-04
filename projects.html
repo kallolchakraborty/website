@@ -265,7 +265,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg reveal-stagger" id="projects-grid">
         
         <!-- Project 1: ABAP Guardian -->
-        <div class="project-card-item reveal bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="sap-btp" data-added="2026-08-04">
+        <div class="project-card-item relative reveal bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="sap-btp" data-added="2026-08-04">
           <div>
             <div class="flex justify-between items-start mb-md">
               <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
@@ -296,7 +296,7 @@
         </div>
 
         <!-- Project 2: System Architect -->
-        <div class="project-card-item reveal bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="gen-ai" data-added="2026-08-04">
+        <div class="project-card-item relative reveal bg-surface border border-surface-container-highest p-lg hover-terminal-shadow transition-all flex flex-col justify-between" data-category="gen-ai" data-added="2026-08-04">
           <div>
             <div class="flex justify-between items-start mb-md">
               <div class="w-10 h-10 bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
@@ -841,11 +841,10 @@
         const addedDate = new Date(added);
         const days = (now - addedDate) / (1000 * 60 * 60 * 24);
         if (days <= LATEST_DAYS) {
-          card.style.setProperty('position', 'relative');
           const badge = document.createElement('span');
-          badge.className = 'latest-badge inline-flex items-center gap-xs font-code-sm text-[10px] font-bold uppercase tracking-wider text-on-primary bg-primary px-1.5 py-0.5';
+          badge.className = 'latest-badge inline-flex items-center gap-xs font-code-sm text-xs font-bold uppercase tracking-wider text-on-primary bg-primary px-2.5 py-1 rounded-full';
           badge.setAttribute('aria-label', 'Latest project');
-          badge.innerHTML = '<svg class="icon text-[10px]" aria-hidden="true"><use href="#i-emoji_events"/></svg> Latest';
+          badge.innerHTML = '<svg class="icon text-[12px]" aria-hidden="true"><use href="#i-auto_awesome"/></svg> Latest';
           card.prepend(badge);
         }
       });
