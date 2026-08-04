@@ -141,7 +141,7 @@ def build():
     projects_html = os.path.join(ROOT, 'projects.html')
     if os.path.exists(projects_html):
         index.extend(index_projects(read(projects_html)))
-    featured = featured_projects(read(projects_html), 3) if os.path.exists(projects_html) else []
+    featured = featured_projects(read(projects_html), 4) if os.path.exists(projects_html) else []
     dest = os.path.join(ROOT, 'featured_solutions')
     os.makedirs(dest, exist_ok=True)
     for existing in os.listdir(dest):

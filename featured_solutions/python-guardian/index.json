@@ -1,0 +1,14 @@
+{
+  "title": "Python Guardian",
+  "slug": "python-guardian",
+  "data_added": "2026-08-05",
+  "description": "Enterprise-grade Python code review methodology, PEP 8 / Google Style compliance, security, performance, type safety, strict behavioral guardrails, and automated 11-suite evaluation harness.",
+  "tags": [
+    "Python",
+    "PEP 8",
+    "Security",
+    "Performance"
+  ],
+  "github_url": "https://github.com/kallolchakraborty/python-guardian",
+  "website_url": "https://kallolchakraborty.github.io/website/projects.html"
+}

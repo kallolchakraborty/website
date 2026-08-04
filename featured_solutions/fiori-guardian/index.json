@@ -1,0 +1,14 @@
+{
+  "title": "FIORI Guardian",
+  "slug": "fiori-guardian",
+  "data_added": "2026-08-05",
+  "description": "Production-grade skill engine for SAP Fiori for Web design, development, and UX compliance review \u2014 distilled from the official SAP Design System into decision rules. Dual entry paths: develop (design/build guidance) and review (severity-ranked compliance audits).",
+  "tags": [
+    "SAP Fiori",
+    "SAPUI5",
+    "UX",
+    "Design System"
+  ],
+  "github_url": "https://github.com/kallolchakraborty/FIORI-guardian",
+  "website_url": "https://kallolchakraborty.github.io/website/projects.html"
+}
