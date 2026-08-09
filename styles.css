@@ -257,9 +257,6 @@ h1, h2 {
   animation: cursor-blink 1s step-end infinite;
 }
 
---amber-500: 251 191 36;
-}
-
 /* Dark mode tags: invert light-mode bg-XXX-100/text-XXX-700|900 combos */
 .dark .bg-orange-100.text-orange-700,
 .dark .bg-orange-100.text-orange-800,
