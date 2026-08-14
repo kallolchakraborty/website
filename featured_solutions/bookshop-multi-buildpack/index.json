@@ -1,0 +1,16 @@
+{
+  "title": "BookShop Multi-Buildpack",
+  "slug": "bookshop-multi-buildpack",
+  "data_added": "2026-08-06",
+  "description": "SAP BTP multi-buildpack BookShop application combining Node.js CAP OData V4 with a co-located Python ML process. Includes live interactive endpoints, architecture specs, and downloadable source code.",
+  "tags": [
+    "SAP BTP",
+    "CAP",
+    "Node.js",
+    "Python",
+    "Buildpacks",
+    "ML"
+  ],
+  "github_url": "https://github.com/kallolchakraborty/bookshop-multi-buildpack",
+  "website_url": "https://kallolchakraborty.github.io/website/projects.html"
+}

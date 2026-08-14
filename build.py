@@ -4,6 +4,7 @@ import datetime
 import json
 import os
 import re
+import subprocess
 
 TAG_RE = re.compile(r'<[^>]+>')
 BASE = 'https://kallolchakraborty.github.io/website'
@@ -43,6 +44,16 @@ def partial(name):
 
 def page_url(name):
     return BASE + ('/' if name == 'index' else '/' + name + '.html')
+
+
+def site_date():
+    # Deterministic lastmod: the latest commit date, so rebuilds are reproducible
+    # (CI guard `git diff --exit-code` must not see sitemap churn).
+    try:
+        return subprocess.check_output(
+            ['git', 'log', '-1', '--format=%cs'], cwd=ROOT, text=True).strip()
+    except Exception:
+        return datetime.date.today().isoformat()
 
 
 def ld_json(obj):
@@ -160,7 +171,7 @@ def build():
     print(f'wrote featured_solutions ({len(featured)} projects)')
     static = os.path.join(ROOT, 'static')
     os.makedirs(static, exist_ok=True)
-    today = datetime.date.today().isoformat()
+    today = site_date()
     def sitemap_entry(url, prio):
         return (f'<url><loc>{url}</loc><lastmod>{today}</lastmod>'
                 f'<changefreq>monthly</changefreq><priority>{prio}</priority></url>\n')
@@ -198,6 +209,39 @@ def index_projects(project_html):
     return cards
 
 
+# ponytail: single ~40-line parity check (not a test framework); swap for pytest when it breaks a second time
+def verify():
+    projects_html = read(os.path.join(ROOT, 'projects.html'))
+    featured = featured_projects(projects_html, 4)
+    feats = {c['title'] for c in featured}
+
+    idx_html = read(os.path.join(ROOT, 'index.html'))
+    home_titles = set()
+    for block in idx_html.split('<div class="faang-card')[1:]:
+        before_h3 = block.split('<h3', 1)[0]
+        if 'latest-badge' in before_h3:
+            m = re.search(r'class="font-headline-lg[^>]*>([^<]+)</h3>', block)
+            if m:
+                home_titles.add(m.group(1).strip())
+    assert home_titles == feats, (
+        f'homepage featured cards disagree with projects data-added:\n'
+        f'  homepage only: {home_titles - feats}\n  projects only: {feats - home_titles}')
+
+    pages = json.loads(read(os.path.join(SRC, 'pages.json')))
+    names = {p['name'] for p in pages} - {'404', 'index'}
+    sitemap = read(os.path.join(ROOT, 'sitemap.xml'))
+    urls = set(re.findall(r'<loc>([^<]+)</loc>', sitemap))
+    expected = {page_url(n) for n in names} | {BASE + '/'}
+    assert urls == expected, f'sitemap drift: {urls ^ expected}'
+
+    dest = os.path.join(ROOT, 'featured_solutions')
+    slugs = {c['slug'] for c in featured}
+    assert slugs == {d for d in os.listdir(dest)}, f'featured_solutions drift: {slugs ^ set(os.listdir(dest))}'
+
+    json.loads(read(os.path.join(ROOT, 'static', 'search-index.json')))
+    print(f'verify: ok (featured={len(feats)}, sitemap={len(urls)}, search-index valid)')
+
+
 def featured_projects(project_html, count=3):
     cards = []
     for chunk in project_html.split('<div class="project-card-item')[1:]:
@@ -229,3 +273,4 @@ def featured_projects(project_html, count=3):
 
 if __name__ == '__main__':
     build()
+    verify()

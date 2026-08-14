@@ -11,7 +11,13 @@
   --radius-card: 16px;
   --radius-pill: 9999px;
 
-  /* Light theme tokens (RGB triplets consumed by theme.js) */
+  /* Motion tokens (theme-independent) */
+  --motion-fast: 150ms;
+  --motion-base: 300ms;
+  --motion-slow: 450ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Light theme tokens (RGB triplets, consumed via rgb(var(--n) / alpha)) */
   --bg: 252 252 252;
   --surface: 255 255 255;
   --surface-container: 248 250 252;
@@ -21,6 +27,11 @@
   --surface-variant: 226 232 240;
   --on-surface: 15 23 42;
   --on-surface-variant: 71 85 105;
+
+  /* Accent roles (one hue per role, mirrored to .dark):
+     --primary  = SAP BTP / primary actions (orange-600)
+     --secondary = Gen AI / advanced competency (purple-600)
+     --tertiary = status / personal-hobby / Latest (emerald-600) */
   --primary: 234 88 12;
   --on-primary: 255 255 255;
   --secondary: 124 58 237;
@@ -190,7 +201,7 @@ h1, h2 {
   border: 1px solid var(--border-card);
   box-shadow: var(--shadow-sm);
   border-radius: var(--radius-card);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--motion-base) var(--ease-standard);
 }
 
 .glass-panel-faang:hover {
@@ -204,7 +215,7 @@ h1, h2 {
   background: rgba(var(--surface) / 1);
   border: 1px solid var(--border-card);
   border-radius: 16px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--motion-base) var(--ease-standard);
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.02);
 }
 
@@ -232,7 +243,7 @@ h1, h2 {
   background: rgb(var(--orange-50) / 1);
   color: rgb(var(--orange-700) / 1);
   border: 1px solid rgb(var(--orange-100) / 1);
-  transition: all 0.2s ease;
+  transition: all var(--motion-fast) var(--ease-standard);
 }
 
 .badge-pill:hover {
@@ -404,7 +415,7 @@ dialog::backdrop {
   border: 1px solid var(--border-card);
   border-radius: 12px;
   padding: 0.9rem 1.1rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--motion-base) var(--ease-standard);
 }
 .diagram-box:hover {
   border-color: rgba(var(--primary) / 0.5);
@@ -441,13 +452,13 @@ html.js .reveal {
   opacity: 0;
   transform: translateY(18px);
   will-change: opacity, transform;
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--motion-base) ease, transform var(--motion-base) var(--ease-standard);
 }
 html.js .reveal.revealed {
   opacity: 1;
   transform: none;
   will-change: auto;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--motion-base) var(--ease-standard);
 }
 
 /* Stagger: timeline items + project cards */
@@ -472,10 +483,10 @@ button:active, .btn:active { transform: scale(0.98); }
 
 .faang-card:hover { border-color: rgb(var(--primary) / 0.45); }
 
-.project-card-item .icon-arrow { transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.project-card-item .icon-arrow { transition: transform var(--motion-fast) var(--ease-standard); }
 .project-card-item:hover .icon-arrow { transform: translateX(4px); }
 
-.cert-item .icon { transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.cert-item .icon { transition: transform var(--motion-fast) var(--ease-standard); }
 .cert-item:hover .icon { transform: translateX(3px); }
 
 html.js .timeline-item:hover { transform: translateX(4px); }
@@ -512,9 +523,9 @@ html.js .hover-terminal-shadow.revealed:hover { transform: translate(-3px, -3px)
 }
 
 @keyframes latest-pulse {
-  0%   { opacity: 0.85; transform: scale(1);   box-shadow: 0 0 0 0 rgb(34 197 94 / 0.45); }
-  50%  { opacity: 1;    transform: scale(1.12); box-shadow: 0 0 0 9px rgb(34 197 94 / 0); }
-  100% { opacity: 0.85; transform: scale(1);   box-shadow: 0 0 0 0 rgb(34 197 94 / 0); }
+  0%   { opacity: 0.85; transform: scale(1);   box-shadow: 0 0 0 0 rgb(var(--tertiary) / 0.45); }
+  50%  { opacity: 1;    transform: scale(1.12); box-shadow: 0 0 0 9px rgb(var(--tertiary) / 0); }
+  100% { opacity: 0.85; transform: scale(1);   box-shadow: 0 0 0 0 rgb(var(--tertiary) / 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
